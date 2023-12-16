@@ -7,8 +7,9 @@
 
     <title><?= $title ?></title>
 
+    <link rel="stylesheet" href="./public/styles/setup.css">
     <?php foreach ($styles as $style) : ?>
-        <link rel="stylesheet" href="styles/<?= $style ?>.css">
+        <link rel="stylesheet" href="./public/styles/<?= $style ?>.css">
     <?php endforeach; ?>
 </head>
 

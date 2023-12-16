@@ -1,5 +1,5 @@
 <?php foreach ($scripts as $script) : ?>
-    <script src="<?= $script ?>"></script>
+    <script src="./public/scripts/<?= $script ?>"></script>
 <?php endforeach; ?>
 
 </body>

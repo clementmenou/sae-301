@@ -32,31 +32,31 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
-        include_once './view/head.php';
+        include_once './app/view/head.php';
     }
 
     private function renderHeader()
     {
         if ($this->header) {
-            include_once './view/header.php';
+            include_once './app/view/header.php';
         }
     }
 
     private function renderBody()
     {
-        include_once './view/' . $this->body;
+        include_once './app/view/' . $this->body;
     }
 
     private function renderFooter()
     {
         if ($this->footer) {
-            include_once './view/footer.php';
+            include_once './app/view/footer.php';
         }
     }
 
     private function renderFoot()
     {
         $scripts = $this->scripts;
-        include_once './view/foot.php';
+        include_once './app/view/foot.php';
     }
 }

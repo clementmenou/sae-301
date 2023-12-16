@@ -2,15 +2,14 @@
 include_once './model/User.php';
 include_once './model/Page.php';
 
-
 class Controller
 {
-    public $user;
+    public $users;
     public $page;
 
     public function __construct()
     {
-        $this->user = new User();
+        $this->users = new User();
         $this->page = 'home';
     }
 
@@ -18,16 +17,16 @@ class Controller
     {
         switch ($this->page) {
             case 'home':
-                $page = new Page(
+                $home = new Page(
                     'Home',
                     'home.php',
                     ['header.css', 'home.css', 'footer.css'],
                     ['home.js'],
                     true,
-                    false
+                    true
                 );
 
-                $page->render();
+                $home->render();
                 break;
             case 'page_produit':
 
