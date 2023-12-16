@@ -1,46 +1,37 @@
 <?php
-include_once("model/User.php");
+include_once './model/User.php';
+include_once './model/Page.php';
+
 
 class Controller
 {
     public $user;
-    public $produit;
+    public $page;
+
     public function __construct()
     {
         $this->user = new User();
-        // $this->produits = new Produit();
-    }
-
-    public function redirect($name)
-    {
-        switch ($name) {
-        }
+        $this->page = 'home';
     }
 
     public function invoke()
     {
-        $_SESSION['page'] = $this->redirect($_POST['page']);
-        switch ($_SESSION['page']) {
+        switch ($this->page) {
             case 'home':
-                $title = 'Home';
-                $styles = ['navbar.css', 'home.css', 'footer.css'];
-                $scripts = ['home.js'];
+                $page = new Page(
+                    'Home',
+                    'home.php',
+                    ['header.css', 'home.css', 'footer.css'],
+                    ['home.js'],
+                    true,
+                    false
+                );
 
-                include 'head.php';
-                include 'navbar.php';
-                $this->includeHome();
-                include 'footer.php';
-
+                $page->render();
                 break;
             case 'page_produit':
 
                 break;
         }
-    }
-
-    private function includeHome()
-    {
-
-        include 'home.php';
     }
 }
