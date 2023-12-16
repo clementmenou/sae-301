@@ -2,13 +2,15 @@
 
 class Page
 {
-    public $title;
-    public $styles;
-    public $scripts;
-    public $header;
-    public $body;
-    public $footer;
+    // Page properties
+    public $title; // head title
+    public $styles; // list of css
+    public $scripts; // list of js
+    public $header; // true/false
+    public $body; // name of view
+    public $footer; // true/false
 
+    // Assigning values in instantiation
     public function __construct($title, $body, $styles, $scripts, $header, $footer)
     {
         $this->title = $title;
@@ -19,6 +21,7 @@ class Page
         $this->scripts = $scripts;
     }
 
+    // Rendering all views
     public function render()
     {
         $this->renderHead();
@@ -28,6 +31,7 @@ class Page
         $this->renderFoot();
     }
 
+    // Methods determining rendering behavior
     private function renderHead()
     {
         $title = $this->title;
