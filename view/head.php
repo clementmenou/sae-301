@@ -11,3 +11,5 @@
         <link rel="stylesheet" href="styles/<?= $style ?>.css">
     <?php endforeach; ?>
 </head>
+
+<body>
