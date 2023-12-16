@@ -1,8 +1,8 @@
 <?php
 
-class Bdd
+class DataBase
 {
-    // Propriétés
+    // Data base properties
     private $host = 'localhost';
     private $port = '3306';
     private $dbName = 'portfolio';
@@ -12,12 +12,13 @@ class Bdd
 
     protected function getConnection()
     {
-        // Retourne une instance de connexion à la base 
+        // Returns a database connection instance
         if (!isset($this->connection)) {
             try {
-                // Le dsn contient les informations pour se connecter à la base
+                // The dsn contains the information to connect to the database
                 $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName . ';port=' . $this->port;
-                // Associe à this->connection une instance de connexion à la base, les enregistrements sont récupérés sous la forme d'un objet
+                // Associates a database connection instance with this->connection
+                // The records are retrieved as an object
                 $this->connection = new PDO($dsn, $this->username, $this->password, [
                     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC

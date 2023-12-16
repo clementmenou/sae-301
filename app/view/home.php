@@ -1,0 +1,1 @@
+<a href="/product_page" class="async-link">Lien vers Page Produit</a>
