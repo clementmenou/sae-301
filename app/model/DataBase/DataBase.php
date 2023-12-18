@@ -29,4 +29,10 @@ class DataBase
         }
         return $this->connection;
     }
+
+    protected function getDbName()
+    {
+        // So dbName is accessible in all herited class
+        return $this->dbName;
+    }
 }
