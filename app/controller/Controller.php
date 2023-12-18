@@ -39,4 +39,18 @@ class Controller
 
         $productPage->render();
     }
+
+    public function error404()
+    {
+        $error404 = new Page(
+            'Error 404',
+            'error_404.php',
+            ['header.css', 'error_404.css', 'footer.css'],
+            [],
+            true,
+            true
+        );
+
+        $error404->render();
+    }
 }
