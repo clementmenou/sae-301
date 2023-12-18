@@ -23,8 +23,6 @@ class Controller
             true
         );
 
-        $home->datas['allUsers'] = $this->users->getAllUsers();
-
         $home->render();
     }
 

@@ -1,1 +1,0 @@
-<a href="/" class="async-link">Lien vers Home</a>
