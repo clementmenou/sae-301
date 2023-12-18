@@ -5,7 +5,7 @@ class DataBase
     // Data base properties
     private $host = 'localhost';
     private $port = '3306';
-    private $dbName = 'sae301';
+    protected $dbName = 'sae301';
     private $username = 'admin_630126434750398';
     private $password = 'jgB=H5%s2Kgj@u7';
     private $connection;
@@ -16,7 +16,7 @@ class DataBase
         if (!isset($this->connection)) {
             try {
                 // The dsn contains the information to connect to the database
-                $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName . ';port=' . $this->port;
+                $dsn = "mysql:host = $this->host; dbname = $this->dbName; port = $this->port";
                 // Associates a database connection instance with this->connection
                 // The records are retrieved as an object
                 $this->connection = new PDO($dsn, $this->username, $this->password, [
@@ -28,11 +28,5 @@ class DataBase
             }
         }
         return $this->connection;
-    }
-
-    protected function getDbName()
-    {
-        // So dbName is accessible in all herited class
-        return $this->dbName;
     }
 }
