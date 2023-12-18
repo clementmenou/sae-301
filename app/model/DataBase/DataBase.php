@@ -5,9 +5,9 @@ class DataBase
     // Data base properties
     private $host = 'localhost';
     private $port = '3306';
-    private $dbName = 'portfolio';
-    private $username = 'root';
-    private $password = '';
+    private $dbName = 'sae301';
+    private $username = 'admin_630126434750398';
+    private $password = 'jgB=H5%s2Kgj@u7';
     private $connection;
 
     protected function getConnection()
