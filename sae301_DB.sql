@@ -5,7 +5,7 @@ CREATE DATABASE IF NOT EXISTS sae301
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
--- Utilisation de la bdd pour travailler dessus
+-- Définition bdd sur laquelle on va travailler
 USE sae301;
 
 -- Table des Utilisateurs
@@ -16,9 +16,28 @@ CREATE TABLE Users (
     username VARCHAR(255) UNIQUE,
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
-    address VARCHAR(255),
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
     status VARCHAR(50)
+) ENGINE=InnoDB;
+
+-- Table des Adresses de Livraison
+CREATE TABLE Addresses (
+    address_id INT PRIMARY KEY,
+    street VARCHAR(255),
+    city VARCHAR(255),
+    zip_code VARCHAR(20),
+    region VARCHAR(255),
+    country VARCHAR(255),
+    status VARCHAR(50)
+) ENGINE=InnoDB;
+
+-- Table de Jonction Utilisateurs-Adresses
+CREATE TABLE UserAddresses (
+    user_id INT,
+    address_id INT,
+    PRIMARY KEY (user_id, address_id),
+    FOREIGN KEY (user_id) REFERENCES Users(user_id),
+    FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
 
 -- Table des Produits
@@ -72,26 +91,6 @@ CREATE TABLE Reviews (
     status VARCHAR(50),
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
-) ENGINE=InnoDB;
-
--- Table des Adresses de Livraison
-CREATE TABLE Addresses (
-    address_id INT PRIMARY KEY,
-    street VARCHAR(255),
-    city VARCHAR(255),
-    zip_code VARCHAR(20),
-    region VARCHAR(255),
-    country VARCHAR(255),
-    status VARCHAR(50)
-) ENGINE=InnoDB;
-
--- Table de Jonction Utilisateurs-Adresses
-CREATE TABLE UserAddresses (
-    user_id INT,
-    address_id INT,
-    PRIMARY KEY (user_id, address_id),
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
 
 -- Table des Promotions
