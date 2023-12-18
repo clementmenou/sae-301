@@ -1,0 +1,61 @@
+Users :
+    user_id (primary)
+    first_name
+    last_name
+    username
+    email
+    password
+    adresse
+    status
+
+Products :
+    product_id (primary)
+    name
+    description
+    price
+    stock_quantity
+    category_id (fk table Categories)
+    status
+
+Categories :
+    category_id (primary)
+    name
+
+Reviews :
+    review_id (primary)
+    user_id (fk table Users)
+    product_id (fk table Products)
+    rating
+    text
+    date
+    status
+
+DeliveryAddresses :
+    address_id (primary)
+    user_id (fk table Users)
+    street
+    city
+    zip_code
+    region
+    country
+
+Promotions :
+    promotion_id (primary)
+    product_id (fk table Products)
+    discount_percent
+    start_date
+    end_date
+    status
+
+Orders 
+    order_id (primary)
+    user_id (fk table Users)
+    order_date
+    status
+
+OrderItems
+    order_item_id (primary)
+    order_id (fk table Orders)
+    product_id (fk table Products)
+    quantity
+    price
