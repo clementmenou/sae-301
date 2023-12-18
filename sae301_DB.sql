@@ -16,7 +16,7 @@ CREATE TABLE Users (
     username VARCHAR(255) UNIQUE,
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
-    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+    join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(50)
 ) ENGINE=InnoDB;
 
@@ -40,6 +40,12 @@ CREATE TABLE UserAddresses (
     FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
 
+-- Table des Catégories
+CREATE TABLE Categories (
+    category_id INT PRIMARY KEY,
+    name VARCHAR(255)
+) ENGINE=InnoDB;
+
 -- Table des Produits
 CREATE TABLE Products (
     product_id INT PRIMARY KEY,
@@ -50,12 +56,6 @@ CREATE TABLE Products (
     category_id INT,
     status VARCHAR(50),
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
-) ENGINE=InnoDB;
-
--- Table des Catégories
-CREATE TABLE Categories (
-    category_id INT PRIMARY KEY,
-    name VARCHAR(255)
 ) ENGINE=InnoDB;
 
 -- Table des Commandes
