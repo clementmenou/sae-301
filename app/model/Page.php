@@ -9,7 +9,7 @@ class Page
     public $header; // true/false
     public $body; // name of view
     public $footer; // true/false
-    public $datas;
+    public $datas; // array with datas from DB
 
     // Assigning values in instantiation
     public function __construct($title, $body, $styles, $scripts, $header, $footer)
