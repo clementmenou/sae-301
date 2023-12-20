@@ -1,7 +1,9 @@
 <?php
 
 require_once './app/model/DataBase/User.php';
-require_once './app/model/Page.php';
+require_once './app/model/Pages/Home.php';
+require_once './app/model/Pages/ProductPage.php';
+require_once './app/model/Pages/Error404.php';
 
 class Controller
 {
@@ -14,42 +16,21 @@ class Controller
 
     public function home()
     {
-        $home = new Page(
-            'Home',
-            'home.php',
-            ['header.css', 'home.css', 'footer.css'],
-            ['home.js'],
-            true,
-            true
-        );
+        $home = new Home();
 
         $home->render();
     }
 
     public function productPage()
     {
-        $productPage = new Page(
-            'Products',
-            'product_page.php',
-            ['header.css', 'product_page.css', 'footer.css'],
-            ['product_page.js'],
-            true,
-            true
-        );
+        $productPage = new ProductPage();
 
         $productPage->render();
     }
 
     public function error404()
     {
-        $error404 = new Page(
-            'Error 404',
-            'error_404.php',
-            ['header.css', 'error_404.css', 'footer.css'],
-            [],
-            true,
-            true
-        );
+        $error404 = new Error404();
 
         $error404->render();
     }
