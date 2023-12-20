@@ -22,7 +22,6 @@ class Router
             $controller->$methodName();
         } else {
             // If page not found
-            header('HTTP/1.1 404 Not Found');
             $controller = new Controller();
             $controller->error404();
         }
