@@ -12,7 +12,7 @@ class Page
     public $datas; // array with datas from DB
 
     // Assigning values in instantiation
-    public function __construct($title, $body, $styles, $scripts, $header, $footer)
+    protected function __construct($title, $body, $styles, $scripts, $header, $footer)
     {
         $this->title = $title;
         $this->styles = $styles;

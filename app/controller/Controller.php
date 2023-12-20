@@ -1,6 +1,9 @@
 <?php
 
+// Database
 require_once './app/model/DataBase/User.php';
+
+// Pages
 require_once './app/model/Pages/Home.php';
 require_once './app/model/Pages/ProductPage.php';
 require_once './app/model/Pages/Error404.php';
