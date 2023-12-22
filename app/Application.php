@@ -1,6 +1,6 @@
 <?php
 require_once './app/Routeur.php';
-require_once './app/controller/Controller.php';
+require_once './app/controller/ControllerPage.php';
 
 class Application
 {
