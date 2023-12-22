@@ -21,6 +21,7 @@ class Application
     {
         // Routes corresponding to Controller methods
         $this->router->get('/', 'Controller->home');
-        $this->router->get('/product_page', 'Controller->productPage');
+        $this->router->get('/regardez_nos_produits', 'Controller->productPage');
+        $this->router->get('/connectez_vous', 'Controller->login');
     }
 }
