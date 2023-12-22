@@ -22,7 +22,7 @@ class Router
             $controller->$methodName();
         } else {
             // If page not found
-            $controller = new Controller();
+            $controller = new ControllerPage();
             $controller->error404();
         }
     }

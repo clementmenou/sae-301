@@ -20,8 +20,8 @@ class Application
     private function configureRoutes()
     {
         // Routes corresponding to Controller methods
-        $this->router->get('/', 'Controller->home');
-        $this->router->get('/regardez_nos_produits', 'Controller->productPage');
-        $this->router->get('/connectez_vous', 'Controller->login');
+        $this->router->get('/', 'ControllerPage->home');
+        $this->router->get('/regardez_nos_produits', 'ControllerPage->productPage');
+        $this->router->get('/connectez_vous', 'ControllerPage->login');
     }
 }
