@@ -10,7 +10,7 @@ USE sae301;
 
 -- Table des Utilisateurs
 CREATE TABLE Users (
-    user_id INT PRIMARY KEY,
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     username VARCHAR(255) UNIQUE,
@@ -22,7 +22,7 @@ CREATE TABLE Users (
 
 -- Table des Adresses de Livraison
 CREATE TABLE Addresses (
-    address_id INT PRIMARY KEY,
+    address_id INT AUTO_INCREMENT PRIMARY KEY,
     street VARCHAR(255),
     city VARCHAR(255),
     zip_code VARCHAR(20),
@@ -42,13 +42,13 @@ CREATE TABLE UserAddresses (
 
 -- Table des Catégories
 CREATE TABLE Categories (
-    category_id INT PRIMARY KEY,
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255)
 ) ENGINE=InnoDB;
 
 -- Table des Produits
 CREATE TABLE Products (
-    product_id INT PRIMARY KEY,
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     description TEXT,
     price DECIMAL(10, 2),
@@ -60,7 +60,7 @@ CREATE TABLE Products (
 
 -- Table des Commandes
 CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     address_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -71,7 +71,7 @@ CREATE TABLE Orders (
 
 -- Table des Éléments de Commande
 CREATE TABLE OrderItems (
-    order_item_id INT PRIMARY KEY,
+    order_item_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     product_id INT,
     quantity INT,
@@ -82,7 +82,7 @@ CREATE TABLE OrderItems (
 
 -- Table des Avis
 CREATE TABLE Reviews (
-    review_id INT PRIMARY KEY,
+    review_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     product_id INT,
     rating INT,
@@ -95,7 +95,7 @@ CREATE TABLE Reviews (
 
 -- Table des Promotions
 CREATE TABLE Promotions (
-    promotion_id INT PRIMARY KEY,
+    promotion_id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
     discount_percent DECIMAL(5, 2),
     start_date DATE,
