@@ -8,8 +8,8 @@ class Error404 extends Page
     {
         parent::__construct(
             'Error 404',
-            'error_404.php',
-            ['header.css', 'error_404.css', 'footer.css'],
+            'error404.php',
+            ['header.css', 'error404.css', 'footer.css'],
             [],
             true,
             true
