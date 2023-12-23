@@ -34,14 +34,25 @@ class ControllerPage
     public function login()
     {
         $login = new Login();
-        $login->datas['email'] = isset($_POST['email']) ? $_POST['email'] : '';
-        $login->datas['password'] = isset($_POST['password']) ? $_POST['password'] : '';
+        $login->datas['email'] = $_POST['email'] ?? '';
+        $login->datas['password'] = $_POST['password'] ?? '';
         $login->datas['login_status'] = $this->users->loginUser();
         $login->render();
     }
 
     public function signup()
     {
+        $signup = new SignUp();
+        $this->users->signUpUser();
+        $signup->datas['first_name'] = $_SESSION['signup']['first_name'] ?? '';
+        $signup->datas['last_name'] = $_SESSION['signup']['last_name'] ?? '';
+        $signup->datas['username'] = $_SESSION['signup']['username'] ?? '';
+        $signup->datas['email'] = $_SESSION['signup']['email'] ?? '';
+        $signup->datas['password'] = $_SESSION['signup']['password'] ?? '';
+        $signup->datas['confirm_password'] = $_SESSION['signup']['confirm_password'] ?? '';
+        $signup->datas['username_exists'] = $_SESSION['signup']['username_exists'] ?? false;
+        $signup->datas['email_exists'] = $_SESSION['signup']['email_exists'] ?? false;
+        $signup->render();
     }
 
     public function error404()
