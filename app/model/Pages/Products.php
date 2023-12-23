@@ -2,7 +2,7 @@
 
 require_once './app/model/Page.php';
 
-class ProductPage extends Page
+class Products extends Page
 {
     public function __construct()
     {

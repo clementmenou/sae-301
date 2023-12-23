@@ -5,8 +5,9 @@ require_once './app/controller/ControllerUser.php';
 
 // Pages
 require_once './app/model/Pages/Home.php';
-require_once './app/model/Pages/ProductPage.php';
+require_once './app/model/Pages/Products.php';
 require_once './app/model/Pages/Login.php';
+require_once './app/model/Pages/SignUp.php';
 require_once './app/model/Pages/Error404.php';
 
 class ControllerPage
@@ -24,10 +25,10 @@ class ControllerPage
         $home->render();
     }
 
-    public function productPage()
+    public function products()
     {
-        $productPage = new ProductPage();
-        $productPage->render();
+        $products = new Products();
+        $products->render();
     }
 
     public function login()
@@ -37,6 +38,10 @@ class ControllerPage
         $login->datas['password'] = isset($_POST['password']) ? $_POST['password'] : '';
         $login->datas['login_status'] = $this->users->loginUser();
         $login->render();
+    }
+
+    public function signup()
+    {
     }
 
     public function error404()
