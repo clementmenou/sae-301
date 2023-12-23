@@ -95,14 +95,14 @@ class ControllerUser
 
             $length = strlen($_POST['password']) >= 10;
 
-            if ($_POST['password'] === $_POST['confirm_password'] && $complexity && $length)
+            if ($_POST['password'] === $_POST['confirm_password'] && $complexity && $length) {
                 $_SESSION['signup']['step'] = 3;
-            else
-                echo 'iuhiezf';
+            }
         }
 
         if ($step == 3) {
-            $this->user->insert($_SESSION['signup']);
+            $_SESSION['signup']['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $_SESSION['user_id'] = $this->user->insert($_SESSION['signup']);
             unset($_SESSION['signup']);
             header('Location: /');
             exit;

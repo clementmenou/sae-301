@@ -50,7 +50,7 @@ class User extends DataBase
 
     public function insert($datas)
     {
-        $sql = "INSERT INTO Users (
+        $sql = "INSERT INTO $this->dbName.users (
                 first_name, 
                 last_name, 
                 username, 
@@ -64,7 +64,6 @@ class User extends DataBase
                 :email, 
                 :password
             )";
-        $stmt = $this->getConnection()->prepare($sql);
         $params = [
             'first_name' => $datas['first_name'],
             'last_name' => $datas['last_name'],
@@ -72,6 +71,7 @@ class User extends DataBase
             'email' => $datas['email'],
             'password' => $datas['password']
         ];
-        $stmt->execute($params);
+        $this->getConnection()->prepare($sql)->execute($params);
+        return $this->getConnection()->lastInsertId();
     }
 }
