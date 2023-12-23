@@ -33,6 +33,9 @@ class ControllerPage
     public function login()
     {
         $login = new Login();
+        $login->datas['email'] = isset($_POST['email']) ? $_POST['email'] : '';
+        $login->datas['password'] = isset($_POST['password']) ? $_POST['password'] : '';
+        $login->datas['login_status'] = $this->users->loginUser();
         $login->render();
     }
 

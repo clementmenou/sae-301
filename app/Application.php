@@ -14,6 +14,7 @@ class Application
 
     public function run()
     {
+        session_start();
         $this->router->processRequest();
     }
 
@@ -23,5 +24,6 @@ class Application
         $this->router->get('/', 'ControllerPage->home');
         $this->router->get('/regardez_nos_produits', 'ControllerPage->productPage');
         $this->router->get('/connectez_vous', 'ControllerPage->login');
+        $this->router->post('/connectez_vous', 'ControllerPage->login');
     }
 }

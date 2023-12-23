@@ -20,6 +20,7 @@ class Page
         $this->body = $body;
         $this->footer = $footer;
         $this->scripts = $scripts;
+        $this->datas = [];
     }
 
     // Rendering all views
@@ -49,6 +50,7 @@ class Page
 
     private function renderBody()
     {
+        $datas = $this->datas;
         include_once './app/view/' . $this->body;
     }
 

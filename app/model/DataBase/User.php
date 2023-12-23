@@ -23,9 +23,9 @@ class User extends DataBase
         return $stmt->fetch();
     }
 
-    public function getUserByEmail($email)
+    public function getIdPasswordByEmail($email)
     {
-        $sql = "SELECT * FROM $this->dbName.users WHERE email = :email";
+        $sql = "SELECT user_id, password FROM $this->dbName.users WHERE email = :email";
         $stmt = $this->getConnection()->prepare($sql);
         $params = [
             'email' => $email

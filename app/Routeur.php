@@ -9,6 +9,11 @@ class Router
         $this->routes['GET'][$path] = $controller;
     }
 
+    public function post($path, $controller)
+    {
+        $this->routes['POST'][$path] = $controller;
+    }
+
     public function processRequest()
     {
         $path = $_SERVER['REQUEST_URI'];
