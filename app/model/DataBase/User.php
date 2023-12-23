@@ -55,16 +55,14 @@ class User extends DataBase
                 last_name, 
                 username, 
                 email, 
-                password, 
-                status
+                password
             ) 
             VALUES (
                 :first_name, 
                 :last_name, 
                 :username, 
                 :email, 
-                :password, 
-                :status
+                :password
             )";
         $stmt = $this->getConnection()->prepare($sql);
         $params = [
