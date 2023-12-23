@@ -8,9 +8,9 @@ class ProductPage extends Page
     {
         parent::__construct(
             'Products',
-            'product_page.php',
-            ['header.css', 'product_page.css', 'footer.css'],
-            ['product_page.js'],
+            'products.php',
+            ['header.css', 'products.css', 'footer.css'],
+            [],
             true,
             true
         );
