@@ -2,7 +2,11 @@
 
 namespace App;
 
+// Router
 use App\Router;
+
+// Controller
+use App\Controller\ControllerPage; // Don't delet it's necessary
 
 class Application
 {

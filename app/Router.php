@@ -25,9 +25,9 @@ class Router
 
         if (isset($this->routes[$method][$path])) {
             // Split controller and method
-            list($controller, $methodName) = explode('->', $this->routes[$method][$path]);
+            list($controllerClass, $methodName) = explode('->', $this->routes[$method][$path]);
 
-            $controller = new $controller();
+            $controller = new $controllerClass();
             $controller->$methodName();
         } else {
             // If page not found
