@@ -38,6 +38,7 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
+        $styles = [$_SESSION['fragrance'] ?? null];
         include_once './app/view/head.php';
     }
 

@@ -26,6 +26,9 @@ class ControllerCategory
         if (isset($_POST['frangrance']) && isset($fragrances[$_POST['frangrance']])) {
             // Set $_SESSION value
             $_SESSION['fragrance'] = $fragrances[$_POST['frangrance']];
+            // Refresh
+            header('Location: /');
+            exit;
         }
     }
 }
