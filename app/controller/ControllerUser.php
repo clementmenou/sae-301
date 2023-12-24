@@ -41,6 +41,8 @@ class ControllerUser
                 // Wrong email
                 $_SESSION['login']['wrong_email'] = true;
             }
+            header('Location: /connectez_vous');
+            exit;
         }
     }
 
