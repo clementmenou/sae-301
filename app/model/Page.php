@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 class Page
 {
     // Page properties
