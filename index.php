@@ -1,7 +1,6 @@
 <?php
-
 require_once './app/Application.php';
 
-// Créez une instance de l'application et lancez-la
+// Run application
 $app = new Application();
 $app->run();
