@@ -22,6 +22,7 @@ class Application
     {
         // Routes corresponding to Controller methods
         $this->router->get('/', 'ControllerPage->home');
+        $this->router->post('/', 'ControllerPage->home');
         $this->router->get('/regardez_nos_produits', 'ControllerPage->products');
         $this->router->get('/connectez_vous', 'ControllerPage->login');
         $this->router->post('/connectez_vous', 'ControllerPage->login');

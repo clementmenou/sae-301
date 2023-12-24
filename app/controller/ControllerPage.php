@@ -2,6 +2,7 @@
 
 // Controllers datas
 require_once './app/controller/ControllerUser.php';
+require_once './app/controller/ControllerCategory.php';
 
 // Pages
 require_once './app/model/Pages/Home.php';
@@ -12,16 +13,19 @@ require_once './app/model/Pages/Error404.php';
 
 class ControllerPage
 {
+    public $category;
     public $users;
 
     public function __construct()
     {
+        $this->category = new ControllerCategory();
         $this->users = new ControllerUser();
     }
 
     public function home()
     {
         $home = new Home();
+        $this->category->homeFilter();
         $home->render();
     }
 
