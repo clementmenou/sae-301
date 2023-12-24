@@ -1,20 +1,22 @@
 <?php
 
+namespace App\Controller;
+
 // Controllers datas
-require_once './app/controller/ControllerUser.php';
-require_once './app/controller/ControllerCategory.php';
+use App\Controller\ControllerCategory;
+use App\Controller\ControllerUser;
 
 // Pages
-require_once './app/model/Pages/Home.php';
-require_once './app/model/Pages/Products.php';
-require_once './app/model/Pages/Login.php';
-require_once './app/model/Pages/SignUp.php';
-require_once './app/model/Pages/Error404.php';
+use App\Model\Pages\Home;
+use App\Model\Pages\Products;
+use App\Model\Pages\Login;
+use App\Model\Pages\SignUp;
+use App\Model\Pages\Error404;
 
 class ControllerPage
 {
-    public $category;
-    public $users;
+    private $category;
+    private $users;
 
     public function __construct()
     {

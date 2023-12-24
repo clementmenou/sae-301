@@ -1,9 +1,12 @@
 <?php
-require_once './app/model/DataBase/Category.php';
+
+namespace App\Controller;
+
+use App\Model\DataBase\Category;
 
 class ControllerCategory
 {
-    public $category;
+    private $category;
 
     public function __construct()
     {

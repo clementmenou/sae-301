@@ -1,10 +1,17 @@
 <?php
 
-require_once './app/model/DataBase/User.php';
+namespace App\Controller;
+
+// Model
+use App\Model\DataBase\User;
+
+// Helpers
+use App\Helpers\RedirectHelper;
+use App\Helpers\SessionHelper;
 
 class ControllerUser
 {
-    public $user;
+    private $user;
 
     public function __construct()
     {
@@ -14,8 +21,7 @@ class ControllerUser
     public function loginUser()
     {
         if (isset($_SESSION['user_id'])) {
-            header('Location: /');
-            exit;
+            RedirectHelper::redirectTo('/');
         }
 
         if (isset($_POST['email'], $_POST['password'])) {
@@ -53,14 +59,15 @@ class ControllerUser
 
     public function signUpUser()
     {
+        // Redirect if user loged in
         if (isset($_SESSION['user_id'])) {
             header('Location: /');
             exit;
         }
 
-        // Retains its current value, otherwise, initialized to 0
+        // Initialize if not set
         $_SESSION['signup']['step'] ??= 0;
-        $step = $_SESSION['signup']['step']; // To be more readable
+        $step = $_SESSION['signup']['step'];
 
         // Step firstname and lastname
         if (isset($_POST['first_name'], $_POST['last_name'])) {
@@ -77,6 +84,7 @@ class ControllerUser
             exit;
         }
 
+        // Step username and email
         if ($step >= 1 && isset($_POST['username'], $_POST['email'])) {
             // Save input datas
             $_SESSION['signup']['username'] = $_POST['username'];
@@ -94,6 +102,7 @@ class ControllerUser
             exit;
         }
 
+        // Step password
         if ($step >= 2 && isset($_POST['password'], $_POST['confirm_password'])) {
             $_SESSION['signup']['password'] = $_POST['password'];
             $_SESSION['signup']['confirm_password'] = $_POST['confirm_password'];
@@ -111,8 +120,8 @@ class ControllerUser
             }
         }
 
+        // Final step
         if ($step == 3) {
-            $_SESSION['signup']['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $_SESSION['user_id'] = $this->user->insert($_SESSION['signup']);
             unset($_SESSION['signup']);
             header('Location: /');
