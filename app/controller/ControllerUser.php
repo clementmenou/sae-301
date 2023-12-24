@@ -27,20 +27,25 @@ class ControllerUser
             $user_datas = $this->user->getIdPasswordByEmail($_POST['email']);
 
             if (!empty($user_datas)) {
-                if (password_verify($_POST['password'], $user_datas['password'])) {
-                    // Every thing is right
+                // Update $_SESSION value
+                $_SESSION['login']['wrong_email'] = false;
+
+                if (password_verify($_POST['password'], $user_datas['password'])) { // All right
+                    // Get user id
                     $_SESSION['user_id'] = $user_datas['user_id'];
+                    // Empty $_SESSION because not necessary anymore
                     unset($_SESSION['login']);
+                    // Redirect
                     header('Location: /');
                     exit;
-                } else {
-                    // Wrong password
+                } else { // Wrong password
                     $_SESSION['login']['wrong_password'] = true;
                 }
             } else {
                 // Wrong email
                 $_SESSION['login']['wrong_email'] = true;
             }
+            // Refresh
             header('Location: /connectez_vous');
             exit;
         }
