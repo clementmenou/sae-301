@@ -1,5 +1,9 @@
 <?php
 
+namespace App;
+
+use App\Controller\ControllerPage;
+
 class Router
 {
     private $routes = [];
