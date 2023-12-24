@@ -19,6 +19,10 @@ class ControllerUser
         }
 
         if (isset($_POST['email'], $_POST['password'])) {
+            // Save data in $_SESSION
+            $_SESSION['login']['email'] = $_POST['email'];
+            $_SESSION['login']['password'] = $_POST['password'];
+
             // We only need id and password so
             $user_datas = $this->user->getIdPasswordByEmail($_POST['email']);
 
@@ -26,18 +30,18 @@ class ControllerUser
                 if (password_verify($_POST['password'], $user_datas['password'])) {
                     // Every thing is right
                     $_SESSION['user_id'] = $user_datas['user_id'];
+                    unset($_SESSION['login']);
                     header('Location: /');
                     exit;
                 } else {
                     // Wrong password
-                    return 'PASSWORD_INCORRECT';
+                    $_SESSION['login']['wrong_password'] = true;
                 }
             } else {
                 // Wrong email
-                return 'EMAIL_INCORRECT';
+                $_SESSION['login']['wrong_email'] = true;
             }
         }
-        return false;
     }
 
     public function signUpUser()

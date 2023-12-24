@@ -1,6 +1,6 @@
 <?php
 
-// Database
+// Controllers datas
 require_once './app/controller/ControllerUser.php';
 
 // Pages
@@ -34,9 +34,11 @@ class ControllerPage
     public function login()
     {
         $login = new Login();
-        $login->datas['email'] = $_POST['email'] ?? '';
-        $login->datas['password'] = $_POST['password'] ?? '';
-        $login->datas['login_status'] = $this->users->loginUser();
+        $this->users->loginUser();
+        $login->datas['email'] = $_SESSION['login']['email'] ?? '';
+        $login->datas['password'] = $_SESSION['login']['password'] ?? '';
+        $login->datas['wrong_email'] = $_SESSION['login']['wrong_email'] ?? false;
+        $login->datas['wrong_password'] = $_SESSION['login']['wrong_password'] ?? false;
         $login->render();
     }
 
