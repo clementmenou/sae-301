@@ -1,6 +1,8 @@
 <?php
-require_once './app/Routeur.php';
-require_once './app/controller/ControllerPage.php';
+
+namespace App;
+
+use App\Router;
 
 class Application
 {
