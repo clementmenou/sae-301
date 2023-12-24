@@ -4,14 +4,6 @@ require_once './app/model/DataBase/DataBase.php';
 
 class User extends DataBase
 {
-    public function getAllUsers()
-    {
-        $sql = "SELECT * FROM $this->dbName.users";
-        $stmt = $this->getConnection()->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-
     public function getUserById($id)
     {
         $sql = "SELECT * FROM $this->dbName.users WHERE user_id = :id";
@@ -32,5 +24,54 @@ class User extends DataBase
         ];
         $stmt->execute($params);
         return $stmt->fetch();
+    }
+
+    public function isUserByEmail($email)
+    {
+        $sql = "SELECT EXISTS (SELECT 1 FROM $this->dbName.users WHERE email = :email) AS email_exists";
+        $stmt = $this->getConnection()->prepare($sql);
+        $params = [
+            'email' => $email
+        ];
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
+
+    public function isUserByUsername($username)
+    {
+        $sql = "SELECT EXISTS (SELECT 1 FROM $this->dbName.users WHERE username = :username) AS username_exists";
+        $stmt = $this->getConnection()->prepare($sql);
+        $params = [
+            'username' => $username
+        ];
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
+
+    public function insert($datas)
+    {
+        $sql = "INSERT INTO $this->dbName.users (
+                first_name, 
+                last_name, 
+                username, 
+                email, 
+                password
+            ) 
+            VALUES (
+                :first_name, 
+                :last_name, 
+                :username, 
+                :email, 
+                :password
+            )";
+        $params = [
+            'first_name' => $datas['first_name'],
+            'last_name' => $datas['last_name'],
+            'username' => $datas['username'],
+            'email' => $datas['email'],
+            'password' => $datas['password']
+        ];
+        $this->getConnection()->prepare($sql)->execute($params);
+        return $this->getConnection()->lastInsertId();
     }
 }

@@ -3,6 +3,7 @@
     <div id="header-link-zone">
         <a href="/regardez_nos_produits">Parfums</a>
         <a href="/connectez_vous">Login</a>
+        <a href="/inscrivez_vous">Sign Up</a>
         <a href="/ezrpofjez">Error 404</a>
     </div>
 </header>

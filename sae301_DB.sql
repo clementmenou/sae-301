@@ -17,7 +17,7 @@ CREATE TABLE Users (
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50)
+    status VARCHAR(50) DEFAULT 'active'
 ) ENGINE=InnoDB;
 
 -- Table des Adresses de Livraison
@@ -28,7 +28,7 @@ CREATE TABLE Addresses (
     zip_code VARCHAR(20),
     region VARCHAR(255),
     country VARCHAR(255),
-    status VARCHAR(50)
+    status VARCHAR(50) DEFAULT 'active'
 ) ENGINE=InnoDB;
 
 -- Table de Jonction Utilisateurs-Adresses
@@ -54,7 +54,7 @@ CREATE TABLE Products (
     price DECIMAL(10, 2),
     stock_quantity INT,
     category_id INT,
-    status VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 ) ENGINE=InnoDB;
 
@@ -64,7 +64,7 @@ CREATE TABLE Orders (
     user_id INT,
     address_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    status VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
@@ -88,7 +88,7 @@ CREATE TABLE Reviews (
     rating INT,
     text TEXT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    status VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
@@ -100,7 +100,7 @@ CREATE TABLE Promotions (
     discount_percent DECIMAL(5, 2),
     start_date DATE,
     end_date DATE,
-    status VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
 

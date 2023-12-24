@@ -12,6 +12,7 @@
     <?php foreach ($styles as $style) : ?>
         <link rel="stylesheet" href="./public/styles/<?= $style ?>.css">
     <?php endforeach; ?>
+    <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>

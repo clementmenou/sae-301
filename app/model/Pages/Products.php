@@ -2,15 +2,15 @@
 
 require_once './app/model/Page.php';
 
-class ProductPage extends Page
+class Products extends Page
 {
     public function __construct()
     {
         parent::__construct(
             'Products',
-            'product_page.php',
-            ['header.css', 'product_page.css', 'footer.css'],
-            ['product_page.js'],
+            'products.php',
+            ['header.css', 'products.css', 'footer.css'],
+            [],
             true,
             true
         );
