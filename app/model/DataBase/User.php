@@ -1,6 +1,8 @@
 <?php
 
-require_once './app/model/DataBase/DataBase.php';
+namespace App\Model\DataBase;
+
+use App\Model\DataBase\DataBase;
 
 class User extends DataBase
 {
@@ -69,9 +71,20 @@ class User extends DataBase
             'last_name' => $datas['last_name'],
             'username' => $datas['username'],
             'email' => $datas['email'],
-            'password' => $datas['password']
+            'password' => password_hash($datas['password'], PASSWORD_DEFAULT)
         ];
-        $this->getConnection()->prepare($sql)->execute($params);
-        return $this->getConnection()->lastInsertId();
+        try {
+            // Transaction for multiples request
+            $this->getConnection()->beginTransaction();
+            $this->getConnection()->prepare($sql)->execute($params);
+            $userId = $this->getConnection()->lastInsertId();
+            $this->getConnection()->commit();
+
+            return $userId;
+        } catch (\PDOException $e) {
+            // Cancel if error in transaction
+            $this->getConnection()->rollBack();
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
     }
 }
