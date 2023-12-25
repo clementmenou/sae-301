@@ -34,10 +34,10 @@ class ControllerCategory
         ];
 
         // If button clicked
-        if (Form::validateField('fragrance', ['required', 'in_array' => $fragrances])) {
+        if (Form::validateField('fragrance', ['required' => true, 'in_array' => $fragrances])) {
             $fragranceChoice = Form::getFieldValue('fragrance');
             // Set $_SESSION value
-            Session::setSessionValue('fragrance', $fragranceChoice);
+            Session::setValue('fragrance', $fragranceChoice);
             // Refresh
             Redirect::redirectTo(Redirect::HOME_URL);
         }

@@ -50,6 +50,16 @@ class FormHelper
         return true;
     }
 
+    public static function validateFields($fields)
+    {
+        foreach ($fields as $fieldName => $rules) {
+            if (!self::validateField($fieldName, $rules)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static function escapeValue($value)
     {
         // Utilisez la méthode d'échappement appropriée (ex: htmlspecialchars)

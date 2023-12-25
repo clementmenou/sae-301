@@ -7,6 +7,7 @@ use App\Model\DataBase\User;
 
 // Helpers
 use App\Helpers\{
+    FormHelper as Form,
     RedirectHelper as Redirect,
     SessionHelper as Session
 };
@@ -22,35 +23,38 @@ class ControllerUser
 
     public function loginUser()
     {
-        if (isset($_SESSION['user_id'])) {
+        if (Session::getValue('user_id')) {
             Redirect::redirectTo(Redirect::HOME_URL);
         }
 
-        if (isset($_POST['email'], $_POST['password'])) {
+        if (Form::validateFields(['email' => ['required' => true], 'password' => ['required' => true]])) {
+            $email = Form::getFieldValue('email');
+            $password = Form::getFieldValue('password');
+
             // Save data in $_SESSION
-            $_SESSION['login']['email'] = $_POST['email'];
-            $_SESSION['login']['password'] = $_POST['password'];
+            Session::setValue('login', $email, 'email');
+            Session::setValue('login', $password, 'password');
 
             // We only need id and password so
-            $user_datas = $this->user->getIdPasswordByEmail($_POST['email']);
+            $user_datas = $this->user->getIdPasswordByEmail($email);
 
             if (!empty($user_datas)) {
                 // Update $_SESSION value
-                $_SESSION['login']['wrong_email'] = false;
+                Session::setValue('login', false, 'wrong_email');
 
-                if (password_verify($_POST['password'], $user_datas['password'])) { // All right
+                if (password_verify($password, $user_datas['password'])) { // All right
                     // Get user id
-                    $_SESSION['user_id'] = $user_datas['user_id'];
-                    // Empty $_SESSION because not necessary anymore
-                    unset($_SESSION['login']);
+                    Session::setValue('user_id', $user_datas['user_id']);
+                    // Unset login because not necessary anymore
+                    Session::unsetValue('login');
                     // Redirect
                     Redirect::redirectTo(Redirect::HOME_URL);
                 } else { // Wrong password
-                    $_SESSION['login']['wrong_password'] = true;
+                    Session::setValue('login', true, 'wrong_password');
                 }
             } else {
                 // Wrong email
-                $_SESSION['login']['wrong_email'] = true;
+                Session::setValue('login', true, 'wrong_email');
             }
             // Refresh
             Redirect::redirectTo(Redirect::LOGIN_URL);
@@ -60,7 +64,7 @@ class ControllerUser
     public function signUpUser()
     {
         // Redirect if user loged in
-        if (isset($_SESSION['user_id'])) {
+        if (Session::getValue('user_id')) {
             Redirect::redirectTo(Redirect::HOME_URL);
         }
 

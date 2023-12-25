@@ -4,11 +4,11 @@ namespace App\Helpers;
 
 class SessionHelper
 {
-    public static function setSessionValue($key, $value, $subKey = null)
+    public static function setValue($key, $value, $subKey = null)
     {
-        self::startSession();
+        self::start();
 
-        if (self::isSessionActive()) {
+        if (self::isActive()) {
             if ($subKey !== null) {
                 // Set sub variable
                 if (!isset($_SESSION[$key])) {
@@ -23,26 +23,26 @@ class SessionHelper
         }
     }
 
-    public static function getSessionValue($key, $subKey = null)
+    public static function getValue($key, $subKey = null)
     {
-        self::startSession();
+        self::start();
 
-        if (self::isSessionActive()) {
+        if (self::isActive()) {
             if ($subKey !== null) {
-                return $_SESSION[$key][$subKey] ?? '';
+                return $_SESSION[$key][$subKey] ?? null;
             } else {
-                return $_SESSION[$key] ?? '';
+                return $_SESSION[$key] ?? null;
             }
         }
 
-        return '';
+        return null;
     }
 
-    public static function unsetSessionValue($key, $subKey = null)
+    public static function unsetValue($key, $subKey = null)
     {
-        self::startSession();
+        self::start();
 
-        if (self::isSessionActive()) {
+        if (self::isActive()) {
             if ($subKey !== null) {
                 // Suppr sub variable
                 if (isset($_SESSION[$key][$subKey])) {
@@ -57,11 +57,11 @@ class SessionHelper
         }
     }
 
-    public static function sessionValueExists($key, $subKey = null)
+    public static function valueExists($key, $subKey = null)
     {
-        self::startSession();
+        self::start();
 
-        if (self::isSessionActive()) {
+        if (self::isActive()) {
             if ($subKey !== null) {
                 return isset($_SESSION[$key][$subKey]);
             } else {
@@ -72,14 +72,14 @@ class SessionHelper
         return false;
     }
 
-    private static function isSessionActive()
+    private static function isActive()
     {
         return session_status() === PHP_SESSION_ACTIVE;
     }
 
-    private static function startSession()
+    private static function start()
     {
-        if (!self::isSessionActive()) {
+        if (!self::isActive()) {
             session_set_cookie_params([
                 'secure' => true,    // HTTPS only
                 'httponly' => true    // Cookie not accesible with JavaScript
