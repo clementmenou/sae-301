@@ -26,7 +26,7 @@ class Router
         if (isset($this->routes[$method][$path])) {
             // Split controller and method
             list($controllerClass, $methodName) = explode('->', $this->routes[$method][$path]);
-            $controllerClass = "App\\Controller\\" . $controllerClass;
+            $controllerClass = 'App\\Controller\\' . $controllerClass;
             $controller = new $controllerClass();
             $controller->$methodName();
         } else {
