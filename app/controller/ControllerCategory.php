@@ -7,6 +7,7 @@ use App\Model\DataBase\Category;
 
 // Helpers
 use App\Helpers\{
+    FormHelper as Form,
     RedirectHelper as Redirect,
     SessionHelper as Session
 };
@@ -23,19 +24,20 @@ class ControllerCategory
     public function homeFilter()
     {
         $fragrances = [
-            'button1' => 'hesperides',
-            'button2' => 'fleuris',
-            'button3' => 'boises',
-            'button4' => 'fougeres',
-            'button5' => 'chypres',
-            'button6' => 'orientaux',
-            'button7' => 'aromatiques',
+            'hesperides',
+            'fleuris',
+            'boises',
+            'fougeres',
+            'chypres',
+            'orientaux',
+            'aromatiques'
         ];
 
         // If button clicked
-        if (isset($_POST['frangrance']) && isset($fragrances[$_POST['frangrance']])) {
+        if (Form::validateField('fragrance', ['required', 'in_array' => $fragrances])) {
+            $fragranceChoice = Form::getFieldValue('fragrance');
             // Set $_SESSION value
-            Session::setSessionValue('fragrance', $fragrances[$_POST['frangrance']]);
+            Session::setSessionValue('fragrance', $fragranceChoice);
             // Refresh
             Redirect::redirectTo(Redirect::HOME_URL);
         }

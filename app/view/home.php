@@ -1,9 +1,9 @@
 <form action="/" method="POST">
-    <button type="submit" name="frangrance" value="button1">Hespéridés</button>
-    <button type="submit" name="frangrance" value="button2">Fleuris</button>
-    <button type="submit" name="frangrance" value="button3">Boisés</button>
-    <button type="submit" name="frangrance" value="button4">Fougères</button>
-    <button type="submit" name="frangrance" value="button5">Chyprés</button>
-    <button type="submit" name="frangrance" value="button6">Orientaux</button>
-    <button type="submit" name="frangrance" value="button7">Aromatiques</button>
+    <button type="submit" name="fragrance" value="hesperides">Hespéridés</button>
+    <button type="submit" name="fragrance" value="fleuris">Fleuris</button>
+    <button type="submit" name="fragrance" value="boises">Boisés</button>
+    <button type="submit" name="fragrance" value="fougeres">Fougères</button>
+    <button type="submit" name="fragrance" value="chypres">Chyprés</button>
+    <button type="submit" name="fragrance" value="orientaux">Orientaux</button>
+    <button type="submit" name="fragrance" value="aromatiques">Aromatiques</button>
 </form>
