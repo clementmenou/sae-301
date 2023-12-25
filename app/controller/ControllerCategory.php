@@ -2,7 +2,14 @@
 
 namespace App\Controller;
 
+// Model
 use App\Model\DataBase\Category;
+
+// Helpers
+use App\Helpers\{
+    RedirectHelper as Redirect,
+    SessionHelper as Session
+};
 
 class ControllerCategory
 {
@@ -30,8 +37,7 @@ class ControllerCategory
             // Set $_SESSION value
             $_SESSION['fragrance'] = $fragrances[$_POST['frangrance']];
             // Refresh
-            header('Location: /');
-            exit;
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
     }
 }

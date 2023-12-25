@@ -6,8 +6,10 @@ namespace App\Controller;
 use App\Model\DataBase\User;
 
 // Helpers
-use App\Helpers\RedirectHelper;
-use App\Helpers\SessionHelper;
+use App\Helpers\{
+    RedirectHelper as Redirect,
+    SessionHelper as Session
+};
 
 class ControllerUser
 {
@@ -21,7 +23,7 @@ class ControllerUser
     public function loginUser()
     {
         if (isset($_SESSION['user_id'])) {
-            RedirectHelper::redirectTo('/');
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
 
         if (isset($_POST['email'], $_POST['password'])) {
@@ -42,8 +44,7 @@ class ControllerUser
                     // Empty $_SESSION because not necessary anymore
                     unset($_SESSION['login']);
                     // Redirect
-                    header('Location: /');
-                    exit;
+                    Redirect::redirectTo(Redirect::HOME_URL);
                 } else { // Wrong password
                     $_SESSION['login']['wrong_password'] = true;
                 }
@@ -52,8 +53,7 @@ class ControllerUser
                 $_SESSION['login']['wrong_email'] = true;
             }
             // Refresh
-            header('Location: /connectez_vous');
-            exit;
+            Redirect::redirectTo(Redirect::LOGIN_URL);
         }
     }
 
@@ -61,8 +61,7 @@ class ControllerUser
     {
         // Redirect if user loged in
         if (isset($_SESSION['user_id'])) {
-            header('Location: /');
-            exit;
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
 
         // Initialize if not set
@@ -80,8 +79,7 @@ class ControllerUser
                 $_SESSION['signup']['step'] = 1;
 
             // Refresh
-            header('Location: /inscrivez_vous');
-            exit;
+            Redirect::redirectTo(Redirect::SIGNUP_URL);
         }
 
         // Step username and email
@@ -98,8 +96,7 @@ class ControllerUser
                 $_SESSION['signup']['step'] = 2;
 
             // Refresh
-            header('Location: /inscrivez_vous');
-            exit;
+            Redirect::redirectTo(Redirect::SIGNUP_URL);
         }
 
         // Step password
@@ -124,8 +121,7 @@ class ControllerUser
         if ($step == 3) {
             $_SESSION['user_id'] = $this->user->insert($_SESSION['signup']);
             unset($_SESSION['signup']);
-            header('Location: /');
-            exit;
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
     }
 }

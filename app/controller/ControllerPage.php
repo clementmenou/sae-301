@@ -3,15 +3,19 @@
 namespace App\Controller;
 
 // Controllers datas
-use App\Controller\ControllerCategory;
-use App\Controller\ControllerUser;
+use App\Controller\{
+    ControllerCategory,
+    ControllerUser
+};
 
 // Pages
-use App\Model\Pages\Home;
-use App\Model\Pages\Products;
-use App\Model\Pages\Login;
-use App\Model\Pages\SignUp;
-use App\Model\Pages\Error404;
+use App\Model\Pages\{
+    Home,
+    Products,
+    Login,
+    SignUp,
+    Error404
+};
 
 class ControllerPage
 {
