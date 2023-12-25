@@ -29,13 +29,13 @@ class SessionHelper
 
         if (self::isSessionActive()) {
             if ($subKey !== null) {
-                return $_SESSION[$key][$subKey] ?? null;
+                return $_SESSION[$key][$subKey] ?? '';
             } else {
-                return $_SESSION[$key] ?? null;
+                return $_SESSION[$key] ?? '';
             }
         }
 
-        return null;
+        return '';
     }
 
     public static function unsetSessionValue($key, $subKey = null)
