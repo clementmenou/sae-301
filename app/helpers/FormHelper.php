@@ -9,34 +9,34 @@ class FormHelper
         return $_SERVER['REQUEST_METHOD'] === 'POST';
     }
 
-    public static function getFieldValue($fieldName)
+    public static function getValue($fieldName)
     {
         return $_POST[$fieldName] ?? '';
     }
 
-    public static function isFieldEmpty($fieldName)
+    public static function isEmpty($fieldName)
     {
         return empty($_POST[$fieldName]);
     }
 
-    public static function validateField($fieldName, $rules = [])
+    public static function validate($fieldName, $rules = [])
     {
         foreach ($rules as $rule => $value) {
             switch ($rule) {
                 case 'required':
-                    if (self::isFieldEmpty($fieldName)) {
+                    if (self::isEmpty($fieldName)) {
                         return false;
                     }
                     break;
 
-                case 'min_length':
-                    if (strlen(self::getFieldValue($fieldName)) < $value) {
+                case 'max_length':
+                    if (strlen(self::getValue($fieldName)) > $value) {
                         return false;
                     }
                     break;
 
                 case 'in_array':
-                    if (!in_array(self::getFieldValue($fieldName), $value)) {
+                    if (!in_array(self::getValue($fieldName), $value)) {
                         return false;
                     };
                     break;
@@ -50,10 +50,10 @@ class FormHelper
         return true;
     }
 
-    public static function validateFields($fields)
+    public static function validates($fields)
     {
         foreach ($fields as $fieldName => $rules) {
-            if (!self::validateField($fieldName, $rules)) {
+            if (!self::validate($fieldName, $rules)) {
                 return false;
             }
         }
