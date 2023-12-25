@@ -37,7 +37,7 @@ class ControllerCategory
         if (Form::validateField('fragrance', ['required' => true, 'in_array' => $fragrances])) {
             $fragranceChoice = Form::getFieldValue('fragrance');
             // Set $_SESSION value
-            Session::setValue('fragrance', $fragranceChoice);
+            Session::setValue('fragrance', null, $fragranceChoice);
             // Refresh
             Redirect::redirectTo(Redirect::HOME_URL);
         }

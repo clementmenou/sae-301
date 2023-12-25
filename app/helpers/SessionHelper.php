@@ -4,38 +4,44 @@ namespace App\Helpers;
 
 class SessionHelper
 {
-    public static function setValue($key, $value, $subKey = null)
+    public static function setValue($key, $subKey, $value, $isSet = false)
     {
         self::start();
 
         if (self::isActive()) {
-            if ($subKey !== null) {
-                // Set sub variable
-                if (!isset($_SESSION[$key])) {
-                    $_SESSION[$key] = [];
+            if (!$isSet) {
+                if ($subKey !== null) {
+                    // Set sub variable
+                    $_SESSION[$key][$subKey] = $value;
+                } else {
+                    // Set main variable
+                    $_SESSION[$key] = $value;
                 }
-
-                $_SESSION[$key][$subKey] = $value;
             } else {
-                // Set main variable
-                $_SESSION[$key] = $value;
+                if ($subKey !== null) {
+                    // Set sub variable
+                    $_SESSION[$key][$subKey] ??= $value;
+                } else {
+                    // Set main variable
+                    $_SESSION[$key] ??= $value;
+                }
             }
         }
     }
 
-    public static function getValue($key, $subKey = null)
+    public static function getValue($key, $subKey = null, $default = null)
     {
         self::start();
 
         if (self::isActive()) {
             if ($subKey !== null) {
-                return $_SESSION[$key][$subKey] ?? null;
+                return $_SESSION[$key][$subKey] ?? $default;
             } else {
-                return $_SESSION[$key] ?? null;
+                return $_SESSION[$key] ?? $default;
             }
         }
 
-        return null;
+        return $default;
     }
 
     public static function unsetValue($key, $subKey = null)
