@@ -18,7 +18,6 @@ class Application
 
     public function run()
     {
-        session_start();
         $this->router->processRequest();
     }
 
