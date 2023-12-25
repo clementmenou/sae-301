@@ -35,7 +35,7 @@ class ControllerCategory
         // If button clicked
         if (isset($_POST['frangrance']) && isset($fragrances[$_POST['frangrance']])) {
             // Set $_SESSION value
-            $_SESSION['fragrance'] = $fragrances[$_POST['frangrance']];
+            Session::setSessionValue('fragrance', $fragrances[$_POST['frangrance']]);
             // Refresh
             Redirect::redirectTo(Redirect::HOME_URL);
         }
