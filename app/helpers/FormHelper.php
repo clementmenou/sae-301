@@ -16,7 +16,7 @@ class FormHelper
 
     public static function isEmpty($fieldName)
     {
-        return empty($_POST[$fieldName]);
+        return self::getValue($fieldName) == '';
     }
 
     public static function validate($fieldName, $rules = [])
@@ -25,6 +25,12 @@ class FormHelper
             switch ($rule) {
                 case 'required':
                     if (self::isEmpty($fieldName)) {
+                        return false;
+                    }
+                    break;
+
+                case 'min_length':
+                    if (strlen(self::getValue($fieldName)) < $value) {
                         return false;
                     }
                     break;
@@ -41,8 +47,33 @@ class FormHelper
                     };
                     break;
 
+                case 'complexity':
+                    $fieldValue = self::getValue($fieldName);
+                    $complexity =
+                        preg_match('/[A-Z]/', $fieldValue) &&
+                        preg_match('/[a-z]/', $fieldValue) &&
+                        preg_match('/[0-9]/', $fieldValue) &&
+                        preg_match('/\W/', $fieldValue);
+                    if (!$complexity) {
+                        return false;
+                    }
+                    break;
+
+                case 'match':
+                    $fieldValue = self::getValue($fieldName);
+                    $matchFieldValue = self::getValue($value);
+                    if ($fieldValue !== $matchFieldValue) {
+                        return false;
+                    }
+                    break;
+
+                case 'not_used':
+                    if ($value == 1) {
+                        return false;
+                    }
+                    break;
+
                 default:
-                    // Gérer d'autres règles si nécessaire
                     break;
             }
         }
@@ -62,7 +93,6 @@ class FormHelper
 
     public static function escapeValue($value)
     {
-        // Utilisez la méthode d'échappement appropriée (ex: htmlspecialchars)
         return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
     }
 }
