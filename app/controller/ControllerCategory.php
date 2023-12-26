@@ -34,7 +34,7 @@ class ControllerCategory
         ];
 
         // If button clicked
-        if (Form::validate('fragrance', ['required' => true, 'in_array' => $fragrances])) {
+        if (Form::validate('fragrance', ['required', 'in_array' => $fragrances])) {
             $fragranceChoice = Form::getValue('fragrance');
             // Set $_SESSION value
             Session::setValue('fragrance', null, $fragranceChoice);
