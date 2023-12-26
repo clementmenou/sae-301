@@ -8,6 +8,13 @@ use App\Controller\{
     ControllerUser
 };
 
+// Helpers
+use App\Helpers\{
+    FormHelper as Form,
+    RedirectHelper as Redirect,
+    SessionHelper as Session
+};
+
 // Pages
 use App\Model\Pages\{
     Home,
@@ -45,10 +52,10 @@ class ControllerPage
     {
         $login = new Login();
         $this->users->loginUser();
-        $login->datas['email'] = $_SESSION['login']['email'] ?? '';
-        $login->datas['password'] = $_SESSION['login']['password'] ?? '';
-        $login->datas['wrong_email'] = $_SESSION['login']['wrong_email'] ?? false;
-        $login->datas['wrong_password'] = $_SESSION['login']['wrong_password'] ?? false;
+        $login->datas['email'] = Session::getValue('login', 'email', '');
+        $login->datas['password'] = Session::getValue('login', 'password', '');
+        $login->datas['wrong_email'] = Session::getValue('login', 'wrong_email', false);
+        $login->datas['wrong_password'] = Session::getValue('login', 'wrong_password', false);
         $login->render();
     }
 
@@ -56,14 +63,14 @@ class ControllerPage
     {
         $signup = new SignUp();
         $this->users->signUpUser();
-        $signup->datas['first_name'] = $_SESSION['signup']['first_name'] ?? '';
-        $signup->datas['last_name'] = $_SESSION['signup']['last_name'] ?? '';
-        $signup->datas['username'] = $_SESSION['signup']['username'] ?? '';
-        $signup->datas['email'] = $_SESSION['signup']['email'] ?? '';
-        $signup->datas['password'] = $_SESSION['signup']['password'] ?? '';
-        $signup->datas['confirm_password'] = $_SESSION['signup']['confirm_password'] ?? '';
-        $signup->datas['username_exists'] = $_SESSION['signup']['username_exists'] ?? false;
-        $signup->datas['email_exists'] = $_SESSION['signup']['email_exists'] ?? false;
+        $signup->datas['first_name'] = Session::getValue('signup', 'first_name', '');
+        $signup->datas['last_name'] = Session::getValue('signup', 'last_name', '');
+        $signup->datas['username'] = Session::getValue('signup', 'username', '');
+        $signup->datas['email'] = Session::getValue('signup', 'email', '');
+        $signup->datas['password'] = Session::getValue('signup', 'password', '');
+        $signup->datas['confirm_password'] = Session::getValue('signup', 'confirm_password', '');
+        $signup->datas['username_exists'] = Session::getValue('signup', 'username_exists', false);
+        $signup->datas['email_exists'] = Session::getValue('signup', 'email_exists', false);
         $signup->render();
     }
 
