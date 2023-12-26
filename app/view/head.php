@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./public/styles/reset.css">
     <link rel="stylesheet" href="./public/styles/variables.css">
     <?php foreach ($styles as $style) : ?>
-        <link rel="stylesheet" href="./public/styles/<?= $style ?>.css">
+        <link rel="stylesheet" href="./public/styles/<?= $style ?>">
     <?php endforeach; ?>
     <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
 </head>
