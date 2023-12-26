@@ -2,6 +2,8 @@
 
 namespace App\Model;
 
+use App\Helpers\SessionHelper as Session;
+
 class Page
 {
     // Page properties
@@ -40,7 +42,9 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
-        $styles = [$_SESSION['fragrance'] ?? null];
+        if (Session::getValue('fragrance')) {
+            $styles[] = Session::getValue('fragrance') . '.css';
+        }
         include_once './app/view/head.php';
     }
 
