@@ -36,7 +36,7 @@ class User extends DataBase
             'email' => $email
         ];
         $stmt->execute($params);
-        return $stmt->fetch();
+        return $stmt->fetchColumn();
     }
 
     public function isUserByUsername($username)
@@ -47,7 +47,7 @@ class User extends DataBase
             'username' => $username
         ];
         $stmt->execute($params);
-        return $stmt->fetch();
+        return $stmt->fetchColumn();
     }
 
     public function insert($datas)
