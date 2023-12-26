@@ -118,9 +118,9 @@ class ControllerUser
 
         // Step password
         if ($step >= 2 && Form::validate('password', [
-            'required' => true,
-            'min_lenght' => 10,
+            'min_length' => 10,
             'max_length' => 50,
+            'complexity' => true,
             'match' => 'confirm_password'
         ])) {
             // Update step
