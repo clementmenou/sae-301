@@ -87,7 +87,7 @@ class SessionHelper
     {
         if (!self::isActive()) {
             session_set_cookie_params([
-                'secure' => true,    // HTTPS only
+                // 'secure' => true,    // HTTPS only
                 'httponly' => true    // Cookie not accesible with JavaScript
             ]);
 
