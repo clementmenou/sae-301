@@ -1,12 +1,13 @@
 <header class="header">
-    <a href="/" class="header-logo">Logo</a>
+    <a href="/" class="header-logo"></a>
     <div class="header-link-zone">
-        <a href="/regardez_nos_produits">Parfums</a>
-        <a href="/connectez_vous">Login</a>
-        <a href="/inscrivez_vous">Sign Up</a>
-        <a href="/ezrpofjez">Error 404</a>
+        <a class="header-link" href="/regardez_nos_produits">Parfums</a>
+        <a class="header-link" href="/ezrpofjez">Error 404</a>
+        <a class="header-link" href="/connectez_vous">Login</a>
+        <a class="header-link" href="/inscrivez_vous">Sign Up</a>
+        <form action="/deconnexion" method="post">
+            <input type="submit" value="Deconnection">
+        </form>
     </div>
-    <form action="/deconnexion" method="post">
-        <input type="submit" value="Deconnection">
-    </form>
+
 </header>
