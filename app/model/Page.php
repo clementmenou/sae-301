@@ -42,9 +42,6 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
-        if (Session::getValue('fragrance')) {
-            $styles[] = Session::getValue('fragrance') . '.css';
-        }
         include_once './app/view/head.php';
     }
 

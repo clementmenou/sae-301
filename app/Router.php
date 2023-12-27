@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Controller\ControllerGlobal;
 use App\Controller\ControllerPage;
 
 class Router
@@ -22,6 +23,9 @@ class Router
     {
         $path = $_SERVER['REQUEST_URI'];
         $method = $_SERVER['REQUEST_METHOD'];
+
+        $controllerGlobal = new ControllerGlobal();
+        $controllerGlobal->initializeTheme();
 
         if (isset($this->routes[$method][$path])) {
             // Split controller and method
