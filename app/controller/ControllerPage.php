@@ -51,7 +51,7 @@ class ControllerPage
     public function login()
     {
         $login = new Login();
-        $this->users->loginUser();
+        $this->users->login();
         $login->datas['email'] = Session::getValue('login', 'email', '');
         $login->datas['password'] = Session::getValue('login', 'password', '');
         $login->datas['wrong_email'] = Session::getValue('login', 'wrong_email', false);
@@ -62,7 +62,7 @@ class ControllerPage
     public function signup()
     {
         $signup = new SignUp();
-        $this->users->signUpUser();
+        $this->users->signUp();
         $signup->datas['first_name'] = Session::getValue('signup', 'first_name', '');
         $signup->datas['last_name'] = Session::getValue('signup', 'last_name', '');
         $signup->datas['username'] = Session::getValue('signup', 'username', '');
