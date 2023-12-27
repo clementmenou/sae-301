@@ -21,7 +21,7 @@ class ControllerUser
         $this->user = new User();
     }
 
-    public function loginUser()
+    public function login()
     {
         if (Session::getValue('user_id')) {
             Redirect::redirectTo(Redirect::HOME_URL);
@@ -60,7 +60,7 @@ class ControllerUser
         }
     }
 
-    public function signUpUser()
+    public function signUp()
     {
         // Redirect if user loged in
         if (Session::getValue('user_id')) {
@@ -144,5 +144,16 @@ class ControllerUser
             // Redirect
             Redirect::redirectTo(Redirect::HOME_URL);
         }
+    }
+
+    public function logout()
+    {
+        $fragrance = Session::getValue('fragrance');
+
+        session_unset();
+
+        Session::setValue('fragrance', null, $fragrance);
+
+        Redirect::redirectTo(Redirect::HOME_URL);
     }
 }
