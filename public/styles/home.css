@@ -1,12 +1,41 @@
-.title {
-    font-family: var(--title-font);
-    font-weight: 900;
-    font-size: 40px;
-    text-align: center;
-    width: 100%;
-    text-transform: uppercase;
+.home-button-container{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
-.text {
-    font-family: var(--text-font);
+.home-button{
+    width: 250px;
+    height: 700px;
+    border: none;
+    border-radius: 0;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.home-button-hesperides{
+    background-color: var(--hesperides-color);
+}
+
+.home-button-fleuris{
+    background-color: var(--fleuris-color);
+}
+
+.home-button-boises{
+    background-color: var(--boises-color);
+}
+
+.home-button-fougeres{
+    background-color: var(--fougeres-color);
+}
+
+.home-button-chypres{
+    background-color: var(--chypres-color);
+}
+
+.home-button-orientaux{
+    background-color: var(--orientaux-color);
+}
+
+.home-button-aromatiques {
+    background-color: var(--aromatiques-color);
 }
