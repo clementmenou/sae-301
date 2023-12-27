@@ -41,3 +41,39 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+
+/* Fonts */
+@font-face {
+    font-family: 'Cormorant';
+    src: url('../Fonts/Cormorant-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Cormorant';
+    src: url('../Fonts/Cormorant-Italic-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+	font-style: italic;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../Fonts/Montserrat-Italic-Variable.ttf') format('truetype');
+    font-weight: 100 900;
+	font-style: italic;
+}
+
+:root {
+    --title-font: 'Cormorant';
+    --text-font: 'Montserrat';
+}
