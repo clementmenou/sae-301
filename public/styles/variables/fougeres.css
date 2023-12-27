@@ -1,4 +1,5 @@
 /* Colors */
 :root {
-    --main-color: #E6E6FA;
+    --main-color: var(--fougeres-color);
+    --main-color-less: var(--fougeres-color-less);
 }

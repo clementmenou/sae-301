@@ -1,4 +1,5 @@
 /* Colors */
 :root {
-    --main-color: #F0E68C;
+    --main-color: var(--chypres-color);
+    --main-color-less: var(--chypres-color-less);
 }

@@ -1,4 +1,5 @@
 /* Colors */
 :root {
-    --main-color: #F5F5DC;
+    --main-color: var(--boises-color);
+    --main-color-less: var(--boises-color-less);
 }

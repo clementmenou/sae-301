@@ -1,4 +1,5 @@
 /* Colors */
 :root {
-    --main-color: #FFF6E6;
+    --main-color: var(--hesperides-color);
+    --main-color-less: var(--hesperides-color-less);
 }

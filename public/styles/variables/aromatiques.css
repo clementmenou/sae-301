@@ -1,4 +1,5 @@
 /* Colors */
 :root {
-    --main-color: #D8BFD8;
+    --main-color: var(--aromatiques-color);
+    --main-color-less: var(--aromatiques-color-less);
 }
