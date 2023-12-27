@@ -1,9 +1,8 @@
-/* Fonts */
 :root {
     --main-font: "";
 }
 
 /* Colors */
 :root {
-    --main-font: rgb(0, 0, 0);
+    --main-color: rgb(0, 0, 0);
 }
