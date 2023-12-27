@@ -27,14 +27,19 @@ class ControllerUser
             Redirect::redirectTo(Redirect::HOME_URL);
         }
 
-        Session::setValue('login', 'email', Form::getValue('email'));
-        Session::setValue('login', 'password', Form::getValue('password'));
-
         if (Form::validates([
             'email' => ['required' => true],
             'password' => ['required' => true]
         ])) {
-            // We only need id and password so
+            Session::setValue('login', 'email', Form::getValue('email'));
+            Session::setValue('login', 'password', Form::getValue('password'));
+        }
+
+        if (Form::validates([
+            'email' => ['required' => true, 'max_length' => 50],
+            'password' => ['required' => true, 'max_length' => 50]
+        ])) {
+            // Only need id and password
             $user_datas = $this->user->getIdPasswordByEmail(Form::getValue('email'));
 
             if (!empty($user_datas)) {
