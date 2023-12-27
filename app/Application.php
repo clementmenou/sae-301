@@ -36,5 +36,6 @@ class Application
         $this->router->post('/', 'ControllerPage->home');
         $this->router->post('/connectez_vous', 'ControllerPage->login');
         $this->router->post('/inscrivez_vous', 'ControllerPage->signup');
+        $this->router->post('/deconnexion', 'ControllerUser->logout');
     }
 }
