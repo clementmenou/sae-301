@@ -1,0 +1,12 @@
+.title {
+    font-family: var(--title-font);
+    font-weight: 900;
+    font-size: 40px;
+    text-align: center;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.text {
+    font-family: var(--text-font);
+}

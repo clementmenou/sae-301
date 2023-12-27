@@ -1,8 +1,4 @@
-:root {
-    --main-font: "";
-}
-
 /* Colors */
 :root {
-    --main-color: rgb(0, 0, 0);
+    --main-color: #F5F5F5;
 }
