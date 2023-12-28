@@ -17,7 +17,7 @@ CREATE TABLE Users (
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active'
+    status VARCHAR(50) DEFAULT 'customer'
 ) ENGINE=InnoDB;
 
 -- Table des Adresses de Livraison
@@ -36,6 +36,7 @@ CREATE TABLE UserAddresses (
     user_id INT,
     address_id INT,
     PRIMARY KEY (user_id, address_id),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
@@ -49,11 +50,12 @@ CREATE TABLE Categories (
 -- Table des Produits
 CREATE TABLE Products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
     name VARCHAR(255),
     description TEXT,
     price DECIMAL(10, 2),
     stock_quantity INT,
-    category_id INT,
+    image VARCHAR,
     status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 ) ENGINE=InnoDB;
