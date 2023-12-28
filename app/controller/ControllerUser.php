@@ -63,6 +63,17 @@ class ControllerUser
             // Refresh
             Redirect::redirectTo(Redirect::LOGIN_URL);
         }
+
+        // datas to return
+
+        $data = [];
+
+        $data['email'] = Session::getValue('login', 'email', '');
+        $data['password'] = Session::getValue('login', 'password', '');
+        $data['wrong_email'] = Session::getValue('login', 'wrong_email', false);
+        $data['wrong_password'] = Session::getValue('login', 'wrong_password', false);
+
+        return $data;
     }
 
     public function signUp()
@@ -149,6 +160,19 @@ class ControllerUser
             // Redirect
             Redirect::redirectTo(Redirect::HOME_URL);
         }
+
+        // datas to return
+        $data = [];
+
+        $fields = ['first_name', 'last_name', 'username', 'email', 'password', 'confirm_password'];
+        foreach ($fields as $field) {
+            $data[$field] = Session::getValue('signup', $field, '');
+        }
+
+        $data['username_exists'] = Session::getValue('signup', 'username_exists', false);
+        $data['email_exists'] = Session::getValue('signup', 'email_exists', false);
+
+        return $data;
     }
 
     public function logout()
