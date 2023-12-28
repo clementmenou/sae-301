@@ -55,7 +55,7 @@ CREATE TABLE Products (
     description TEXT,
     price DECIMAL(10, 2),
     stock_quantity INT,
-    image VARCHAR,
+    image VARCHAR(50),
     status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (category_id) REFERENCES Categories(category_id)
 ) ENGINE=InnoDB;
