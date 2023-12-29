@@ -8,8 +8,8 @@ class Product extends DataBase
 {
     public function getAllUsers()
     {
-        $sql = "SELECT * FROM $this->dbName.products WHERE status = active";
+        $sql = "SELECT * FROM $this->dbName.products WHERE status = 'active'";
         $stmt = $this->getConnection()->query($sql);
-        return $stmt->fetch();
+        return $stmt->fetchAll();
     }
 }
