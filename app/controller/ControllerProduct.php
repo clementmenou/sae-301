@@ -23,6 +23,8 @@ class ControllerProduct
 
     public function productList()
     {
-        $this->product->getAllUsers();
+        $data = [];
+        $data['all_products'] = $this->product->getAllProducts();
+        return $data;
     }
 }

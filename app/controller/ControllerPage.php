@@ -7,7 +7,7 @@ use App\Controller\{
     ControllerCategory,
     ControllerUser
 };
-
+use App\Model\DataBase\Product;
 // Pages
 use App\Model\Pages\{
     Home,
@@ -21,10 +21,12 @@ class ControllerPage
 {
     private $category;
     private $users;
+    private $products;
 
     public function __construct()
     {
         $this->category = new ControllerCategory();
+        $this->products = new ControllerProduct();
         $this->users = new ControllerUser();
     }
 
@@ -38,6 +40,7 @@ class ControllerPage
     public function products()
     {
         $products = new Products();
+        $products->datas = $this->products->productList();
         $products->render();
     }
 
