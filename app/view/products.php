@@ -1,9 +1,9 @@
 <p>Produits</p>
 <?php
-foreach ($datas['all_users'] as $user) : ?>
+foreach ($datas['all_products'] as $product) : ?>
     <div>
-        <div><?= $user['name'] ?></div>
-        <div><?= $user['description'] ?></div>
-        <div><?= $user['price'] ?> €</div>
+        <div><?= $product['name'] ?></div>
+        <div><?= $product['description'] ?></div>
+        <div><?= $product['price'] ?> €</div>
     </div>
 <?php endforeach ?>
