@@ -106,6 +106,19 @@ CREATE TABLE Promotions (
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
 
+-- Insertions de base
+-- Utilisateurs
+
+-- Catégories
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'hesperides');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fleuris');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'boises');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fougeres');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'chypres');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'orientaux');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'aromatiques');
+
+
 -- Création de l'utilisateur
 CREATE USER 'admin_630126434750398'@'localhost' IDENTIFIED BY 'jgB=H5%s2Kgj@u7';
 GRANT ALL PRIVILEGES ON *.* TO 'admin_630126434750398'@'localhost' WITH GRANT OPTION;
