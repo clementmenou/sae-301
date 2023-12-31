@@ -1,0 +1,6 @@
+product_list.php :
+- afficher produits en fonction de catégories (fragrance) + H/F
+- Tri (prix / catégories)
+- Ajouter au panier + commander
+
+product_detail

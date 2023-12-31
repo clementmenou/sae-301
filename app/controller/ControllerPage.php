@@ -11,7 +11,7 @@ use App\Model\DataBase\Product;
 // Pages
 use App\Model\Pages\{
     Home,
-    Products,
+    ProductList,
     Login,
     SignUp,
     Error404
@@ -37,11 +37,11 @@ class ControllerPage
         $home->render();
     }
 
-    public function products()
+    public function product_list()
     {
-        $products = new Products();
-        $products->datas = $this->products->productList();
-        $products->render();
+        $product_list = new ProductList();
+        $product_list->datas = $this->products->productList();
+        $product_list->render();
     }
 
     public function login()
