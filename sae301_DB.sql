@@ -50,14 +50,22 @@ CREATE TABLE Categories (
 -- Table des Produits
 CREATE TABLE Products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
-    category_id INT,
     name VARCHAR(255),
     description TEXT,
     price DECIMAL(10, 2),
     stock_quantity INT,
     image VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active'
+) ENGINE=InnoDB;
+
+-- Table de Jonction Produits-Catégories
+CREATE TABLE ProductCategories (
+    category_id INT,
+    product_id INT,
+    PRIMARY KEY (category_id, product_id),
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
 
 -- Table des Commandes
