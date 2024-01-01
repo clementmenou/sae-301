@@ -72,7 +72,7 @@ CREATE TABLE ProductCategories (
 CREATE TABLE Orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    address_id INT DEFAULT NULL,
+    address_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
