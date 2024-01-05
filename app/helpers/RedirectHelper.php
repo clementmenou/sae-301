@@ -8,6 +8,8 @@ class RedirectHelper
     public const HOME_URL = '/';
     public const LOGIN_URL = '/connectez_vous';
     public const SIGNUP_URL = '/inscrivez_vous';
+    public const PRODUCT_LIST_URL = '/regardez_nos_produits';
+    public const LOGOUT_URL = '/deconnexion';
 
     public static function redirectTo($location)
     {
