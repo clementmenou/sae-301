@@ -34,6 +34,7 @@ class Application
     {
         // Routes corresponding to Controller methods
         $this->router->post('/', 'ControllerPage->home');
+        $this->router->post('/regardez_nos_produits', 'ControllerPage->product_list');
         $this->router->post('/connectez_vous', 'ControllerPage->login');
         $this->router->post('/inscrivez_vous', 'ControllerPage->signup');
         $this->router->post('/deconnexion', 'ControllerUser->logout');
