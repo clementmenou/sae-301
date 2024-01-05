@@ -59,6 +59,8 @@ class ControllerOrderItems
                 $this->order_items->insert($order_id, $product_id, $quantity, $price);
                 Session::setValue('list_order_items_id', null, $product_id);
             }
+
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
         }
     }
 }
