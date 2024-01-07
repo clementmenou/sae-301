@@ -14,6 +14,7 @@ use App\Controller\{
 use App\Model\Pages\{
     Home,
     ProductList,
+    ProductInfo,
     Login,
     SignUp,
     Error404
@@ -45,8 +46,15 @@ class ControllerPage
     {
         $product_list = new ProductList();
         $product_list->datas = $this->products->productList();
-        $this->order_items->addToOrder();
+        $this->products->redirectToProductInfo();
         $product_list->render();
+    }
+
+    public function product_info()
+    {
+        $product_info = new ProductInfo();
+        $this->order_items->addToOrder();
+        $product_info->render();
     }
 
     public function login()
