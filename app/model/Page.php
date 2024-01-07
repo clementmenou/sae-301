@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Model;
+
+use App\Helpers\SessionHelper as Session;
+
 class Page
 {
     // Page properties
@@ -38,7 +42,6 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
-        $styles = [$_SESSION['fragrance'] ?? null];
         include_once './app/view/head.php';
     }
 

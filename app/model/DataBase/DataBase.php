@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model\DataBase;
+
 class DataBase
 {
     // Data base properties
@@ -19,12 +21,12 @@ class DataBase
                 $dsn = "mysql:host = $this->host; dbname = $this->dbName; port = $this->port";
                 // Associates a database connection instance with this->connection
                 // The records are retrieved as an object
-                $this->connection = new PDO($dsn, $this->username, $this->password, [
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+                $this->connection = new \PDO($dsn, $this->username, $this->password, [
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
                 ]);
-            } catch (PDOException $e) {
-                echo $e->getMessage();
+            } catch (\PDOException $e) {
+                throw new \Exception('Connection failed: ' . $e->getMessage());
             }
         }
         return $this->connection;

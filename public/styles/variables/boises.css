@@ -1,0 +1,5 @@
+/* Colors */
+:root {
+    --main-color: var(--boises-color);
+    --main-color-less: var(--boises-color-less);
+}

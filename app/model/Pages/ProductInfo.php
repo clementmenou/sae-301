@@ -4,14 +4,14 @@ namespace App\Model\Pages;
 
 use App\Model\Page;
 
-class Login extends Page
+class ProductInfo extends Page
 {
     public function __construct()
     {
         parent::__construct(
-            'Connectez-vous',
-            'login.php',
-            ['header.css', 'login.css', 'footer.css'],
+            'Products',
+            'product_info.php',
+            ['header.css', 'product_info.css', 'footer.css'],
             [],
             true,
             true

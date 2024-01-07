@@ -1,0 +1,5 @@
+/* Colors */
+:root {
+    --main-color: var(--orientaux-color);
+    --main-color-less: var(--orientaux-color-less);
+}

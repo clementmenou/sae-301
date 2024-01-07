@@ -1,0 +1,26 @@
+.header{
+    padding: 5px 100px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--text-font);
+    background-color: var(--main-color-less);
+}
+
+.header-logo {
+    width: 66px;
+    height: 66px;
+    background: url('../Images/logo.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.header-link-zone{
+    display: flex;
+}
+
+.header-link {
+    padding: 25px;
+    color: #151515;
+    text-decoration: none;
+}

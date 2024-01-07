@@ -1,7 +1,9 @@
 <?php
 
-require_once './app/Application.php';
+require_once 'autoload.php';
 
-// Créez une instance de l'application et lancez-la
+use App\Application;
+
+// Run application
 $app = new Application();
 $app->run();

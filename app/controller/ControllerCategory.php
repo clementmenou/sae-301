@@ -1,9 +1,20 @@
 <?php
-require_once './app/model/DataBase/Category.php';
+
+namespace App\Controller;
+
+// Model
+use App\Model\DataBase\Category;
+
+// Helpers
+use App\Helpers\{
+    FormHelper as Form,
+    RedirectHelper as Redirect,
+    SessionHelper as Session
+};
 
 class ControllerCategory
 {
-    public $category;
+    private $category;
 
     public function __construct()
     {
@@ -13,22 +24,22 @@ class ControllerCategory
     public function homeFilter()
     {
         $fragrances = [
-            'button1' => 'hesperides',
-            'button2' => 'fleuris',
-            'button3' => 'boises',
-            'button4' => 'fougeres',
-            'button5' => 'chypres',
-            'button6' => 'orientaux',
-            'button7' => 'aromatiques',
+            'hesperides',
+            'fleuris',
+            'boises',
+            'fougeres',
+            'chypres',
+            'orientaux',
+            'aromatiques'
         ];
 
         // If button clicked
-        if (isset($_POST['frangrance']) && isset($fragrances[$_POST['frangrance']])) {
+        if (Form::validate('fragrance', ['in_array' => $fragrances])) {
+            $fragranceChoice = Form::getValue('fragrance');
             // Set $_SESSION value
-            $_SESSION['fragrance'] = $fragrances[$_POST['frangrance']];
+            Session::setValue('fragrance', null, $fragranceChoice);
             // Refresh
-            header('Location: /');
-            exit;
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
     }
 }

@@ -1,6 +1,14 @@
 <?php
-require_once './app/Routeur.php';
-require_once './app/controller/ControllerPage.php';
+
+namespace App;
+
+// Router
+use App\Router;
+
+// Helpers
+use App\Helpers\{
+    RedirectHelper as Redirect
+};
 
 class Application
 {
@@ -9,24 +17,33 @@ class Application
     public function __construct()
     {
         $this->router = new Router();
-        $this->configureRoutes();
+        $this->configureGetRoutes();
+        $this->configurePostRoutes();
     }
 
     public function run()
     {
-        session_start();
         $this->router->processRequest();
     }
 
-    private function configureRoutes()
+    private function configureGetRoutes()
     {
         // Routes corresponding to Controller methods
-        $this->router->get('/', 'ControllerPage->home');
-        $this->router->post('/', 'ControllerPage->home');
-        $this->router->get('/regardez_nos_produits', 'ControllerPage->products');
-        $this->router->get('/connectez_vous', 'ControllerPage->login');
-        $this->router->post('/connectez_vous', 'ControllerPage->login');
-        $this->router->get('/inscrivez_vous', 'ControllerPage->signup');
-        $this->router->post('/inscrivez_vous', 'ControllerPage->signup');
+        $this->router->get(Redirect::HOME_URL, 'ControllerPage->home');
+        $this->router->get(Redirect::PRODUCT_LIST_URL, 'ControllerPage->product_list');
+        $this->router->get(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
+        $this->router->get(Redirect::LOGIN_URL, 'ControllerPage->login');
+        $this->router->get(Redirect::SIGNUP_URL, 'ControllerPage->signup');
+    }
+
+    private function configurePostRoutes()
+    {
+        // Routes corresponding to Controller methods
+        $this->router->post(Redirect::HOME_URL, 'ControllerPage->home');
+        $this->router->post(Redirect::PRODUCT_LIST_URL, 'ControllerPage->product_list');
+        $this->router->post(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
+        $this->router->post(Redirect::LOGIN_URL, 'ControllerPage->login');
+        $this->router->post(Redirect::SIGNUP_URL, 'ControllerPage->signup');
+        $this->router->post(Redirect::LOGOUT_URL, 'ControllerUser->logout');
     }
 }

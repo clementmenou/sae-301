@@ -1,6 +1,8 @@
 <?php
 
-require_once './app/model/Page.php';
+namespace App\Model\Pages;
+
+use App\Model\Page;
 
 class Error404 extends Page
 {

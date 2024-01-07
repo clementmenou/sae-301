@@ -1,5 +1,10 @@
 <?php
 
+namespace App;
+
+use App\Controller\ControllerGlobal;
+use App\Controller\ControllerPage;
+
 class Router
 {
     private $routes = [];
@@ -19,11 +24,14 @@ class Router
         $path = $_SERVER['REQUEST_URI'];
         $method = $_SERVER['REQUEST_METHOD'];
 
+        $controllerGlobal = new ControllerGlobal();
+        $controllerGlobal->initializeTheme();
+
         if (isset($this->routes[$method][$path])) {
             // Split controller and method
-            list($controller, $methodName) = explode('->', $this->routes[$method][$path]);
-
-            $controller = new $controller();
+            list($controllerClass, $methodName) = explode('->', $this->routes[$method][$path]);
+            $controllerClass = 'App\\Controller\\' . $controllerClass;
+            $controller = new $controllerClass();
             $controller->$methodName();
         } else {
             // If page not found

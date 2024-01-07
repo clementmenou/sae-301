@@ -1,0 +1,5 @@
+/* Colors */
+:root {
+    --main-color: var(--fougeres-color);
+    --main-color-less: var(--fougeres-color-less);
+}

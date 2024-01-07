@@ -1,0 +1,5 @@
+/* Colors */
+:root {
+    --main-color: var(--aromatiques-color);
+    --main-color-less: var(--aromatiques-color-less);
+}

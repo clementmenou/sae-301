@@ -1,0 +1,5 @@
+/* Colors */
+:root {
+    --main-color: var(--fleuris-color);
+    --main-color-less: var(--fleuris-color-less);
+}

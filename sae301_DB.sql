@@ -17,7 +17,7 @@ CREATE TABLE Users (
     email VARCHAR(255) UNIQUE,
     password VARCHAR(255),
     join_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(50) DEFAULT 'active'
+    status VARCHAR(50) DEFAULT 'customer'
 ) ENGINE=InnoDB;
 
 -- Table des Adresses de Livraison
@@ -36,6 +36,7 @@ CREATE TABLE UserAddresses (
     user_id INT,
     address_id INT,
     PRIMARY KEY (user_id, address_id),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (user_id) REFERENCES Users(user_id),
     FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
 ) ENGINE=InnoDB;
@@ -53,9 +54,18 @@ CREATE TABLE Products (
     description TEXT,
     price DECIMAL(10, 2),
     stock_quantity INT,
+    image VARCHAR(50),
+    status VARCHAR(50) DEFAULT 'active'
+) ENGINE=InnoDB;
+
+-- Table de Jonction Produits-Catégories
+CREATE TABLE ProductCategories (
     category_id INT,
+    product_id INT,
+    PRIMARY KEY (category_id, product_id),
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (category_id) REFERENCES Categories(category_id)
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id),
+    FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
 
 -- Table des Commandes
@@ -103,6 +113,19 @@ CREATE TABLE Promotions (
     status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
+
+-- Insertions de base
+-- Utilisateurs
+
+-- Catégories
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'hesperides');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fleuris');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'boises');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fougeres');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'chypres');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'orientaux');
+INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'aromatiques');
+
 
 -- Création de l'utilisateur
 CREATE USER 'admin_630126434750398'@'localhost' IDENTIFIED BY 'jgB=H5%s2Kgj@u7';

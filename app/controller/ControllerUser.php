@@ -1,122 +1,188 @@
 <?php
 
-require_once './app/model/DataBase/User.php';
+namespace App\Controller;
+
+// Model
+use App\Model\DataBase\User;
+
+// Helpers
+use App\Helpers\{
+    FormHelper as Form,
+    RedirectHelper as Redirect,
+    SessionHelper as Session
+};
 
 class ControllerUser
 {
-    public $user;
+    private $user;
 
     public function __construct()
     {
         $this->user = new User();
     }
 
-    public function loginUser()
+    public function login()
     {
-        if (isset($_SESSION['user_id'])) {
-            header('Location: /');
-            exit;
+        if (Session::getValue('user_id')) {
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
 
-        if (isset($_POST['email'], $_POST['password'])) {
-            // Save data in $_SESSION
-            $_SESSION['login']['email'] = $_POST['email'];
-            $_SESSION['login']['password'] = $_POST['password'];
+        if (Form::validates([
+            'email' => ['required' => true],
+            'password' => ['required' => true]
+        ])) {
+            Session::setValue('login', 'email', Form::getValue('email'));
+            Session::setValue('login', 'password', Form::getValue('password'));
+        }
 
-            // We only need id and password so
-            $user_datas = $this->user->getIdPasswordByEmail($_POST['email']);
+        if (Form::validates([
+            'email' => ['required' => true, 'max_length' => 50],
+            'password' => ['required' => true, 'max_length' => 50]
+        ])) {
+            // Only need id and password
+            $user_datas = $this->user->getIdPasswordByEmail(Form::getValue('email'));
 
             if (!empty($user_datas)) {
                 // Update $_SESSION value
-                $_SESSION['login']['wrong_email'] = false;
+                Session::setValue('login', 'wrong_email', false);
 
-                if (password_verify($_POST['password'], $user_datas['password'])) { // All right
-                    // Get user id
-                    $_SESSION['user_id'] = $user_datas['user_id'];
-                    // Empty $_SESSION because not necessary anymore
-                    unset($_SESSION['login']);
-                    // Redirect
-                    header('Location: /');
-                    exit;
+                if (password_verify(Form::getValue('password'), $user_datas['password'])) { // All right
+                    // Set user id
+                    Session::setValue('user_id', null, $user_datas['user_id']);
+                    // Unset login because not necessary anymore
+                    Session::unsetValue('login');
+                    // Redirect to home or specific URL if set
+                    Redirect::redirectTo(Session::getValue('return_to_url', null, Redirect::HOME_URL));
                 } else { // Wrong password
-                    $_SESSION['login']['wrong_password'] = true;
+                    Session::setValue('login', 'wrong_password', true);
                 }
             } else {
                 // Wrong email
-                $_SESSION['login']['wrong_email'] = true;
+                Session::setValue('login', 'wrong_email', true);
             }
             // Refresh
-            header('Location: /connectez_vous');
-            exit;
+            Redirect::redirectTo(Redirect::LOGIN_URL);
         }
+
+        // datas to return
+
+        $data = [];
+
+        $data['email'] = Session::getValue('login', 'email', '');
+        $data['password'] = Session::getValue('login', 'password', '');
+        $data['wrong_email'] = Session::getValue('login', 'wrong_email', false);
+        $data['wrong_password'] = Session::getValue('login', 'wrong_password', false);
+
+        return $data;
     }
 
-    public function signUpUser()
+    public function signUp()
     {
-        if (isset($_SESSION['user_id'])) {
-            header('Location: /');
-            exit;
+        // Redirect if user loged in
+        if (Session::getValue('user_id')) {
+            Redirect::redirectTo(Redirect::HOME_URL);
         }
 
-        // Retains its current value, otherwise, initialized to 0
-        $_SESSION['signup']['step'] ??= 0;
-        $step = $_SESSION['signup']['step']; // To be more readable
+        $refresh = false;
 
-        // Step firstname and lastname
-        if (isset($_POST['first_name'], $_POST['last_name'])) {
-            // Save input datas
-            $_SESSION['signup']['first_name'] = $_POST['first_name'];
-            $_SESSION['signup']['last_name'] = $_POST['last_name'];
+        // Initialize if not set
+        Session::setValue('signup', 'step', 0, 'if_not_set');
+        $step = Session::getValue('signup', 'step');
 
-            // Verify if < 50 caracteres
-            if (strlen($_POST['first_name']) < 50 && strlen($_POST['last_name']) < 50)
-                $_SESSION['signup']['step'] = 1;
-
-            // Refresh
-            header('Location: /inscrivez_vous');
-            exit;
-        }
-
-        if ($step >= 1 && isset($_POST['username'], $_POST['email'])) {
-            // Save input datas
-            $_SESSION['signup']['username'] = $_POST['username'];
-            $_SESSION['signup']['email'] = $_POST['email'];
-
-            // Verify input values
-            $_SESSION['signup'] = array_merge($_SESSION['signup'], $this->user->isUserByUsername($_POST['username']));
-            $_SESSION['signup'] = array_merge($_SESSION['signup'], $this->user->isUserByEmail($_POST['email']));
-
-            if (!$_SESSION['signup']['username_exists'] && !$_SESSION['signup']['email_exists'])
-                $_SESSION['signup']['step'] = 2;
-
-            // Refresh
-            header('Location: /inscrivez_vous');
-            exit;
-        }
-
-        if ($step >= 2 && isset($_POST['password'], $_POST['confirm_password'])) {
-            $_SESSION['signup']['password'] = $_POST['password'];
-            $_SESSION['signup']['confirm_password'] = $_POST['confirm_password'];
-
-            $complexity =
-                preg_match('/[A-Z]/', $_POST['password']) &&
-                preg_match('/[a-z]/', $_POST['password']) &&
-                preg_match('/[0-9]/', $_POST['password']) &&
-                preg_match('/\W/', $_POST['password']);
-
-            $length = strlen($_POST['password']) >= 10;
-
-            if ($_POST['password'] === $_POST['confirm_password'] && $complexity && $length) {
-                $_SESSION['signup']['step'] = 3;
+        // Save inputs values
+        $fields = ['first_name', 'last_name', 'username', 'email', 'password', 'confirm_password'];
+        foreach ($fields as $field) {
+            if (Form::validate($field, ['required' => true])) {
+                Session::setValue('signup', $field, Form::getValue($field));
+                $refresh = true;
             }
         }
 
-        if ($step == 3) {
-            $_SESSION['signup']['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $_SESSION['user_id'] = $this->user->insert($_SESSION['signup']);
-            unset($_SESSION['signup']);
-            header('Location: /');
-            exit;
+        // Save error values
+        if (Form::validates(['username' => ['required' => true], 'email' => ['required' => true]])) {
+            $usernameUsed = $this->user->isUserByUsername(Form::getValue('username'));
+            $emailUsed = $this->user->isUserByEmail(Form::getValue('email'));
+            Session::setValue('signup', 'username_exists', $usernameUsed);
+            Session::setValue('signup', 'email_exists', $emailUsed);
         }
+
+        // Step firstname and lastname
+        if (Form::validates([
+            'first_name' => ['required' => true, 'max_length' => 50],
+            'last_name' => ['required' => true, 'max_length' => 50]
+        ])) {
+            // Update step
+            Session::setValue('signup', 'step', 1);
+        }
+
+        // Step username and email
+        if ($step >= 1 && Form::validates([
+            'username' => [
+                'required' => true,
+                'max_length' => 50,
+                'not_used' => Session::getValue('signup', 'username_exists')
+            ],
+            'email' => [
+                'required' => true,
+                'max_length' => 50,
+                'not_used' => Session::getValue('signup', 'email_exists')
+            ]
+        ])) {
+            // Update step
+            Session::setValue('signup', 'step', 2);
+        }
+
+        // Step password
+        if ($step >= 2 && Form::validate('password', [
+            'min_length' => 10,
+            'max_length' => 50,
+            'complexity' => true,
+            'match' => 'confirm_password'
+        ])) {
+            // Update step
+            Session::setValue('signup', 'step', 3);
+        }
+
+        // Refresh
+        if ($refresh) {
+            Redirect::redirectTo(Redirect::SIGNUP_URL);
+        }
+
+        // Final step
+        if ($step == 3) {
+            // Save id in session
+            $id = $this->user->insert(Session::getValue('signup')); // insert and return id
+            Session::setValue('user_id', null, $id);
+
+            // Clean sessions used
+            Session::unsetValue('signup');
+
+            // Redirect
+            Redirect::redirectTo(Session::getValue('return_to_url', null, Redirect::HOME_URL));
+        }
+
+        // datas to return
+        $data = [];
+
+        $fields = ['first_name', 'last_name', 'username', 'email', 'password', 'confirm_password'];
+        foreach ($fields as $field) {
+            $data[$field] = Session::getValue('signup', $field, '');
+        }
+
+        $data['username_exists'] = Session::getValue('signup', 'username_exists', false);
+        $data['email_exists'] = Session::getValue('signup', 'email_exists', false);
+
+        return $data;
+    }
+
+    public function logout()
+    {
+        $fragrance = Session::getValue('fragrance');
+
+        session_unset();
+
+        Session::setValue('fragrance', null, $fragrance);
+
+        Redirect::redirectTo(Redirect::HOME_URL);
     }
 }
