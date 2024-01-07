@@ -47,7 +47,7 @@ class ControllerOrderItems
                 Session::setValue('order_items', 'product_id', $product_id);
                 Session::setValue('order_items', 'quantity', $quantity);
                 Session::setValue('pending_order', null, true);
-                Session::setValue('return_to_url', null, Redirect::PRODUCT_LIST_URL);
+                Session::setValue('return_to_url', null, Redirect::PRODUCT_INFO_URL);
                 Redirect::redirectTo(Redirect::LOGIN_URL);
             };
         }
@@ -85,7 +85,7 @@ class ControllerOrderItems
 
         // Refresh
         if ($add_order) {
-            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+            Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
         }
     }
 }
