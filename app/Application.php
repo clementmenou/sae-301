@@ -31,6 +31,7 @@ class Application
         // Routes corresponding to Controller methods
         $this->router->get(Redirect::HOME_URL, 'ControllerPage->home');
         $this->router->get(Redirect::PRODUCT_LIST_URL, 'ControllerPage->product_list');
+        $this->router->get(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
         $this->router->get(Redirect::LOGIN_URL, 'ControllerPage->login');
         $this->router->get(Redirect::SIGNUP_URL, 'ControllerPage->signup');
     }
@@ -40,6 +41,7 @@ class Application
         // Routes corresponding to Controller methods
         $this->router->post(Redirect::HOME_URL, 'ControllerPage->home');
         $this->router->post(Redirect::PRODUCT_LIST_URL, 'ControllerPage->product_list');
+        $this->router->post(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
         $this->router->post(Redirect::LOGIN_URL, 'ControllerPage->login');
         $this->router->post(Redirect::SIGNUP_URL, 'ControllerPage->signup');
         $this->router->post(Redirect::LOGOUT_URL, 'ControllerUser->logout');
