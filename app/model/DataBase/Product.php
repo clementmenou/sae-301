@@ -6,6 +6,17 @@ use App\Model\DataBase\DataBase;
 
 class Product extends DataBase
 {
+    public function getById($id)
+    {
+        $sql = "SELECT * FROM $this->dbName.products WHERE product_id = :id";
+        $stmt = $this->getConnection()->prepare($sql);
+        $params = [
+            'id' => $id
+        ];
+        $stmt->execute($params);
+        return $stmt->fetch();
+    }
+
     public function getPriceById($id)
     {
         $sql = "SELECT price FROM $this->dbName.products WHERE product_id = :id";
