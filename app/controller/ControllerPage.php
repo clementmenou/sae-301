@@ -53,6 +53,7 @@ class ControllerPage
     public function product_info()
     {
         $product_info = new ProductInfo();
+        $product_info->datas = $this->products->productInfo();
         $this->order_items->addToOrder();
         $product_info->render();
     }
