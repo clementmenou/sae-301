@@ -32,34 +32,59 @@ class ControllerOrderItems
         $user_id = Session::getValue('user_id');
         $address_id = Session::getValue('address_id');
         $order_id = Session::getValue('order_id');
-        $add_pressed = Form::validate('add_to_order', ['required' => true]);
 
+        $add_order = Form::validate('add_to_order', ['required' => true]) || Session::getValue('pending_order');
+
+        // 
         if (Form::validates([
             'product_id' => ['required' => true, 'is_number' => true, 'max_lenght' => 10],
             'quantity' => ['required' => true, 'is_number' => true, 'max_lenght' => 10]
         ])) {
             $product_id = Form::getValue('product_id');
             $quantity = Form::getValue('quantity');
+            // If user not signed in 
+            if (!$user_id) {
+                Session::setValue('order_items', 'product_id', $product_id);
+                Session::setValue('order_items', 'quantity', $quantity);
+                Session::setValue('pending_order', null, true);
+                Session::setValue('return_to_url', null, Redirect::PRODUCT_LIST_URL);
+                Redirect::redirectTo(Redirect::LOGIN_URL);
+            };
         }
 
         // Create order if doesn't exist
-        if ($add_pressed && $user_id && !$order_id) {
-            $order_id = $this->order->insert($user_id, $address_id);
+        if ($add_order && !$order_id) {
+            $order_exist = $this->order->getByUserId($user_id);
+            if (!$order_exist) {
+                $order_id = $this->order->insert($user_id, $address_id);
+            } else {
+                $order_id = $order_exist;
+            }
             Session::setValue('order_id', null, $order_id);
+            Session::unsetValue('pending_order');
         }
 
+        // 
+        if ($add_order && $order_id && (isset($product_id) || Session::getValue('order_items'))) {
+            if (!isset($product_id)) {
+                $product_id = Session::getValue('order_items', 'product_id');
+                $quantity = Session::getValue('order_items', 'quantity');
+                Session::unsetValue('order_items');
+            }
 
-        if ($add_pressed && $order_id && isset($product_id)) {
             $item_quantity_in_order = $this->order_items->isItemGetQuantity($product_id);
+
             if ($item_quantity_in_order) { // If item already in order
                 $new_quantity = $item_quantity_in_order + $quantity;
                 $this->order_items->updateQuantity($order_id, $product_id, $new_quantity);
             } else { // If item not in order 
                 $price = $this->product->getPriceById($product_id);
                 $this->order_items->insert($order_id, $product_id, $quantity, $price);
-                Session::setValue('list_order_items_id', null, $product_id);
             }
+        }
 
+        // Refresh
+        if ($add_order) {
             Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
         }
     }
