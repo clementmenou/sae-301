@@ -51,8 +51,8 @@ class ControllerUser
                     Session::setValue('user_id', null, $user_datas['user_id']);
                     // Unset login because not necessary anymore
                     Session::unsetValue('login');
-                    // Redirect
-                    Redirect::redirectTo(Redirect::HOME_URL);
+                    // Redirect to home or specific URL if set
+                    Redirect::redirectTo(Session::getValue('return_to_url', null, Redirect::HOME_URL));
                 } else { // Wrong password
                     Session::setValue('login', 'wrong_password', true);
                 }
@@ -158,7 +158,7 @@ class ControllerUser
             Session::unsetValue('signup');
 
             // Redirect
-            Redirect::redirectTo(Redirect::HOME_URL);
+            Redirect::redirectTo(Session::getValue('return_to_url', null, Redirect::HOME_URL));
         }
 
         // datas to return
