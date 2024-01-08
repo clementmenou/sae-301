@@ -57,11 +57,15 @@ class ControllerPage
     {
         $product_info = new ProductInfo();
         $product_info->datas = $this->products->productInfo();
+
         $this->order_items->addToOrder();
+
         $this->review->addReview();
+        $this->review->modifReview();
         $this->review->supprReview();
         $this->review->redirectReview();
         $product_info->datas['all_reviews'] = $this->review->displayReviews();
+
         $product_info->render();
     }
 
