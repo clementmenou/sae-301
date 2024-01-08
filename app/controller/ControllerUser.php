@@ -28,6 +28,19 @@ class ControllerUser
         return $user_status == 'admin';
     }
 
+    public function displayUser()
+    {
+        $user_id = Session::getValue('user_id');
+        if (!$user_id) {
+            Redirect::redirectTo(Redirect::HOME_URL);
+        }
+
+        $data = [];
+        $data = $this->user->getUserById($user_id);
+
+        return $data;
+    }
+
     public function login()
     {
         if (Session::getValue('user_id')) {
@@ -72,7 +85,6 @@ class ControllerUser
         }
 
         // datas to return
-
         $data = [];
 
         $data['email'] = Session::getValue('login', 'email', '');
