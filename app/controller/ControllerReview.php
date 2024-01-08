@@ -19,11 +19,13 @@ class ControllerReview
 {
     private $review;
     private $user;
+    private $controllerUser;
 
     public function __construct()
     {
         $this->review = new Review();
         $this->user = new User();
+        $this->controllerUser = new ControllerUser();
     }
 
     public function redirectReview()
@@ -52,14 +54,41 @@ class ControllerReview
         }
     }
 
+    public function supprReview()
+    {
+        $suppr_pressed = Form::validate('delete_review', ['required' => true]);
+        $review_id_valid = Form::validate('review_id', ['required' => true, 'is_number' => true, 'max_length' => 10]);
+
+        if ($suppr_pressed && $review_id_valid) {
+            $user_review = $this->review->getUserById(Form::getValue('review_id'));
+
+            $user_match = (Session::getValue('user_id') == $user_review);
+            $user_admin = $this->controllerUser->isUserAdmin();
+
+            if ($user_match || $user_admin) {
+                $review_id = Form::getValue('review_id');
+                $this->review->deleteReview($review_id);
+            }
+        }
+
+        // Refresh
+        if ($suppr_pressed) Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
+    }
+
     public function displayReviews()
     {
         $data = [];
         $data = $this->review->getAllReviews();
         foreach ($data as $review) {
             $review['user'] = $this->user->getUsernameById($review['user_id']);
+
+            $user_match = (Session::getValue('user_id') == $review['user_id']);
+            $user_admin = $this->controllerUser->isUserAdmin();
+
+            $review['display_suppr'] = $user_match || $user_admin;
+
             $reviews[] = $review;
         }
-        return $reviews;
+        return $reviews ?? [];
     }
 }
