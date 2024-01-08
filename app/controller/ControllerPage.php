@@ -7,7 +7,8 @@ use App\Controller\{
     ControllerCategory,
     ControllerProduct,
     ControllerUser,
-    ControllerOrderItems
+    ControllerOrderItems,
+    ControllerReview
 };
 
 // Pages
@@ -26,6 +27,7 @@ class ControllerPage
     private $users;
     private $products;
     private $order_items;
+    private $review;
 
     public function __construct()
     {
@@ -33,6 +35,7 @@ class ControllerPage
         $this->products = new ControllerProduct();
         $this->users = new ControllerUser();
         $this->order_items = new ControllerOrderItems();
+        $this->review = new ControllerReview();
     }
 
     public function home()
@@ -55,6 +58,9 @@ class ControllerPage
         $product_info = new ProductInfo();
         $product_info->datas = $this->products->productInfo();
         $this->order_items->addToOrder();
+        $this->review->addReview();
+        $this->review->redirectReview();
+        $product_info->datas['all_reviews'] = $this->review->displayReviews();
         $product_info->render();
     }
 
