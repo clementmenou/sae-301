@@ -21,6 +21,13 @@ class ControllerUser
         $this->user = new User();
     }
 
+    public function isUserAdmin()
+    {
+        $user_id = Session::getValue('user_id');
+        $user_status = $this->user->getStatusById($user_id);
+        return $user_status == 'admin';
+    }
+
     public function login()
     {
         if (Session::getValue('user_id')) {
