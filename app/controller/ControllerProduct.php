@@ -24,7 +24,14 @@ class ControllerProduct
     public function productList()
     {
         $data = [];
-        $data['all_products'] = $this->product->getProductsByCategory(Session::getValue('fragrance'));
+
+        $fragrance = Session::getValue('fragrance');
+        if ($fragrance == 'base') {
+            $data['all_products'] = $this->product->getAllProduct();
+        } else {
+            $data['all_products'] = $this->product->getProductsByCategory(Session::getValue('fragrance'));
+        }
+
         return $data;
     }
 
