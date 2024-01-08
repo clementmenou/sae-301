@@ -44,4 +44,17 @@ class Product extends DataBase
         $stmt->execute($params);
         return $stmt->fetchAll();
     }
+
+    public function getAllProduct()
+    {
+        $sql = "SELECT *
+        FROM $this->dbName.products AS p
+        INNER JOIN $this->dbName.productcategories AS pc
+        ON p.product_id = pc.product_id
+        INNER JOIN $this->dbName.categories AS c
+        ON pc.category_id = c.category_id
+        WHERE p.status = 'active' AND pc.status = 'active'";
+        $stmt = $this->getConnection()->query($sql);
+        return $stmt->fetchAll();
+    }
 }
