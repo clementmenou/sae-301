@@ -18,6 +18,7 @@ use App\Model\Pages\{
     ProductInfo,
     Login,
     SignUp,
+    Profile,
     Error404
 };
 
@@ -81,6 +82,13 @@ class ControllerPage
         $signup = new SignUp();
         $signup->datas = $this->users->signUp();
         $signup->render();
+    }
+
+    public function profile()
+    {
+        $profile = new Profile();
+        $profile->datas = $this->users->displayUser();
+        $profile->render();
     }
 
     public function error404()
