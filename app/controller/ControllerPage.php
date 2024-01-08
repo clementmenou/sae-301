@@ -59,6 +59,7 @@ class ControllerPage
         $product_info->datas = $this->products->productInfo();
         $this->order_items->addToOrder();
         $this->review->addReview();
+        $this->review->supprReview();
         $this->review->redirectReview();
         $product_info->datas['all_reviews'] = $this->review->displayReviews();
         $product_info->render();
