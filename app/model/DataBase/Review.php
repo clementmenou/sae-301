@@ -6,12 +6,42 @@ use App\Model\DataBase\DataBase;
 
 class Review extends DataBase
 {
+
     public function getAllReviews()
     {
-        $sql = "SELECT * FROM $this->dbName.reviews";
+        $sql = "SELECT * FROM $this->dbName.reviews WHERE status = 'active'";
         try {
             $stmt = $this->getConnection()->query($sql);
             return $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
+    public function getUserById($id)
+    {
+        $sql = "SELECT user_id FROM $this->dbName.reviews WHERE review_id = :review_id";
+        $params = [
+            'review_id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchColumn();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteReview($id)
+    {
+        $sql = "UPDATE $this->dbName.reviews SET status = 'inactive' WHERE review_id = :review_id";
+        $params = [
+            'review_id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
         } catch (\PDOException $e) {
             throw new \Exception('User insertion failed: ' . $e->getMessage());
         }
