@@ -33,10 +33,26 @@ class Review extends DataBase
         }
     }
 
-    public function deleteReview($id)
+    public function delete($id)
     {
         $sql = "UPDATE $this->dbName.reviews SET status = 'inactive' WHERE review_id = :review_id";
         $params = [
+            'review_id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
+    public function update($text, $rating, $id)
+    {
+        $sql = "UPDATE $this->dbName.reviews SET text = :text, rating = :rating WHERE review_id = :review_id";
+        $params = [
+            'text' => $text,
+            'rating' => $rating,
             'review_id' => $id
         ];
         try {
