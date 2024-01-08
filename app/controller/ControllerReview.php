@@ -40,7 +40,7 @@ class ControllerReview
     {
         if (Form::validates([
             'product_id' => ['required' => true, 'is_number' => true, 'max_length' => 10],
-            'rating' => ['required' => true, 'in_array' => [1, 2, 3, 4, 5], 'max_length' => 10],
+            'rating' => ['in_array' => [1, 2, 3, 4, 5]],
             'text' => ['required' => true, 'max_length' => 500]
         ])) {
             $user_id = Session::getValue('user_id');
@@ -52,6 +52,48 @@ class ControllerReview
 
             Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
         }
+    }
+
+    public function modifReview()
+    {
+        $modif_pressed = Form::validate('modify_review', ['required' => true]);
+        $modifying_review = Session::getValue('review_modify');
+        $review_id_valid = Form::validate('review_id', ['required' => true, 'is_number' => true, 'max_length' => 10]);
+        $review_modified_valid = $review_id_valid && Form::validates([
+            'text_modify' => ['required' => true, 'max_length' => 500],
+            'rating_modify' => ['in_array' => [1, 2, 3, 4, 5]]
+        ]);
+
+        if ($modif_pressed && $review_id_valid) {
+            $user_review = $this->review->getUserById(Form::getValue('review_id'));
+
+            $user_match = (Session::getValue('user_id') == $user_review);
+            $user_admin = $this->controllerUser->isUserAdmin();
+
+            if ($user_match || $user_admin) {
+                $review_id = Form::getValue('review_id');
+                Session::setValue('review_modify', null, $review_id);
+            }
+        }
+
+        if ($modifying_review && $modif_pressed && $review_modified_valid) {
+            $user_review = $this->review->getUserById(Form::getValue('review_id'));
+
+            $user_match = (Session::getValue('user_id') == $user_review);
+            $user_admin = $this->controllerUser->isUserAdmin();
+
+            if ($user_match || $user_admin) {
+                $review_id = Form::getValue('review_id');
+                $text = Form::getValue('text_modify');
+                $rating = Form::getValue('rating_modify');
+
+                $this->review->update($text, $rating, $review_id);
+                Session::unsetValue('review_modify');
+            }
+        }
+
+        // Refresh
+        if ($modif_pressed) Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
     }
 
     public function supprReview()
@@ -67,7 +109,7 @@ class ControllerReview
 
             if ($user_match || $user_admin) {
                 $review_id = Form::getValue('review_id');
-                $this->review->deleteReview($review_id);
+                $this->review->delete($review_id);
             }
         }
 
@@ -82,10 +124,12 @@ class ControllerReview
         foreach ($data as $review) {
             $review['user'] = $this->user->getUsernameById($review['user_id']);
 
-            $user_match = (Session::getValue('user_id') == $review['user_id']);
+            $user_match = Session::getValue('user_id') == $review['user_id'];
             $user_admin = $this->controllerUser->isUserAdmin();
+            $review_modify = Session::getValue('review_modify') == $review['review_id'];
 
-            $review['display_suppr'] = $user_match || $user_admin;
+            $review['display_modify'] = $review_modify;
+            $review['display_controls'] = $user_match || $user_admin;
 
             $reviews[] = $review;
         }
