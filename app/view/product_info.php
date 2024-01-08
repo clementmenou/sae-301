@@ -26,9 +26,14 @@
 
 <?php foreach ($datas['all_reviews'] as $review) : ?>
     <form action="/informations_sur_le_produit" method="POST">
+        <input type="hidden" name="review_id" value="<?= $review['review_id'] ?>">
         <div><?= $review['user'] ?></div>
         <div><?= $review['date'] ?></div>
         <div><?= $review['text'] ?></div>
         <div><?= $review['rating'] ?></div>
+        <?php if ($review['display_suppr']) : ?>
+            <input type="submit" name="modify_review" value="Modifier">
+            <input type="submit" name="delete_review" value="Supprimer">
+        <?php endif; ?>
     </form>
 <?php endforeach; ?>
