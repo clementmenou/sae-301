@@ -8,7 +8,7 @@ class Order extends DataBase
 {
     public function getByUserId($user)
     {
-        $sql = "SELECT order_id FROM $this->dbName.orders WHERE user_id = :user_id";
+        $sql = "SELECT order_id FROM $this->dbName.orders WHERE user_id = :user_id AND status = 'active'";
         $params = [
             'user_id' => $user
         ];

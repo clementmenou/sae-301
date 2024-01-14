@@ -2,8 +2,6 @@
 
 namespace App\Model;
 
-use App\Helpers\SessionHelper as Session;
-
 class Page
 {
     // Page properties
