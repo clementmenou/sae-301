@@ -27,6 +27,12 @@ class ControllerOrderItems
         $this->order_items = new OrderItems();
     }
 
+    public function setSessionOrder()
+    {
+        $order_id = $this->order->getByUserId(Session::getValue('user_id'));
+        Session::setValue('order_id', null, $order_id);
+    }
+
     public function addToOrder()
     {
         $user_id = Session::getValue('user_id');

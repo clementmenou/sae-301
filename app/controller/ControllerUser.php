@@ -15,10 +15,12 @@ use App\Helpers\{
 class ControllerUser
 {
     private $user;
+    private $controllerOrderItems;
 
     public function __construct()
     {
         $this->user = new User();
+        $this->controllerOrderItems = new ControllerOrderItems();
     }
 
     public function isUserAdmin()
@@ -67,8 +69,9 @@ class ControllerUser
                 Session::setValue('login', 'wrong_email', false);
 
                 if (password_verify(Form::getValue('password'), $user_datas['password'])) { // All right
-                    // Set user id
+                    // Set user id, adress and order
                     Session::setValue('user_id', null, $user_datas['user_id']);
+                    $this->controllerOrderItems->setSessionOrder();
                     // Unset login because not necessary anymore
                     Session::unsetValue('login');
                     // Redirect to home or specific URL if set
