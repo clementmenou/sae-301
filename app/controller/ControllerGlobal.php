@@ -15,4 +15,11 @@ class ControllerGlobal
     {
         Session::setValue('fragrance', null, 'base', true);
     }
+
+    public function headerManagement()
+    {
+        $connected = Session::getValue('user_id');
+        if ($connected) {
+        }
+    }
 }

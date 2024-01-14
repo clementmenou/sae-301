@@ -49,4 +49,8 @@ class ControllerProduct
         $data = $this->product->getById(Session::getValue('product_info_id'));
         return $data;
     }
+
+    public function productAdd()
+    {
+    }
 }
