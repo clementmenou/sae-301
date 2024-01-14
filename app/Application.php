@@ -45,7 +45,7 @@ class Application
         $this->router->post(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
         $this->router->post(Redirect::LOGIN_URL, 'ControllerPage->login');
         $this->router->post(Redirect::SIGNUP_URL, 'ControllerPage->signup');
-        $this->router->get(Redirect::PROFILE_URL, 'ControllerPage->profile');
+        $this->router->post(Redirect::PROFILE_URL, 'ControllerPage->profile');
         $this->router->post(Redirect::LOGOUT_URL, 'ControllerUser->logout');
     }
 }
