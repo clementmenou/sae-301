@@ -6,6 +6,7 @@
         <a class="header-link" href="/connectez_vous">Login</a>
         <a class="header-link" href="/inscrivez_vous">Sign Up</a>
         <a class="header-link" href="/votre_profil">Profile</a>
+        <a class="header-link" href="/manage">Manage</a>
         <form action="/deconnexion" method="post">
             <input type="submit" value="Deconnection">
         </form>
