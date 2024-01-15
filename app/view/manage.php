@@ -1,6 +1,9 @@
 <form action="/manage" method="POST">
     <label for="insert_name">Nom</label>
     <input type="text" name="insert_name" id="insert_name" value="<?= $datas['insert']['name'] ?>">
+    <?php if ($datas['insert']['name_error']) : ?>
+        <div>Nom déjà utilisé</div>
+    <?php endif; ?>
     <label for="insert_description">Description</label>
     <input type="text" name="insert_description" id="insert_description" value="<?= $datas['insert']['description'] ?>">
     <label for="insert_price">Prix</label>

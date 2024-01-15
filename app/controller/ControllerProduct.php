@@ -66,6 +66,16 @@ class ControllerProduct
 
         $refresh = false;
 
+
+        $inputs = ['name', 'description', 'price', 'quantity', 'image'];
+
+        foreach ($inputs as $input) {
+            if (Form::validate('insert_' . $input, ['required' => true])) {
+                Session::setValue('insert', $input, Form::getValue('insert_' . $input));
+                $refresh = true;
+            }
+        }
+
         if (Form::validates([
             'insert_name' => ['required' => true, 'max_length' => 50],
             'insert_description' => ['required' => true, 'max_length' => 500],
@@ -90,15 +100,10 @@ class ControllerProduct
                 foreach ($form['category'] as $category_id) {
                     $this->category->insertProductCategory($product_id, $category_id);
                 }
-            }
-        }
 
-        $inputs = ['name', 'description', 'price', 'quantity', 'image'];
-
-        foreach ($inputs as $input) {
-            if (Form::validate('insert_' . $input, ['required' => true])) {
-                Session::setValue('insert', $input, Form::getValue('insert_' . $input));
-                $refresh = true;
+                Session::unsetValue('insert');
+            } else {
+                Session::setValue('insert', 'name_error', true);
             }
         }
 
@@ -111,6 +116,7 @@ class ControllerProduct
         $datas['insert']['price'] = Session::getValue('insert', 'price', '');
         $datas['insert']['quantity'] = Session::getValue('insert', 'quantity', '');
         $datas['insert']['image'] = Session::getValue('insert', 'image', '');
+        $datas['insert']['name_error'] = Session::getValue('insert', 'name_error', false);
 
         return $datas;
     }
