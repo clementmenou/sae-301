@@ -95,7 +95,8 @@ class ControllerPage
     public function manage()
     {
         $manage = new Manage();
-        $manage->datas = $this->products->modifProduct();
+        $manage->datas = $this->products->addProduct();
+        $manage->datas['liste_name_product'] = $this->products->modifProduct();
         $this->products->supprProduct();
         $manage->render();
     }
