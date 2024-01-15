@@ -81,6 +81,14 @@ class FormHelper
                     }
                     break;
 
+                case 'is_array_number':
+                    $fieldValue = self::getValue($fieldName);
+                    foreach ($fieldValue as $value) {
+                        $is_number = preg_match('/[0-9]/', $value);
+                        if (!$is_number) return false;
+                    }
+                    break;
+
                 default:
                     break;
             }
