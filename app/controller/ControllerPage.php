@@ -19,7 +19,8 @@ use App\Model\Pages\{
     Login,
     SignUp,
     Profile,
-    Error404
+    Error404,
+    Manage
 };
 
 class ControllerPage
@@ -89,6 +90,14 @@ class ControllerPage
         $profile = new Profile();
         $profile->datas = $this->users->displayUser();
         $profile->render();
+    }
+
+    public function manage()
+    {
+        $manage = new Manage();
+        $manage->datas = $this->products->modifProduct();
+        $this->products->supprProduct();
+        $manage->render();
     }
 
     public function error404()
