@@ -8,6 +8,7 @@
         <a class="header-link" href="/votre_profil">Profile</a>
         <a class="header-link" href="/manage">Manage</a>
         <a class="header-link" href="/order">Panier</a>
+        <a class="header-link" href="/address">Adresse</a>
         <form action="/deconnexion" method="post">
             <input type="submit" value="Deconnection">
         </form>
