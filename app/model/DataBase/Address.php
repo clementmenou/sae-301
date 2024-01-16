@@ -25,6 +25,49 @@ class Address extends DataBase
         }
     }
 
+    public function deleteAddress($id)
+    {
+        $sql = "UPDATE $this->dbName.addresses
+        SET
+            status = 'inactive'
+        WHERE
+            address_id = :address_id";
+        $params = [
+            'address_id' => $id
+        ];
+        try {
+            $this->getConnection()->prepare($sql)->execute($params);
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
+    public function updateAddress($datas)
+    {
+        $sql = "UPDATE $this->dbName.addresses
+            SET
+                street = :street,
+                city = :city,
+                zip_code = :zip_code,
+                region = :region,
+                country = :country
+            WHERE
+                address_id = :address_id AND status = 'active'";
+        $params = [
+            'street' => $datas['street'],
+            'city' => $datas['city'],
+            'zip_code' => $datas['zip_code'],
+            'region' => $datas['region'],
+            'country' => $datas['country'],
+            'address_id' => $datas['address_id']
+        ];
+        try {
+            $this->getConnection()->prepare($sql)->execute($params);
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function insertUserAddress($user_id, $address_id)
     {
         $sql = "INSERT INTO $this->dbName.useraddresses (

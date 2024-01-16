@@ -118,6 +118,8 @@ class ControllerPage
         $address = new Address();
         $address->datas = $this->address->addAddress();
         $address->datas['user_addresses'] = $this->address->affAddresses();
+        $this->address->supprAddress();
+        $this->address->modifAddress();
         $address->render();
     }
 
