@@ -20,7 +20,8 @@ use App\Model\Pages\{
     SignUp,
     Profile,
     Error404,
-    Manage
+    Manage,
+    Order
 };
 
 class ControllerPage
@@ -99,6 +100,14 @@ class ControllerPage
         $manage->datas['liste_name_product'] = $this->products->modifProduct();
         $this->products->supprProduct();
         $manage->render();
+    }
+
+    public function order()
+    {
+        $order = new Order();
+        $order->datas['order_items'] = $this->order_items->affOrder();
+        $this->order_items->modifQuantity();
+        $order->render();
     }
 
     public function error404()
