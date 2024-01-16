@@ -38,7 +38,7 @@ class ControllerUser
         }
 
         $data = [];
-        $data = $this->user->getUserById($user_id);
+        $data['user_info'] = $this->user->getUserById($user_id);
 
         return $data;
     }
