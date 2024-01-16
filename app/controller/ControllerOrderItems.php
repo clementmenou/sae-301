@@ -27,6 +27,28 @@ class ControllerOrderItems
         $this->order_items = new OrderItems();
     }
 
+    public function modifQuantity()
+    {
+        if (Form::validates([
+            'quantity' => ['required' => true, 'is_number' => true, 'max_length' => 10],
+            'product_id' => ['required' => true, 'is_number', 'max_length' => 10]
+        ])) {
+            $order_id = Session::getValue('order_id');
+            $product_id = Form::getValue('product_id');
+            $quantity = Form::getValue('quantity');
+
+            $this->order_items->updateQuantity($order_id, $product_id, $quantity);
+
+            Redirect::redirectTo(Redirect::ORDER_URL);
+        }
+    }
+
+    public function affOrder()
+    {
+        $datas = $this->order_items->getProductByOrderId(Session::getValue('order_id'));
+        return $datas;
+    }
+
     public function setSessionOrder()
     {
         $order_id = $this->order->getByUserId(Session::getValue('user_id'));
