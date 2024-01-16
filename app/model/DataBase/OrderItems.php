@@ -6,6 +6,25 @@ use App\Model\DataBase\DataBase;
 
 class OrderItems extends DataBase
 {
+    public function getProductByOrderId($id)
+    {
+        $sql = "SELECT * 
+            FROM $this->dbName.orderitems as oi
+            INNER JOIN $this->dbName.products AS p
+            ON p.product_id = oi.product_id
+            WHERE p.status = 'active' AND oi.order_id = :order_id";
+        $params = [
+            'order_id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function isItemGetQuantity($product_id)
     {
         $sql = "SELECT quantity FROM $this->dbName.orderitems WHERE product_id = :product_id";
