@@ -21,7 +21,8 @@ use App\Model\Pages\{
     Profile,
     Error404,
     Manage,
-    Order
+    Order,
+    Address
 };
 
 class ControllerPage
@@ -31,6 +32,7 @@ class ControllerPage
     private $products;
     private $order_items;
     private $review;
+    private $address;
 
     public function __construct()
     {
@@ -39,6 +41,7 @@ class ControllerPage
         $this->users = new ControllerUser();
         $this->order_items = new ControllerOrderItems();
         $this->review = new ControllerReview();
+        $this->address = new ControllerAddress();
     }
 
     public function home()
@@ -108,6 +111,14 @@ class ControllerPage
         $order->datas['order_items'] = $this->order_items->affOrder();
         $this->order_items->modifQuantity();
         $order->render();
+    }
+
+    public function address()
+    {
+        $address = new Address();
+        $address->datas = $this->address->addAddress();
+        $address->datas['user_addresses'] = $this->address->affAddresses();
+        $address->render();
     }
 
     public function error404()
