@@ -34,6 +34,7 @@ class Application
         $this->router->get(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
         $this->router->get(Redirect::MANAGE_URL, 'ControllerPage->manage');
         $this->router->get(Redirect::ORDER_URL, 'ControllerPage->order');
+        $this->router->get(Redirect::ADDRESS_URL, 'ControllerPage->address');
         $this->router->get(Redirect::LOGIN_URL, 'ControllerPage->login');
         $this->router->get(Redirect::SIGNUP_URL, 'ControllerPage->signup');
         $this->router->get(Redirect::PROFILE_URL, 'ControllerPage->profile');
@@ -47,6 +48,7 @@ class Application
         $this->router->post(Redirect::PRODUCT_INFO_URL, 'ControllerPage->product_info');
         $this->router->post(Redirect::MANAGE_URL, 'ControllerPage->manage');
         $this->router->post(Redirect::ORDER_URL, 'ControllerPage->order');
+        $this->router->post(Redirect::ADDRESS_URL, 'ControllerPage->address');
         $this->router->post(Redirect::LOGIN_URL, 'ControllerPage->login');
         $this->router->post(Redirect::SIGNUP_URL, 'ControllerPage->signup');
         $this->router->post(Redirect::PROFILE_URL, 'ControllerPage->profile');

@@ -14,6 +14,7 @@ class RedirectHelper
     public const LOGOUT_URL = '/deconnexion';
     public const MANAGE_URL = '/manage';
     public const ORDER_URL = '/order';
+    public const ADDRESS_URL = '/address';
 
     public static function redirectTo($location)
     {
