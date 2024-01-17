@@ -1,46 +1,78 @@
-<form action="/manage" method="POST">
-    <label for="insert_name">Nom</label>
-    <input type="text" name="insert_name" id="insert_name" value="<?= $datas['insert']['name'] ?>">
-    <?php if ($datas['insert']['name_error']) : ?>
-        <div>Nom déjà utilisé</div>
-    <?php endif; ?>
-    <label for="insert_description">Description</label>
-    <input type="text" name="insert_description" id="insert_description" value="<?= $datas['insert']['description'] ?>">
-    <label for="insert_price">Prix</label>
-    <input type="text" name="insert_price" id="insert_price" value="<?= $datas['insert']['price'] ?>">
-    <label for="insert_quantity">Quantité</label>
-    <input type="text" name="insert_quantity" id="insert_quantity" value="<?= $datas['insert']['quantity'] ?>">
-    <label for="insert_image">Image</label>
-    <input type="text" name="insert_image" id="insert_image" value="<?= $datas['insert']['image'] ?>">
-    <label>Familles</label>
-    <input type="checkbox" value="1" name="insert_category[]">Hésperidés
-    <input type="checkbox" value="2" name="insert_category[]">Fleuris
-    <input type="checkbox" value="3" name="insert_category[]">Boisés
-    <input type="checkbox" value="4" name="insert_category[]">Fougeres
-    <input type="checkbox" value="5" name="insert_category[]">Chypres
-    <input type="checkbox" value="6" name="insert_category[]">Orientaux
-    <input type="checkbox" value="7" name="insert_category[]">Aromatiques
-    <input type="submit" value="Ajouter">
+<form action="/manage" method="POST" class="form-container">
+    <div class="form-title">Ajouter un parfum</div>
+
+    <div class="input-label-area">
+        <input type="text" name="insert_name" id="insert_name" class="input-generic" placeholder="" value="<?= $datas['insert']['name'] ?>">
+        <label class="label-generic" for="insert_name">Nom</label>
+        <?php if ($datas['insert']['name_error']) : ?>
+            <div>Nom déjà utilisé</div>
+        <?php endif; ?>
+    </div>
+
+    <div class="input-label-area">
+        <input type="text" name="insert_description" id="insert_description" class="input-generic" placeholder="" value="<?= $datas['insert']['description'] ?>">
+        <label class="label-generic" for="insert_description">Description</label>
+    </div>
+
+    <div class="input-label-area">
+        <input type="text" name="insert_price" id="insert_price" class="input-generic" placeholder="" value="<?= $datas['insert']['price'] ?>">
+        <label class="label-generic" for="insert_price">Prix</label>
+    </div>
+
+    <div class="input-label-area">
+        <input type="text" name="insert_quantity" id="insert_quantity" class="input-generic" placeholder="" value="<?= $datas['insert']['quantity'] ?>">
+        <label class="label-generic" for="insert_quantity">Quantité</label>
+    </div>
+
+    <div class="input-label-area">
+        <input type="text" name="insert_image" id="insert_image" class="input-generic" placeholder="" value="<?= $datas['insert']['image'] ?>">
+        <label class="label-generic" for="insert_image">Image</label>
+    </div>
+
+    <div class="input-label-area">
+        <label class="label-generic">Familles</label>
+        <input type="checkbox" value="1" name="insert_category[]">Hésperidés
+        <input type="checkbox" value="2" name="insert_category[]">Fleuris
+        <input type="checkbox" value="3" name="insert_category[]">Boisés
+        <input type="checkbox" value="4" name="insert_category[]">Fougeres
+        <input type="checkbox" value="5" name="insert_category[]">Chypres
+        <input type="checkbox" value="6" name="insert_category[]">Orientaux
+        <input type="checkbox" value="7" name="insert_category[]">Aromatiques
+    </div>
+    <input type="submit" value="Ajouter" class="button-generic">
 </form>
 
-<form action="/manage" method="POST">
-    <label for="update_name">Nom</label>
-    <select name="update_name" id="update_name">
-        <?php foreach ($datas['liste_name_product'] as $product) : ?>
-            <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
-        <?php endforeach; ?>
-    </select>
-    <label for="update_quantity">Quantité</label>
-    <input type="text" name="update_quantity" id="update_quantity">
-    <input type="submit" value="Modifier">
+<form action="/manage" method="POST" class="form-container">
+    <div class="form-title">Modifier la quantité d'un produit</div>
+
+    <div class="input-label-area">
+        <select name="update_name" id="update_name" class="input-generic">
+            <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <label class="label-generic" for="update_name">Nom</label>
+    </div>
+
+    <div class="input-label-area">
+        <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
+        <label class="label-generic" for="update_quantity">Quantité</label>
+    </div>
+
+    <input type="submit" value="Modifier" class="button-generic">
 </form>
 
-<form action="/manage" method="POST">
-    <label for="delete_name">Nom</label>
-    <select name="delete_name" id="delete_name">
-        <?php foreach ($datas['liste_name_product'] as $product) : ?>
-            <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
-        <?php endforeach; ?>
-    </select>
-    <input type="submit" value="Supprimer">
+<form action="/manage" method="POST" class="form-container">
+    <div class="form-title">Supprimer un parfum</div>
+
+    <div class="input-label-area">
+        <select name="delete_name" id="delete_name" class="input-generic">
+            <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <label class="label-generic" for="delete_name">Nom</label>
+    </div>
+
+    <input type="submit" value="Supprimer" class="button-generic">
 </form>

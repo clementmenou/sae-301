@@ -1,31 +1,67 @@
-<form action="/address" method="POST">
-    <div>Street</div>
-    <input type="text" name="insert_street" value="<?= $datas['insert']['street'] ?>">
-    <div>City</div>
-    <input type="text" name="insert_city" value="<?= $datas['insert']['city'] ?>">
-    <div>Zip_code</div>
-    <input type="text" name="insert_zip_code" value="<?= $datas['insert']['zip_code'] ?>">
-    <div>Region</div>
-    <input type="text" name="insert_region" value="<?= $datas['insert']['region'] ?>">
-    <div>Country</div>
-    <input type="text" name="insert_country" value="<?= $datas['insert']['country'] ?>">
-    <input type="submit" name="insert" value="Ajouter">
+<form action="/address" method="POST" class="form-container">
+    <div class="form-title">Ajouter un lieu de livraison</div>
+
+    <div class="input-label-area">
+        <input type="text" class="input-generic" name="insert_street" placeholder="" value="<?= $datas['insert']['street'] ?>">
+        <label class="label-generic">Adresse</label>
+    </div>
+    <div class="input-label-area">
+        <input type="text" class="input-generic" name="insert_city" placeholder="" value="<?= $datas['insert']['city'] ?>">
+        <label class="label-generic">Ville</label>
+    </div>
+    <div class="input-label-area">
+        <input type="text" class="input-generic" name="insert_zip_code" placeholder="" value="<?= $datas['insert']['zip_code'] ?>">
+        <label class="label-generic">Code postal</label>
+    </div>
+    <div class="input-label-area">
+        <input type="text" class="input-generic" name="insert_region" placeholder="" value="<?= $datas['insert']['region'] ?>">
+        <label class="label-generic">Région</label>
+    </div>
+    <div class="input-label-area">
+        <input type="text" class="input-generic" name="insert_country" placeholder="" value="<?= $datas['insert']['country'] ?>">
+        <label class="label-generic">Pays</label>
+    </div>
+    <input type="submit" name="insert" value="Ajouter" class="button-generic">
 </form>
 
-<?php foreach ($datas['user_addresses'] as $address) : ?>
-    <form action="/address" method="POST">
-        <input type="hidden" name="address_id" value="<?= $address['address_id'] ?>">
-        <div>Street</div>
-        <input type="text" name="street" value="<?= $address['street'] ?>">
-        <div>City</div>
-        <input type="text" name="city" value="<?= $address['city'] ?>">
-        <div>Zip_code</div>
-        <input type="text" name="zip_code" value="<?= $address['zip_code'] ?>">
-        <div>Region</div>
-        <input type="text" name="region" value="<?= $address['region'] ?>">
-        <div>Country</div>
-        <input type="text" name="country" value="<?= $address['country'] ?>">
-        <input type="submit" name="update" value="Modifier">
-        <input type="submit" name="delete" value="Supprimer">
+<?php
+$i = 1;
+foreach ($datas['user_addresses'] as $address) :
+?>
+    <form action="/address" method="POST" class="form-container">
+        <div class="form-title">Adresse n°<?= $i ?></div>
+
+        <input type="hidden" name="address_id" placeholder="" value="<?= $address['address_id'] ?>">
+
+        <div class="input-label-area">
+            <input type="text" class="input-generic" name="street" placeholder="" value="<?= $address['street'] ?>">
+            <label class="label-generic">Adresse</label>
+        </div>
+
+        <div class="input-label-area">
+            <input type="text" class="input-generic" name="city" placeholder="" value="<?= $address['city'] ?>">
+            <label class="label-generic">Ville</label>
+        </div>
+
+        <div class="input-label-area">
+            <input type="text" class="input-generic" name="zip_code" placeholder="" value="<?= $address['zip_code'] ?>">
+            <label class="label-generic">Code postal</label>
+        </div>
+
+        <div class="input-label-area">
+            <input type="text" class="input-generic" name="region" placeholder="" value="<?= $address['region'] ?>">
+            <label class="label-generic">Région</label>
+        </div>
+
+        <div class="input-label-area">
+            <input type="text" class="input-generic" name="country" placeholder="" value="<?= $address['country'] ?>">
+            <label class="label-generic">Pays</label>
+        </div>
+
+        <input type="submit" name="update" value="Modifier" class="button-generic">
+        <input type="submit" name="delete" value="Supprimer" class="button-generic button-suppr">
     </form>
-<?php endforeach; ?>
+<?php
+    $i += 1;
+endforeach;
+?>
