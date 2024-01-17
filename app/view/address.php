@@ -5,13 +5,15 @@
         <input type="text" class="input-generic" name="insert_street" placeholder="" value="<?= $datas['insert']['street'] ?>">
         <label class="label-generic">Adresse</label>
     </div>
-    <div class="input-label-area">
-        <input type="text" class="input-generic" name="insert_city" placeholder="" value="<?= $datas['insert']['city'] ?>">
-        <label class="label-generic">Ville</label>
-    </div>
-    <div class="input-label-area">
-        <input type="text" class="input-generic" name="insert_zip_code" placeholder="" value="<?= $datas['insert']['zip_code'] ?>">
-        <label class="label-generic">Code postal</label>
+    <div class="form-sub-container">
+        <div class="input-label-area-medium ">
+            <input type="text" class="input-generic" name="insert_city" placeholder="" value="<?= $datas['insert']['city'] ?>">
+            <label class="label-generic">Ville</label>
+        </div>
+        <div class="input-label-area-small">
+            <input type="text" class="input-generic" name="insert_zip_code" placeholder="" value="<?= $datas['insert']['zip_code'] ?>">
+            <label class="label-generic">Code postal</label>
+        </div>
     </div>
     <div class="input-label-area">
         <input type="text" class="input-generic" name="insert_country" placeholder="" value="<?= $datas['insert']['country'] ?>">
@@ -34,14 +36,15 @@ foreach ($datas['user_addresses'] as $address) :
             <label class="label-generic">Adresse</label>
         </div>
 
-        <div class="input-label-area">
-            <input type="text" class="input-generic" name="city" placeholder="" value="<?= $address['city'] ?>">
-            <label class="label-generic">Ville</label>
-        </div>
-
-        <div class="input-label-area">
-            <input type="text" class="input-generic" name="zip_code" placeholder="" value="<?= $address['zip_code'] ?>">
-            <label class="label-generic">Code postal</label>
+        <div class="form-sub-container">
+            <div class="input-label-area-medium">
+                <input type="text" class="input-generic" name="city" placeholder="" value="<?= $address['city'] ?>">
+                <label class="label-generic">Ville</label>
+            </div>
+            <div class="input-label-area-small">
+                <input type="text" class="input-generic" name="zip_code" placeholder="" value="<?= $address['zip_code'] ?>">
+                <label class="label-generic">Code postal</label>
+            </div>
         </div>
 
         <div class="input-label-area">

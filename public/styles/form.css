@@ -16,10 +16,28 @@
     font-weight: 500;
 }
 
+.form-sub-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
 .input-label-area {
     position: relative;
     min-height: 80px;
     width: 450px;
+}
+
+.input-label-area-medium {
+    position: relative;
+    min-height: 80px;
+    width: 290px;
+}
+
+.input-label-area-small {
+    position: relative;
+    min-height: 80px;
+    width: 140px;
 }
 
 .label-generic {
