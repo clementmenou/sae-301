@@ -1,3 +1,7 @@
+body {
+	background-color: var(--main-color-background);
+}
+
 .form-container {
     padding: 40px 40px 60px;
     width: min-content;
@@ -5,8 +9,7 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    border: solid 1px #aaa;
-    border-radius: 8px;
+    background-color: #ffffff40;
 }
 
 .form-title {
@@ -14,6 +17,7 @@
     font-family: var(--text-font);
     font-size: 24px;
     font-weight: 500;
+    user-select: none;
 }
 
 .form-sub-container {
@@ -50,6 +54,7 @@
     color: #444;
     background-color: #fff0;
     pointer-events: none;
+    user-select: none;
     transition: all .2s;
 }
 
