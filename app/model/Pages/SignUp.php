@@ -12,7 +12,7 @@ class SignUp extends Page
             'Sign Up',
             'signup.php',
             ['header.css', 'form.css', 'footer.css'],
-            [],
+            ['signup.js'],
             true,
             true
         );

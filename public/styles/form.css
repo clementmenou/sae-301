@@ -1,5 +1,10 @@
-body {
+.page-content-center {
+    height: calc(100vh - 76px);
 	background-color: var(--main-color-background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .form-container {
@@ -9,7 +14,8 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background-color: #ffffff40;
+    border-radius: 4px;
+    background-color: #ffffff;
 }
 
 .form-title {
@@ -127,4 +133,22 @@ body {
 
 .button-suppr:hover {
     background-color: rgb(120, 0, 0);
+}
+
+.input-password-condition {
+    padding: 8px;
+    margin-top: 10px;
+    display: flex;
+    font-family: var(--text-font);
+    font-size: 11px;
+    color: #444;
+    background-color: #F2F2F2;
+    user-select: none;
+}
+
+.input-password-condition-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
