@@ -1,17 +1,19 @@
 <form action="/manage" method="POST" class="form-container">
     <div class="form-title">Ajouter un parfum</div>
 
-    <div class="input-label-area">
-        <input type="text" name="insert_name" id="insert_name" class="input-generic" placeholder="" value="<?= $datas['insert']['name'] ?>">
-        <label class="label-generic" for="insert_name">Nom</label>
-        <?php if ($datas['insert']['name_error']) : ?>
-            <div>Nom déjà utilisé</div>
-        <?php endif; ?>
-    </div>
+    <div class="form-sub-container">
+        <div class="input-label-area-medium">
+            <input type="text" name="insert_name" id="insert_name" class="input-generic" placeholder="" value="<?= $datas['insert']['name'] ?>">
+            <label class="label-generic" for="insert_name">Nom</label>
+            <?php if ($datas['insert']['name_error']) : ?>
+                <div>Nom déjà utilisé</div>
+            <?php endif; ?>
+        </div>
 
-    <div class="input-label-area">
-        <input type="text" name="insert_description" id="insert_description" class="input-generic" placeholder="" value="<?= $datas['insert']['description'] ?>">
-        <label class="label-generic" for="insert_description">Description</label>
+        <div class="input-label-area-small">
+            <input type="text" name="insert_quantity" id="insert_quantity" class="input-generic" placeholder="" value="<?= $datas['insert']['quantity'] ?>">
+            <label class="label-generic" for="insert_quantity">Quantité</label>
+        </div>
     </div>
 
     <div class="input-label-area">
@@ -19,10 +21,6 @@
         <label class="label-generic" for="insert_price">Prix</label>
     </div>
 
-    <div class="input-label-area">
-        <input type="text" name="insert_quantity" id="insert_quantity" class="input-generic" placeholder="" value="<?= $datas['insert']['quantity'] ?>">
-        <label class="label-generic" for="insert_quantity">Quantité</label>
-    </div>
 
     <div class="input-label-area">
         <input type="text" name="insert_image" id="insert_image" class="input-generic" placeholder="" value="<?= $datas['insert']['image'] ?>">
@@ -39,24 +37,32 @@
         <input type="checkbox" value="6" name="insert_category[]">Orientaux
         <input type="checkbox" value="7" name="insert_category[]">Aromatiques
     </div>
+
+    <div class="input-label-area">
+        <textarea class="input-generic" name="insert_description" id="insert_description" cols="30" rows="10"><?= $datas['insert']['description'] ?></textarea>
+        <label class="label-generic" for="insert_description">Description</label>
+    </div>
+
     <input type="submit" value="Ajouter" class="button-generic">
 </form>
 
 <form action="/manage" method="POST" class="form-container">
     <div class="form-title">Modifier la quantité d'un produit</div>
 
-    <div class="input-label-area">
-        <select name="update_name" id="update_name" class="input-generic">
-            <?php foreach ($datas['liste_name_product'] as $product) : ?>
-                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
-            <?php endforeach; ?>
-        </select>
-        <label class="label-generic" for="update_name">Nom</label>
-    </div>
+    <div class="form-sub-container">
+        <div class="input-label-area-medium">
+            <select name="update_name" id="update_name" class="input-generic">
+                <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                    <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label class="label-generic" for="update_name">Nom</label>
+        </div>
 
-    <div class="input-label-area">
-        <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
-        <label class="label-generic" for="update_quantity">Quantité</label>
+        <div class="input-label-area-small">
+            <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
+            <label class="label-generic" for="update_quantity">Quantité</label>
+        </div>
     </div>
 
     <input type="submit" value="Modifier" class="button-generic">
