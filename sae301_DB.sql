@@ -26,7 +26,6 @@ CREATE TABLE Addresses (
     street VARCHAR(255),
     city VARCHAR(255),
     zip_code VARCHAR(20),
-    region VARCHAR(255),
     country VARCHAR(255),
     status VARCHAR(50) DEFAULT 'active'
 ) ENGINE=InnoDB;
@@ -116,15 +115,19 @@ CREATE TABLE Promotions (
 
 -- Insertions de base
 -- Utilisateurs
+INSERT INTO 
+    `users` (`first_name`, `last_name`, `username`, `email`, `password`, `status`) 
+VALUES 
+    ('admin', 'admin', 'admin', 'admin@gmail.com', 'Admin1234!', 'admin');
 
 -- Catégories
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'hesperides');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fleuris');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'boises');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'fougeres');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'chypres');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'orientaux');
-INSERT INTO `categories` (`category_id`, `name`) VALUES (NULL, 'aromatiques');
+INSERT INTO `categories` (`name`) VALUES ('hesperides');
+INSERT INTO `categories` (`name`) VALUES ('fleuris');
+INSERT INTO `categories` (`name`) VALUES ('boises');
+INSERT INTO `categories` (`name`) VALUES ('fougeres');
+INSERT INTO `categories` (`name`) VALUES ('chypres');
+INSERT INTO `categories` (`name`) VALUES ('orientaux');
+INSERT INTO `categories` (`name`) VALUES ('aromatiques');
 
 
 -- Création de l'utilisateur
