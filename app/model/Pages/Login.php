@@ -11,7 +11,7 @@ class Login extends Page
         parent::__construct(
             'Connectez-vous',
             'login.php',
-            ['header.css', 'login.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true

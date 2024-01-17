@@ -11,7 +11,7 @@ class Address extends Page
         parent::__construct(
             'Adresse',
             'address.php',
-            ['header.css', 'address.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true

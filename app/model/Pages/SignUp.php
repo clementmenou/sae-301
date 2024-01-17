@@ -11,7 +11,7 @@ class SignUp extends Page
         parent::__construct(
             'Sign Up',
             'signup.php',
-            ['header.css', 'signup.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true

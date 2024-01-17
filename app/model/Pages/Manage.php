@@ -11,7 +11,7 @@ class Manage extends Page
         parent::__construct(
             'Gérez le site',
             'manage.php',
-            ['header.css', 'manage.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true

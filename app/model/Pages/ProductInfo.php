@@ -11,7 +11,7 @@ class ProductInfo extends Page
         parent::__construct(
             'Products',
             'product_info.php',
-            ['header.css', 'product_info.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true

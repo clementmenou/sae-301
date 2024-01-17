@@ -11,7 +11,7 @@ class Profile extends Page
         parent::__construct(
             'Profile',
             'profile.php',
-            ['header.css', 'profile.css', 'footer.css'],
+            ['header.css', 'form.css', 'footer.css'],
             [],
             true,
             true
