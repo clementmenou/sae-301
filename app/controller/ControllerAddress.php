@@ -29,7 +29,7 @@ class ControllerAddress
 
     public function modifAddress()
     {
-        $inputs = ['street', 'city', 'zip_code', 'region', 'country'];
+        $inputs = ['street', 'city', 'zip_code', 'country'];
         $refresh = false;
 
         foreach ($inputs as $input) {
@@ -44,7 +44,6 @@ class ControllerAddress
             'street' => ['required' => true, 'max_length' => 50],
             'city' => ['required' => true, 'max_length' => 50],
             'zip_code' => ['required' => true, 'max_length' => 50, 'is_number' => true],
-            'region' => ['required' => true, 'max_length' => 50],
             'country' => ['required' => true, 'max_length' => 50]
         ])) {
             $form['address_id'] = Form::getValue('address_id');
@@ -59,7 +58,7 @@ class ControllerAddress
 
     public function addAddress()
     {
-        $inputs = ['street', 'city', 'zip_code', 'region', 'country'];
+        $inputs = ['street', 'city', 'zip_code', 'country'];
         $refresh = false;
 
         foreach ($inputs as $input) {
@@ -75,7 +74,6 @@ class ControllerAddress
             'insert_street' => ['required' => true, 'max_length' => 50],
             'insert_city' => ['required' => true, 'max_length' => 50],
             'insert_zip_code' => ['required' => true, 'max_length' => 50, 'is_number' => true],
-            'insert_region' => ['required' => true, 'max_length' => 50],
             'insert_country' => ['required' => true, 'max_length' => 50]
         ])) {
             foreach ($inputs as $input) {

@@ -49,7 +49,6 @@ class Address extends DataBase
                 street = :street,
                 city = :city,
                 zip_code = :zip_code,
-                region = :region,
                 country = :country
             WHERE
                 address_id = :address_id AND status = 'active'";
@@ -57,7 +56,6 @@ class Address extends DataBase
             'street' => $datas['street'],
             'city' => $datas['city'],
             'zip_code' => $datas['zip_code'],
-            'region' => $datas['region'],
             'country' => $datas['country'],
             'address_id' => $datas['address_id']
         ];
@@ -95,21 +93,18 @@ class Address extends DataBase
                 street,
                 city,
                 zip_code,
-                region,
                 country
             )
             VALUES (
                 :street,
                 :city,
                 :zip_code,
-                :region,
                 :country
             )";
         $params = [
             'street' => $datas['street'],
             'city' => $datas['city'],
             'zip_code' => $datas['zip_code'],
-            'region' => $datas['region'],
             'country' => $datas['country']
         ];
         try {

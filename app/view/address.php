@@ -14,10 +14,6 @@
         <label class="label-generic">Code postal</label>
     </div>
     <div class="input-label-area">
-        <input type="text" class="input-generic" name="insert_region" placeholder="" value="<?= $datas['insert']['region'] ?>">
-        <label class="label-generic">Région</label>
-    </div>
-    <div class="input-label-area">
         <input type="text" class="input-generic" name="insert_country" placeholder="" value="<?= $datas['insert']['country'] ?>">
         <label class="label-generic">Pays</label>
     </div>
@@ -46,11 +42,6 @@ foreach ($datas['user_addresses'] as $address) :
         <div class="input-label-area">
             <input type="text" class="input-generic" name="zip_code" placeholder="" value="<?= $address['zip_code'] ?>">
             <label class="label-generic">Code postal</label>
-        </div>
-
-        <div class="input-label-area">
-            <input type="text" class="input-generic" name="region" placeholder="" value="<?= $address['region'] ?>">
-            <label class="label-generic">Région</label>
         </div>
 
         <div class="input-label-area">
