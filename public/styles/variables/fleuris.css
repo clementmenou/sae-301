@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--fleuris-color);
     --main-color-less: var(--fleuris-color-less);
+    --main-color-background: var(--fleuris-color-background);
 }

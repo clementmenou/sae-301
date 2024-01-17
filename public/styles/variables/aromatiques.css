@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--aromatiques-color);
     --main-color-less: var(--aromatiques-color-less);
+    --main-color-background: var(--aromatiques-color-background);
 }

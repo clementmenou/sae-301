@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--orientaux-color);
     --main-color-less: var(--orientaux-color-less);
+    --maine-color-background: var(--orientaux-color-background);
 }

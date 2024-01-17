@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--fougeres-color);
     --main-color-less: var(--fougeres-color-less);
+    --main-color-background: var(--fougeres-color-background);
 }

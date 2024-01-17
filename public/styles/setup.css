@@ -95,6 +95,14 @@ table {
 	--chypres-color-less: #CD5C5C;
 	--orientaux-color-less: #FFEC8B;
 	--aromatiques-color-less: #9370DB;
+
+	--hesperides-color-background: #ffc18b88;
+	--fleuris-color-background: #FFB6C188;
+	--boises-color-background: #D2B48C88;
+	--fougeres-color-background: #3CB37188;
+	--chypres-color-background: #CD5C5C88;
+	--orientaux-color-background: #FFEC8B88;
+	--aromatiques-color-background: #9370DB88;
 }
 
 

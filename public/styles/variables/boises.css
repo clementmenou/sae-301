@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--boises-color);
     --main-color-less: var(--boises-color-less);
+    --main-color-background: var(--boises-color-background);
 }

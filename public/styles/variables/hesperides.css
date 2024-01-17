@@ -2,4 +2,5 @@
 :root {
     --main-color: var(--hesperides-color);
     --main-color-less: var(--hesperides-color-less);
+    --main-color-background: var(--hesperides-color-background);
 }
