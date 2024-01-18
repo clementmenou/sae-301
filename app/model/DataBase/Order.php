@@ -6,6 +6,23 @@ use App\Model\DataBase\DataBase;
 
 class Order extends DataBase
 {
+    public function getAllOrdered()
+    {
+        $sql = "SELECT DISTINCT o.order_date, u.*, a.*
+            FROM $this->dbName.orders as o
+            INNER JOIN $this->dbName.users AS u
+            ON o.user_id = u.user_id
+            INNER JOIN $this->dbName.addresses AS a
+            ON o.address_id = a.address_id
+            WHERE o.status = 'ordered'";
+        try {
+            $stmt = $this->getConnection()->query($sql);
+            return $stmt->fetchAll();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function updateStatus($id)
     {
         $sql = "UPDATE $this->dbName.orders

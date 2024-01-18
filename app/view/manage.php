@@ -82,3 +82,29 @@
 
     <input type="submit" value="Supprimer" class="button-generic">
 </form>
+
+<form action="/manage" method="POST" class="form-container">
+    <div class="form-title">Supprimer un parfum</div>
+
+    <div class="input-label-area">
+        <select name="delete_name" id="delete_name" class="input-generic">
+            <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+            <?php endforeach; ?>
+        </select>
+        <label class="label-generic" for="delete_name">Nom</label>
+    </div>
+
+    <input type="submit" value="Supprimer" class="button-generic">
+</form>
+
+<div>
+    <?php foreach ($datas['order_ordered'] as $order) : ?>
+        <div>
+            <?= $order['first_name'] ?>
+            <?= $order['last_name'] ?>
+            <?= $order['street'] ?>
+            <?= $order['order_date'] ?>
+        </div>
+    <?php endforeach; ?>
+</div>

@@ -32,6 +32,12 @@ class ControllerOrderItems
         $this->address = new Address();
     }
 
+    public function displayOrdered()
+    {
+        $datas = $this->order->getAllOrdered();
+        return $datas;
+    }
+
     public function redirectToProfile()
     {
         $order_id = Session::getValue('order_id');

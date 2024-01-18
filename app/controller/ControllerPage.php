@@ -103,6 +103,7 @@ class ControllerPage
         $manage->datas = $this->products->addProduct();
         $manage->datas['liste_name_product'] = $this->products->modifProduct();
         $this->products->supprProduct();
+        $manage->datas['order_ordered'] = $this->order_items->displayOrdered();
         $manage->render();
     }
 
