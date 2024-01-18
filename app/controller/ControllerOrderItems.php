@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 // Model
-use App\Model\DataBase\Order;
-use App\Model\DataBase\OrderItems;
+use App\Model\DataBase\{
+    Order,
+    Address,
+    OrderItems
+};
 
 // Helpers
 use App\Helpers\{
@@ -19,12 +22,28 @@ class ControllerOrderItems
     private $order;
     private $order_items;
     private $product;
+    private $address;
 
     public function __construct()
     {
         $this->order = new Order();
         $this->product = new Product();
         $this->order_items = new OrderItems();
+        $this->address = new Address();
+    }
+
+    public function addAddressToOrder()
+    {
+        $address_valid = Form::validate('address_order', ['is_number' => true, 'max_length' => 10]);
+        if ($address_valid) {
+            $address = Form::getValue('address_order');
+            if ($this->address->existById($address)) {
+                $user = Session::getValue('user_id');
+                $order = Session::getValue('order_id');
+                $this->order->update($user, $address, $order);
+                Redirect::redirectTo(Redirect::HOME_URL);
+            }
+        }
     }
 
     public function supprFromOrder()
