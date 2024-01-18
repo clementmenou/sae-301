@@ -1,6 +1,6 @@
 <div class="page-content-center">
 
-    <form action="/address" method="POST" class="form-container form-choice-address">
+    <form action="/votre_lieu_de_livraision" method="POST" class="form-container form-choice-address">
         <div class="form-title">Choisir l'adresse de livraison</div>
         <?php foreach ($datas['user_addresses'] as $address) : ?>
             <label class="address-order-choice" for="address-order-<?= $address['address_id'] ?>">
@@ -12,7 +12,7 @@
         <div class="address-add">+</div>
         <input type="submit" value="Continuer" class="button-generic">
     </form>
-    <form action="/address" method="POST" class="form-container form-add-address">
+    <form action="/votre_lieu_de_livraision" method="POST" class="form-container form-add-address">
         <div class="form-go-back">←</div>
         <div class="form-title">Ajouter un lieu de livraison</div>
 
@@ -38,7 +38,7 @@
     </form>
 
     <?php foreach ($datas['user_addresses'] as $address) : ?>
-        <form action="/address" method="POST" class="form-container form-modif-address form-modif-address<?= $address['address_id'] ?>">
+        <form action="/votre_lieu_de_livraision" method="POST" class="form-container form-modif-address form-modif-address<?= $address['address_id'] ?>">
             <div class="form-title">Modifier</div>
 
             <input type="hidden" name="address_id" placeholder="" value="<?= $address['address_id'] ?>">
