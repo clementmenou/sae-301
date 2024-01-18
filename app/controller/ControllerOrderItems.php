@@ -184,7 +184,7 @@ class ControllerOrderItems
 
         // Refresh
         if ($add_order) {
-            //Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
+            Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
         }
     }
 }

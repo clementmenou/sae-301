@@ -60,7 +60,7 @@ class ControllerProduct
     public function addProduct()
     {
         $user_admin = $this->controllerUser->isUserAdmin();
-        if (!Session::getValue('user_id') && !$user_admin) {
+        if (!Session::getValue('user_id') || !$user_admin) {
             Redirect::redirectTo(Redirect::HOME_URL);
         }
 
@@ -152,6 +152,11 @@ class ControllerProduct
 
         if (Form::validate('delete_name', ['required' => true, 'max_length' => 50])) {
             $product_id = $this->product->getIdByName(Form::getValue('delete_name'));
+
+            $img_name = $this->product->getImgById($product_id);
+            $url_img = 'Public/Images/Products/' . $img_name;
+            unlink($url_img);
+
             $this->product->delete($product_id);
             Redirect::redirectTo(Redirect::MANAGE_URL);
         }
