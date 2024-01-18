@@ -132,15 +132,17 @@ class ControllerProduct
 
     public function modifProduct()
     {
-        $datas = $this->product->getAllNames();
+        $datas = $this->product->getAllProduct();
 
         if (Form::validates([
-            'update_name' => ['required' => true, 'max_length' => 50],
+            'update_name' => ['required' => true, 'max_length' => 50, 'is_number' => true],
             'update_quantity' => ['required' => true, 'max_length' => 50, 'is_number' => true]
         ])) {
-            $form['product_id'] = $this->product->getIdByName(Form::getValue('update_name'));
+            $form['product_id'] = Form::getValue('update_name');
             $form['stock_quantity'] = Form::getValue('update_quantity');
             $this->product->updateQuantity($form);
+
+            Redirect::redirectTo(Redirect::MANAGE_URL);
         }
 
         return $datas;
@@ -148,10 +150,8 @@ class ControllerProduct
 
     public function supprProduct()
     {
-        $datas['liste_name_product'] = $this->product->getAllNames();
-
-        if (Form::validate('delete_name', ['required' => true, 'max_length' => 50])) {
-            $product_id = $this->product->getIdByName(Form::getValue('delete_name'));
+        if (Form::validate('delete_name', ['required' => true, 'max_length' => 50, 'is_number' => true])) {
+            $product_id = Form::getValue('delete_name');
 
             $img_name = $this->product->getImgById($product_id);
             $url_img = 'Public/Images/Products/' . $img_name;

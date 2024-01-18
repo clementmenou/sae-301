@@ -71,6 +71,17 @@ class Product extends DataBase
         return $stmt->fetchAll();
     }
 
+    public function getQuantityById($id)
+    {
+        $sql = "SELECT stock_quantity FROM $this->dbName.products WHERE product_id = :id";
+        $params = [
+            'id' => $id
+        ];
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
     public function getAllProduct()
     {
         $sql = "SELECT DISTINCT p.*
