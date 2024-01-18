@@ -35,11 +35,11 @@ class ControllerOrderItems
     public function endOrder()
     {
         if (Form::validates([
-            'card_number' => ['min_length' => 16, 'max_length' => 16, 'is_number' => true],
+            'card_number' => ['min_length' => 19, 'max_length' => 19, 'is_number' => ' '],
             'expiration_month' => ['min_length' => 2, 'max_length' => 2, 'is_number' => true],
             'expiration_year' => ['min_length' => 2, 'max_length' => 2, 'is_number' => true],
-            'name' => ['required' => true, 'max_length' => 50],
             'security_code' => ['min_length' => 3, 'max_length' => 3, 'is_number' => true],
+            'name' => ['required' => true, 'max_length' => 50],
         ])) {
             $this->order->updateStatus(Session::getValue('order_id'));
             Session::unsetValue('order_id');
