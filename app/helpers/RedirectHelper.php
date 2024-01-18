@@ -13,7 +13,7 @@ class RedirectHelper
     public const PRODUCT_INFO_URL = '/informations_sur_le_produit';
     public const LOGOUT_URL = '/deconnexion';
     public const MANAGE_URL = '/manage';
-    public const ORDER_URL = '/order';
+    public const ORDER_URL = '/votre_panier';
     public const ADDRESS_URL = '/address';
 
     public static function redirectTo($location)
