@@ -129,6 +129,7 @@ class ControllerPage
     public function payment()
     {
         $payment = new Payment();
+        $payment->datas = $this->order_items->endOrder();
         $payment->render();
     }
 

@@ -32,6 +32,20 @@ class ControllerOrderItems
         $this->address = new Address();
     }
 
+    public function endOrder()
+    {
+        if (Form::validates([
+            'card_number' => ['min_length' => 16, 'max_length' => 16, 'is_number' => true],
+            'expiration_month' => ['min_length' => 2, 'max_length' => 2, 'is_number' => true],
+            'expiration_year' => ['min_length' => 2, 'max_length' => 2, 'is_number' => true],
+            'name' => ['required' => true, 'max_length' => 50],
+            'security_code' => ['min_length' => 3, 'max_length' => 3, 'is_number' => true],
+        ])) {
+            $this->order->updateStatus(Session::getValue('order_id'));
+            Session::unsetValue('order_id');
+        }
+    }
+
     public function addAddressToOrder()
     {
         $address_valid = Form::validate('address_order', ['is_number' => true, 'max_length' => 10]);
