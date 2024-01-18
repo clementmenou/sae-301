@@ -10,11 +10,9 @@ retirer address de la navbar ✓
 si choix address enregistrer dans bdd ✓
 
 Paiement :
-Ajouter paiement ✓ 
-envoie mail de récap (flemme ?)
-suivant retour au menu avec notif commande bien payé (petit 1 rouge sur le compte)
-petit redirect vers la page profil ou apparition d'un lien vers la page profil 
-(dans 2em cas faire en sorte que payment ne redirect pas que si order + adresse ou order commandé mais pas adresse
+Ajouter paiement ✓
+apparition d'un lien vers la page profil  ✓
+(dans 2em cas faire en sorte que payment ne redirect pas que si order + adresse ou order commandé mais pas adresse) ✓
 
 
 Manage :
