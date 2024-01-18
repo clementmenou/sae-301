@@ -25,11 +25,12 @@ class OrderItems extends DataBase
         }
     }
 
-    public function isItemGetQuantity($product_id)
+    public function isItemGetQuantity($product_id, $order_id)
     {
-        $sql = "SELECT quantity FROM $this->dbName.orderitems WHERE product_id = :product_id AND status = 'active'";
+        $sql = "SELECT quantity FROM $this->dbName.orderitems WHERE product_id = :product_id AND order_id = :order_id AND status = 'active'";
         $params = [
-            'product_id' => $product_id
+            'product_id' => $product_id,
+            'order_id' => $order_id
         ];
         try {
             $stmt = $this->getConnection()->prepare($sql);
