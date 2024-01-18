@@ -59,6 +59,11 @@ class ControllerOrderItems
 
     public function affOrder()
     {
+        Session::setValue('return_to_url', null, Redirect::ORDER_URL);
+        if (!Session::getValue('user_id')) {
+            Redirect::redirectTo(Redirect::LOGIN_URL);
+        }
+
         $datas = $this->order_items->getProductByOrderId(Session::getValue('order_id'));
         return $datas;
     }
