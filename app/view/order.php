@@ -4,6 +4,7 @@
         <div>Nom : <?= $item['name']; ?></div>
         <div>Image : <?= $item['image']; ?></div>
         <div>Quantité : <input type="text" name="quantity" value="<?= $item['quantity']; ?>"></div>
-        <input type="submit" value="Valider">
+        <input type="submit" name="submit" value="Valider">
+        <input type="submit" name="submit" value="Supprimer">
     </form>
 <?php endforeach; ?>

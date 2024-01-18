@@ -42,19 +42,16 @@ class Order extends DataBase
         }
     }
 
-    public function insert($user, $address)
+    public function insert($user)
     {
         $sql = "INSERT INTO $this->dbName.orders (
-                user_id,
-                address_id
+                user_id
             ) 
             VALUES (
-                :user_id,
-                :address_id
+                :user_id
             )";
         $params = [
-            'user_id' => $user,
-            'address_id' => $address
+            'user_id' => $user
         ];
         try {
             // Transaction for multiples request

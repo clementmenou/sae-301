@@ -12,7 +12,7 @@ class OrderItems extends DataBase
             FROM $this->dbName.orderitems as oi
             INNER JOIN $this->dbName.products AS p
             ON p.product_id = oi.product_id
-            WHERE p.status = 'active' AND oi.order_id = :order_id";
+            WHERE p.status = 'active' AND oi.order_id = :order_id AND oi.status = 'active'";
         $params = [
             'order_id' => $id
         ];
@@ -27,7 +27,7 @@ class OrderItems extends DataBase
 
     public function isItemGetQuantity($product_id)
     {
-        $sql = "SELECT quantity FROM $this->dbName.orderitems WHERE product_id = :product_id";
+        $sql = "SELECT quantity FROM $this->dbName.orderitems WHERE product_id = :product_id AND status = 'active'";
         $params = [
             'product_id' => $product_id
         ];
@@ -47,10 +47,29 @@ class OrderItems extends DataBase
         SET 
             quantity = :quantity 
         WHERE 
-            order_id = :order_id AND product_id = :product_id";
+            order_id = :order_id AND product_id = :product_id AND status = 'active'";
         $params = [
             'quantity' => $quantity,
             'order_id' => $order_id,
+            'product_id' => $product_id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
+    public function deleteItem($product_id)
+    {
+        $sql = "UPDATE 
+            $this->dbName.orderitems 
+        SET 
+            status = 'inactive' 
+        WHERE
+            product_id = :product_id";
+        $params = [
             'product_id' => $product_id
         ];
         try {

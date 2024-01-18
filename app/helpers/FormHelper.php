@@ -89,6 +89,13 @@ class FormHelper
                     }
                     break;
 
+                case 'positive':
+                    $fieldValue = self::getValue($fieldName);
+                    if ($fieldValue <= 0) {
+                        return false;
+                    }
+                    break;
+
                 default:
                     break;
             }

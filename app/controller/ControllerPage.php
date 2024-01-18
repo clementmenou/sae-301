@@ -109,6 +109,7 @@ class ControllerPage
     {
         $order = new Order();
         $order->datas['order_items'] = $this->order_items->affOrder();
+        $this->order_items->supprFromOrder();
         $this->order_items->modifQuantity();
         $order->render();
     }

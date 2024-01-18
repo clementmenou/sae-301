@@ -27,11 +27,25 @@ class ControllerOrderItems
         $this->order_items = new OrderItems();
     }
 
+    public function supprFromOrder()
+    {
+        $quantity_null = Form::getValue('quantity') < 0;
+        $suppr = Form::validate('submit', ['in_array' => ['Supprimer']]);
+        $id_valid = Form::validate('product_id', ['required' => true, 'is_number' => true, 'max_length' => 10]);
+
+        if (($quantity_null || $suppr) && $id_valid) {
+            $product_id = Form::getValue('product_id');
+            $this->order_items->deleteItem($product_id);
+
+            Redirect::redirectTo(Redirect::ORDER_URL);
+        }
+    }
+
     public function modifQuantity()
     {
         if (Form::validates([
             'quantity' => ['required' => true, 'is_number' => true, 'max_length' => 10],
-            'product_id' => ['required' => true, 'is_number', 'max_length' => 10]
+            'product_id' => ['required' => true, 'is_number' => true, 'max_length' => 10]
         ])) {
             $order_id = Session::getValue('order_id');
             $product_id = Form::getValue('product_id');
@@ -58,7 +72,6 @@ class ControllerOrderItems
     public function addToOrder()
     {
         $user_id = Session::getValue('user_id');
-        $address_id = Session::getValue('address_id');
         $order_id = Session::getValue('order_id');
 
         $add_order = Form::validate('add_to_order', ['required' => true]) || Session::getValue('pending_order');
@@ -66,7 +79,7 @@ class ControllerOrderItems
         // 
         if (Form::validates([
             'product_id' => ['required' => true, 'is_number' => true, 'max_lenght' => 10],
-            'quantity' => ['required' => true, 'is_number' => true, 'max_lenght' => 10]
+            'quantity' => ['required' => true, 'is_number' => true, 'positive' => true, 'max_lenght' => 10]
         ])) {
             $product_id = Form::getValue('product_id');
             $quantity = Form::getValue('quantity');
@@ -84,7 +97,7 @@ class ControllerOrderItems
         if ($add_order && !$order_id) {
             $order_exist = $this->order->getByUserId($user_id);
             if (!$order_exist) {
-                $order_id = $this->order->insert($user_id, $address_id);
+                $order_id = $this->order->insert($user_id);
             } else {
                 $order_id = $order_exist;
             }
