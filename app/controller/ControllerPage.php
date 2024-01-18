@@ -130,6 +130,7 @@ class ControllerPage
     {
         $payment = new Payment();
         $payment->datas = $this->order_items->endOrder();
+        $payment->datas['redirect_profile'] = $this->order_items->redirectToProfile();
         $payment->render();
     }
 

@@ -32,6 +32,22 @@ class ControllerOrderItems
         $this->address = new Address();
     }
 
+    public function redirectToProfile()
+    {
+        $order_id = Session::getValue('order_id');
+        if (!$order_id && Session::getValue('ordered')) {
+            Session::unsetValue('ordered');
+            return true;
+        } elseif (!$order_id) {
+            Redirect::redirectTo(Redirect::HOME_URL);
+        } else {
+            if (!$this->order_items->getAddressByOrderId($order_id)) {
+                Redirect::redirectTo(Redirect::HOME_URL);
+            }
+        }
+        return false;
+    }
+
     public function endOrder()
     {
         if (Form::validates([
@@ -43,6 +59,10 @@ class ControllerOrderItems
         ])) {
             $this->order->updateStatus(Session::getValue('order_id'));
             Session::unsetValue('order_id');
+
+            Session::setValue('ordered', null, true);
+
+            Redirect::redirectTo(Redirect::PAYMENT_URL);
         }
     }
 
@@ -151,7 +171,7 @@ class ControllerOrderItems
                 Session::unsetValue('order_items');
             }
 
-            $item_quantity_in_order = $this->order_items->isItemGetQuantity($product_id);
+            $item_quantity_in_order = $this->order_items->isItemGetQuantity($product_id, $order_id);
 
             if ($item_quantity_in_order) { // If item already in order
                 $new_quantity = $item_quantity_in_order + $quantity;
@@ -164,7 +184,7 @@ class ControllerOrderItems
 
         // Refresh
         if ($add_order) {
-            Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
+            //Redirect::redirectTo(Redirect::PRODUCT_INFO_URL);
         }
     }
 }
