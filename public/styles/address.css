@@ -1,0 +1,29 @@
+.address-order-choice {
+    width: 540px;
+    height: 80px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: solid 1px #444;
+    border-radius: 4px;
+    font-family: var(--text-font);
+}
+
+.address-order-choice:hover, .address-add:hover {
+    background-color: #F2F2F2
+}
+
+.address-add {
+    width: 540px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: dashed 2px #888;
+    border-radius: 4px;
+    font-family: var(--text-font);
+    font-size: 40px;
+    font-weight: 600;
+    color: #888;
+}
