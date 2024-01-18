@@ -120,7 +120,7 @@ class ControllerReview
     public function displayReviews()
     {
         $data = [];
-        $data = $this->review->getAllReviews();
+        $data = $this->review->getReviewsByProductId(Session::getValue('product_info_id'));
         foreach ($data as $review) {
             $review['user'] = $this->user->getUsernameById($review['user_id']);
 

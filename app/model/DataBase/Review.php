@@ -7,11 +7,15 @@ use App\Model\DataBase\DataBase;
 class Review extends DataBase
 {
 
-    public function getAllReviews()
+    public function getReviewsByProductId($id)
     {
-        $sql = "SELECT * FROM $this->dbName.reviews WHERE status = 'active'";
+        $sql = "SELECT * FROM $this->dbName.reviews WHERE status = 'active' AND product_id = :id";
+        $params = [
+            'id' => $id
+        ];
         try {
-            $stmt = $this->getConnection()->query($sql);
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
             return $stmt->fetchAll();
         } catch (\PDOException $e) {
             throw new \Exception('User insertion failed: ' . $e->getMessage());
