@@ -6,6 +6,21 @@ use App\Model\DataBase\DataBase;
 
 class Address extends DataBase
 {
+    public function existById($id)
+    {
+        $sql = "SELECT EXISTS(SELECT 1 FROM $this->dbName.addresses WHERE address_id = :id)";
+        $params = [
+            'id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetch();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function getAddressByUserId($id)
     {
         $sql = "SELECT * 

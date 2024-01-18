@@ -117,6 +117,7 @@ class ControllerPage
     public function address()
     {
         $address = new Address();
+        $this->order_items->addAddressToOrder();
         $address->datas = $this->address->addAddress();
         $address->datas['user_addresses'] = $this->address->affAddresses();
         $this->address->supprAddress();

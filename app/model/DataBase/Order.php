@@ -33,7 +33,7 @@ class Order extends DataBase
         $params = [
             'user_id' => $user,
             'address_id' => $address,
-            'oder_id' => $id
+            'order_id' => $id
         ];
         try {
             $this->getConnection()->prepare($sql)->execute($params);
