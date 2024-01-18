@@ -99,6 +99,15 @@ class FormHelper
                     }
                     break;
 
+                case 'image':
+                    if (
+                        $_FILES["insert_image"]["error"] > 0 ||
+                        $_FILES["insert_image"]["size"] > 10 * 1024 * 1024 // 10 Mo
+                    ) {
+                        return false;
+                    }
+                    break;
+
                 default:
                     break;
             }

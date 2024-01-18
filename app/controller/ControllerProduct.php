@@ -81,8 +81,8 @@ class ControllerProduct
             'insert_description' => ['required' => true, 'max_length' => 500],
             'insert_price' => ['required' => true, 'max_length' => 10, 'is_number' => true],
             'insert_quantity' => ['required' => true, 'max_length' => 10, 'is_number' => true],
-            'insert_image' => ['required' => true, 'max_length' => 50],
-            'insert_category' => ['required' => true, 'is_array_number' => true]
+            'insert_category' => ['required' => true, 'is_array_number' => true],
+            'insert_image' => ['image' => true]
         ])) {
             $form['name'] = Form::getValue('insert_name');
 
@@ -92,9 +92,18 @@ class ControllerProduct
                 $form['description'] = Form::getValue('insert_description');
                 $form['price'] = Form::getValue('insert_price');
                 $form['stock_quantity'] = Form::getValue('insert_quantity');
-                $form['image'] = Form::getValue('insert_image');
+
+                $img_name = strtolower($form['name']);
+                $img_name = str_replace(' ', '-', $img_name);
+                $img_name = preg_replace('/[^a-z0-9\-]/', '', $img_name);
+                $img_name .= '.' . strtolower(pathinfo($_FILES["insert_image"]["name"])["extension"]);
+                $form['image'] = $img_name;
 
                 $product_id = $this->product->insert($form);
+
+                // image process
+                $url_upload = 'Public/Images/Products/' . $img_name;
+                move_uploaded_file($_FILES["insert_image"]["tmp_name"], $url_upload);
 
                 $form['category'] = Form::getValue('insert_category');
                 foreach ($form['category'] as $category_id) {

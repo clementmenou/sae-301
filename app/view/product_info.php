@@ -3,6 +3,7 @@
     <div><?= $datas['name'] ?></div>
     <div><?= $datas['description'] ?></div>
     <div><?= $datas['price'] ?> €</div>
+    <div><img src="Public/Images/Products/<?= $datas['image'] ?>" alt="<?= $datas['name'] ?>"></div>
     <input type="number" name="quantity" value="1">
     <input type="submit" name="add_to_order" value="Ajouter au panier">
 </form>

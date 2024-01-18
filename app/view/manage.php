@@ -1,4 +1,4 @@
-<form action="/manage" method="POST" class="form-container">
+<form action="/manage" method="POST" class="form-container" enctype="multipart/form-data">
     <div class="form-title">Ajouter un parfum</div>
 
     <div class="form-sub-container">
@@ -23,7 +23,7 @@
 
 
     <div class="input-label-area">
-        <input type="text" name="insert_image" id="insert_image" class="input-generic" placeholder="" value="<?= $datas['insert']['image'] ?>">
+        <input type="file" name="insert_image" id="insert_image" accept="image/*" class="input-generic" placeholder="" value="<?= $datas['insert']['image'] ?>">
         <label class="label-generic" for="insert_image">Image</label>
     </div>
 
