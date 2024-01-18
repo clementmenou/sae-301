@@ -85,6 +85,7 @@ CREATE TABLE OrderItems (
     product_id INT,
     quantity INT,
     price DECIMAL(10, 2),
+    status VARCHAR(50) DEFAULT 'active',
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (product_id) REFERENCES Products(product_id)
 ) ENGINE=InnoDB;
@@ -118,7 +119,7 @@ CREATE TABLE Promotions (
 INSERT INTO 
     `users` (`first_name`, `last_name`, `username`, `email`, `password`, `status`) 
 VALUES 
-    ('admin', 'admin', 'admin', 'admin@gmail.com', 'Admin1234!', 'admin');
+    ('admin', 'admin', 'admin', 'admin@gmail.com', '$2y$10$m81LrzAtqQwp9dT60krAzuU61C/zbHShtmXxYx6/w9DKmso0EgQXW', 'admin');
 
 -- Catégories
 INSERT INTO `categories` (`name`) VALUES ('hesperides');
