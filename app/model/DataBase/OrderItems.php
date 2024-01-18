@@ -6,6 +6,21 @@ use App\Model\DataBase\DataBase;
 
 class OrderItems extends DataBase
 {
+    public function getAddressByOrderId($id)
+    {
+        $sql = "SELECT address_id FROM $this->dbName.orders WHERE order_id = :order_id AND status = 'active'";
+        $params = [
+            'order_id' => $id
+        ];
+        try {
+            $stmt = $this->getConnection()->prepare($sql);
+            $stmt->execute($params);
+            return $stmt->fetchColumn();
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function getProductByOrderId($id)
     {
         $sql = "SELECT * 
