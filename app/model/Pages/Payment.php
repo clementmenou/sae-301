@@ -12,7 +12,7 @@ class Payment extends Page
             'Payment',
             'payment.php',
             ['header.css', 'form.css', 'footer.css'],
-            [],
+            ['payment.js'],
             true,
             true
         );

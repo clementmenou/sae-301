@@ -33,6 +33,20 @@
     justify-content: space-between;
 }
 
+.form-sub-container-expiration {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.input-expiration-spliter {
+    padding-top: 13px;
+    min-height: 80px;
+    font-family: var(--text-font);
+    font-size: 1rem;
+    color: #444;
+}
+
 .input-label-area {
     position: relative;
     min-height: 80px;
@@ -49,6 +63,12 @@
     position: relative;
     min-height: 80px;
     width: 140px;
+}
+
+.input-label-area-extra-small {
+    position: relative;
+    min-height: 80px;
+    width: 40px;
 }
 
 .label-generic {
@@ -112,6 +132,25 @@
     stroke-linejoin: round;
 }
 
+.input-password-condition {
+    padding: 8px;
+    margin-top: 10px;
+    display: flex;
+    font-family: var(--text-font);
+    font-size: 11px;
+    color: #444;
+    background-color: #F2F2F2;
+    user-select: none;
+}
+
+.input-password-condition-section {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
 .button-generic {
     width: 225px;
     height: 45px;
@@ -151,24 +190,6 @@
 
 .button-suppr:hover {
     background-color: rgb(120, 0, 0);
-}
-
-.input-password-condition {
-    padding: 8px;
-    margin-top: 10px;
-    display: flex;
-    font-family: var(--text-font);
-    font-size: 11px;
-    color: #444;
-    background-color: #F2F2F2;
-    user-select: none;
-}
-
-.input-password-condition-section {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
 }
 
 .form-go-back {
