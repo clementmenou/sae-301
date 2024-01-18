@@ -75,6 +75,9 @@ class FormHelper
 
                 case 'is_number':
                     $fieldValue = self::getValue($fieldName);
+                    if ($value == ' ') {
+                        $fieldValue = str_replace(' ', '', $fieldValue);
+                    }
                     $complexity = preg_match('/[0-9]/', $fieldValue);
                     if (!$complexity) {
                         return false;
