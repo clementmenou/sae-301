@@ -1,0 +1,9 @@
+Address :
+redirect si pas connecté ou si pas panier
+retirer navbar
+
+Manage :
+redirect si pas admin
+
+panier :
+Verifier que panier se supprime si vide + vérifier si article peut se suppr
