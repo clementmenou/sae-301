@@ -6,6 +6,24 @@ use App\Model\DataBase\DataBase;
 
 class Order extends DataBase
 {
+    public function updateStatus($id)
+    {
+        $sql = "UPDATE $this->dbName.orders
+        SET 
+            status = 'ordered'
+        WHERE
+            order_id = :order_id
+        ";
+        $params = [
+            'order_id' => $id
+        ];
+        try {
+            $this->getConnection()->prepare($sql)->execute($params);
+        } catch (\PDOException $e) {
+            throw new \Exception('User insertion failed: ' . $e->getMessage());
+        }
+    }
+
     public function getByUserId($user)
     {
         $sql = "SELECT order_id FROM $this->dbName.orders WHERE user_id = :user_id AND status = 'active'";
