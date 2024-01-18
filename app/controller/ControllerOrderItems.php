@@ -41,7 +41,7 @@ class ControllerOrderItems
                 $user = Session::getValue('user_id');
                 $order = Session::getValue('order_id');
                 $this->order->update($user, $address, $order);
-                Redirect::redirectTo(Redirect::HOME_URL);
+                Redirect::redirectTo(Redirect::PAYMENT_URL);
             }
         }
     }
