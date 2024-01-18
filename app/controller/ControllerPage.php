@@ -22,7 +22,8 @@ use App\Model\Pages\{
     Error404,
     Manage,
     Order,
-    Address
+    Address,
+    Payment
 };
 
 class ControllerPage
@@ -123,6 +124,12 @@ class ControllerPage
         $this->address->supprAddress();
         $this->address->modifAddress();
         $address->render();
+    }
+
+    public function payment()
+    {
+        $payment = new Payment();
+        $payment->render();
     }
 
     public function error404()

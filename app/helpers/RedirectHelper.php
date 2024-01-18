@@ -15,6 +15,7 @@ class RedirectHelper
     public const MANAGE_URL = '/manage';
     public const ORDER_URL = '/votre_panier';
     public const ADDRESS_URL = '/address';
+    public const PAYMENT_URL = '/payer_votre_commande';
 
     public static function redirectTo($location)
     {
