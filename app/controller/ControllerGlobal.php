@@ -19,6 +19,7 @@ class ControllerGlobal
     public function headerManagement()
     {
         $connected = Session::getValue('user_id');
+        $datas = [];
         if ($connected) {
         }
     }
