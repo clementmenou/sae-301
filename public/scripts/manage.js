@@ -36,3 +36,45 @@ selectNameUpdateQuantity.addEventListener('change', (elem) => {
     quantityIndex = elem.target.selectedIndex;
     inputQuantity.value = tableQuantity[quantityIndex];
 });
+
+
+
+// Gestion d'insertion d'une promotion
+const inputStartDay = document.getElementById('insert_promo_start_day');
+const inputStartMonth = document.getElementById('insert_promo_start_month');
+const inputStartYear = document.getElementById('insert_promo_start_year');
+
+const inputEndDay = document.getElementById('insert_promo_end_day');
+const inputEndMonth = document.getElementById('insert_promo_end_month');
+const inputEndYear = document.getElementById('insert_promo_end_year');
+
+function passerAuChampSuivant(champActuel, champSuivant) {
+    var longueurMax = parseInt(champActuel.getAttribute('maxlength'));
+    var contenuChamp = champActuel.value;
+
+    if (contenuChamp.length === longueurMax) {
+        if (champSuivant) {
+            champSuivant.focus();
+        }
+    }
+}
+
+inputStartDay.addEventListener('input', function() {
+    passerAuChampSuivant(this, inputStartMonth);
+})
+
+inputStartMonth.addEventListener('input', function() {
+    passerAuChampSuivant(this, inputStartYear);
+})
+
+inputStartYear.addEventListener('input', function() {
+    passerAuChampSuivant(this, inputEndDay);
+})
+
+inputEndDay.addEventListener('input', function() {
+    passerAuChampSuivant(this, inputEndMonth);
+})
+
+inputEndMonth.addEventListener('input', function() {
+    passerAuChampSuivant(this, inputEndYear);
+})

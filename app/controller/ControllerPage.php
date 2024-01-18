@@ -34,6 +34,7 @@ class ControllerPage
     private $order_items;
     private $review;
     private $address;
+    private $promotion;
 
     public function __construct()
     {
@@ -43,6 +44,7 @@ class ControllerPage
         $this->order_items = new ControllerOrderItems();
         $this->review = new ControllerReview();
         $this->address = new ControllerAddress();
+        $this->promotion = new ControllerPromotion();
     }
 
     public function home()
@@ -104,6 +106,7 @@ class ControllerPage
         $manage->datas['liste_name_product'] = $this->products->modifProduct();
         $this->products->supprProduct();
         $manage->datas['order_ordered'] = $this->order_items->displayOrdered();
+        $manage->datas['insert_promotion'] = $this->promotion->addPromotion();
         $manage->render();
     }
 

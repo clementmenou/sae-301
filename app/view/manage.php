@@ -97,19 +97,57 @@
 
     <div class="form-sub-container">
         <div class="input-label-area-medium">
-            <select name="delete_name" id="delete_name" class="input-generic">
+            <select name="insert_promo_name" id="insert_promo_name" class="input-generic">
                 <?php foreach ($datas['liste_name_product'] as $product) : ?>
                     <option value="<?= $product['product_id'] ?>"><?= $product['name'] ?></option>
                 <?php endforeach; ?>
             </select>
-            <label class="label-generic" for="delete_name">Nom</label>
+            <label class="label-generic" for="insert_promo_name">Nom</label>
         </div>
 
         <div class="input-label-area-small">
-            <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
-            <label class="label-generic" for="update_quantity">Quantité</label>
+            <input type="text" name="insert_promo_discount" id="insert_promo_discount" class="input-generic" placeholder="">
+            <label class="label-generic" for="insert_promo_discount">Réduction</label>
         </div>
     </div>
+
+    <div class="form-sub-container">
+        <div class="form-sub-container-expiration">
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_start_day" name="insert_promo_start_day" required>
+                <label class="label-generic">XX</label>
+            </div>
+            <div class="input-expiration-spliter">/</div>
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_start_month" name="insert_promo_start_month" required>
+                <label class="label-generic">XX</label>
+            </div>
+            <div class="input-expiration-spliter">/</div>
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_start_year" name="insert_promo_start_year" required>
+                <label class="label-generic">XX</label>
+            </div>
+        </div>
+
+        <div class="form-sub-container-expiration">
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_end_day" name="insert_promo_end_day" required>
+                <label class="label-generic">XX</label>
+            </div>
+            <div class="input-expiration-spliter">/</div>
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_end_month" name="insert_promo_end_month" required>
+                <label class="label-generic">XX</label>
+            </div>
+            <div class="input-expiration-spliter">/</div>
+            <div class="input-label-area-extra-small">
+                <input type="text" minlength="2" maxlength="2" class="input-generic" placeholder="" id="insert_promo_end_year" name="insert_promo_end_year" required>
+                <label class="label-generic">XX</label>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Ajouter" class="button-generic">
 </form>
 
 <div>
