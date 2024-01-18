@@ -30,7 +30,7 @@ allQuantity.forEach(elem => {
     tableQuantity.push(elem.textContent);
 })
 
-inputQuantity.value = tableQuantity[0];
+inputQuantity.value = (tableQuantity[0] !== null && tableQuantity[0] !== undefined) ? tableQuantity[0] : '';
 
 selectNameUpdateQuantity.addEventListener('change', (elem) => {
     quantityIndex = elem.target.selectedIndex;
