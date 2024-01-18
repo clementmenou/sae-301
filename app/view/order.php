@@ -10,7 +10,7 @@ if ($datas['order_items']) {
             <input type="submit" name="submit" value="Supprimer">
         </form>
     <?php endforeach; ?>
-    <a class="header-link" href="/address">Passer la commande</a>
+    <a href="/address">Passer la commande</a>
 <?php
 } else { ?>
     <div>
