@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 // Model
-use App\Model\DataBase\Address;
+use App\Model\DataBase\{
+    Address,
+    OrderItems
+};
 
 // Helpers
 use App\Helpers\{
@@ -15,10 +18,12 @@ use App\Helpers\{
 class ControllerAddress
 {
     private $address;
+    private $orderItems;
 
     public function __construct()
     {
         $this->address = new Address();
+        $this->orderItems = new OrderItems();
     }
 
     public function affAddresses()
@@ -58,6 +63,14 @@ class ControllerAddress
 
     public function addAddress()
     {
+        if (
+            !Session::getValue('user_id') ||
+            !Session::getValue('order_id') ||
+            !$this->orderItems->getProductByOrderId(Session::getValue('order_id'))
+        ) {
+            Redirect::redirectTo(Redirect::HOME_URL);
+        }
+
         $inputs = ['street', 'city', 'zip_code', 'country'];
         $refresh = false;
 
