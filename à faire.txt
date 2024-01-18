@@ -1,9 +1,4 @@
-Navbar :
-afficher onglet profil si connecté
-afficher onglet connexion si pas connecté
-afficher onglet manage si admin
-mettre petite notif à coté du panier
-
+================== FAIT AUJOURD'HUI ====================
 Address :
 redirect si pas connecté ou si pas panier ✓
 retirer address de la navbar ✓
@@ -14,27 +9,40 @@ Ajouter paiement ✓
 apparition d'un lien vers la page profil  ✓
 (dans 2em cas faire en sorte que payment ne redirect pas que si order + adresse ou order commandé mais pas adresse) ✓
 
-
-Manage :
-système image ajout parfum
-redirect si pas admin
-Ajouter l'ajout de promotions
-Modifier promotion
-Afficher les commandes commandé avec montant etc
-
-Profile :
-Modifier les infos utilisateur
-
 panier :
 redirect si pas connecté  ✓
 afficher panier vide si rien (ça c'est view) ✓
 Verifier que panier se supprime si vide + vérifier si article peut se suppr ✓
 Passer la commande (juste un lien vers adress si panier a des article) ✓
 
-parfums_liste :
-Revoir la requête sql quand aucun thème selectionné ✓
-Faire le trie en fonction du prix et des promotions
-
 parfum_info : 
 réparer commentaires ✓
+
+parfums_liste :
+Revoir la requête sql quand aucun thème selectionné ✓
+
+
+
+
+
+================== A FAIRE AVANT 16H ====================
+Navbar :
+afficher onglet profil si connecté
+afficher onglet connexion si pas connecté
+afficher onglet manage si admin
+mettre petite notif à coté du panier
+
+Manage :
+redirect si pas admin
+système image ajout parfum ✓
+Ajouter l'ajout de promotions
+Modifier promotion
+Afficher les commandes commandé avec montant etc
+
+Profile :
+Modifier les infos utilisateur
+Afficher commandes finis
+
+parfums_liste :
+Faire le trie en fonction du prix et des promotions
 
