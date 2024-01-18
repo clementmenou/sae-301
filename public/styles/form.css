@@ -111,6 +111,37 @@
     border: 1px solid #000;
 }
 
+.input-image {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-image-content-container{
+    position: relative;
+    width: 208px;
+    height: 208px;
+    border: dashed 4px #aaa;
+    overflow: hidden;
+}
+
+.input-image-content {
+    max-width: 200px;
+}
+
+.input-image-content-add {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--text-font);
+    font-size: 80px;
+    font-weight: 500;
+    color: #aaa;
+}
+
 .input-error {
     display: flex;
     align-items: center;

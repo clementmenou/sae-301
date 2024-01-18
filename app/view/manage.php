@@ -1,6 +1,16 @@
 <form action="/manage" method="POST" class="form-container" enctype="multipart/form-data">
     <div class="form-title">Ajouter un parfum</div>
 
+    <div class="input-label-area">
+        <input type="file" name="insert_image" id="insert_image" accept="image/*" placeholder="" value="<?= $datas['insert']['image'] ?>">
+        <div class="input-image">
+            <label for="insert_image" class="input-image-content-container">
+                <img class="input-image-content" src="" id="preview-image">
+                <div class="input-image-content-add">+</div>
+            </label>
+        </div>
+    </div>
+
     <div class="form-sub-container">
         <div class="input-label-area-medium">
             <input type="text" name="insert_name" id="insert_name" class="input-generic" placeholder="" value="<?= $datas['insert']['name'] ?>">
@@ -19,12 +29,6 @@
     <div class="input-label-area">
         <input type="text" name="insert_price" id="insert_price" class="input-generic" placeholder="" value="<?= $datas['insert']['price'] ?>">
         <label class="label-generic" for="insert_price">Prix</label>
-    </div>
-
-
-    <div class="input-label-area">
-        <input type="file" name="insert_image" id="insert_image" accept="image/*" class="input-generic" placeholder="" value="<?= $datas['insert']['image'] ?>">
-        <label class="label-generic" for="insert_image">Image</label>
     </div>
 
     <div class="input-label-area">
@@ -53,14 +57,19 @@
         <div class="input-label-area-medium">
             <select name="update_name" id="update_name" class="input-generic">
                 <?php foreach ($datas['liste_name_product'] as $product) : ?>
-                    <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+                    <option value="<?= $product['product_id'] ?>"><?= $product['name'] ?></option>
                 <?php endforeach; ?>
             </select>
             <label class="label-generic" for="update_name">Nom</label>
         </div>
 
         <div class="input-label-area-small">
-            <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
+            <div class="all-quantity">
+                <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                    <div><?= $product['stock_quantity'] ?></div>
+                <?php endforeach; ?>
+            </div>
+            <input type="text" name="update_quantity" id="update_quantity" class="input-generic" value="" placeholder="">
             <label class="label-generic" for="update_quantity">Quantité</label>
         </div>
     </div>
@@ -74,7 +83,7 @@
     <div class="input-label-area">
         <select name="delete_name" id="delete_name" class="input-generic">
             <?php foreach ($datas['liste_name_product'] as $product) : ?>
-                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
+                <option value="<?= $product['product_id'] ?>"><?= $product['name'] ?></option>
             <?php endforeach; ?>
         </select>
         <label class="label-generic" for="delete_name">Nom</label>
@@ -84,18 +93,23 @@
 </form>
 
 <form action="/manage" method="POST" class="form-container">
-    <div class="form-title">Supprimer un parfum</div>
+    <div class="form-title">Ajouter promotion</div>
 
-    <div class="input-label-area">
-        <select name="delete_name" id="delete_name" class="input-generic">
-            <?php foreach ($datas['liste_name_product'] as $product) : ?>
-                <option value="<?= $product['name'] ?>"><?= $product['name'] ?></option>
-            <?php endforeach; ?>
-        </select>
-        <label class="label-generic" for="delete_name">Nom</label>
+    <div class="form-sub-container">
+        <div class="input-label-area-medium">
+            <select name="delete_name" id="delete_name" class="input-generic">
+                <?php foreach ($datas['liste_name_product'] as $product) : ?>
+                    <option value="<?= $product['product_id'] ?>"><?= $product['name'] ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label class="label-generic" for="delete_name">Nom</label>
+        </div>
+
+        <div class="input-label-area-small">
+            <input type="text" name="update_quantity" id="update_quantity" class="input-generic" placeholder="">
+            <label class="label-generic" for="update_quantity">Quantité</label>
+        </div>
     </div>
-
-    <input type="submit" value="Supprimer" class="button-generic">
 </form>
 
 <div>

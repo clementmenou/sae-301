@@ -12,7 +12,7 @@ class Manage extends Page
             'Gérez le site',
             'manage.php',
             ['header.css', 'form.css', 'footer.css'],
-            [],
+            ['manage.js'],
             true,
             true
         );
