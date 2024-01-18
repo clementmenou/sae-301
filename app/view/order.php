@@ -9,7 +9,9 @@ if ($datas['order_items']) {
             <input type="submit" name="submit" value="Valider">
             <input type="submit" name="submit" value="Supprimer">
         </form>
-    <?php endforeach;
+    <?php endforeach; ?>
+    <a class="header-link" href="/address">Passer la commande</a>
+<?php
 } else { ?>
     <div>
         Panier vide
