@@ -28,6 +28,17 @@ class Product extends DataBase
         return $stmt->fetchColumn();
     }
 
+    public function getImgById($id)
+    {
+        $sql = "SELECT image FROM $this->dbName.products WHERE product_id = :id";
+        $params = [
+            'id' => $id
+        ];
+        $stmt = $this->getConnection()->prepare($sql);
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
     public function getIdByName($name)
     {
         $sql = "SELECT product_id FROM $this->dbName.products WHERE name = :name AND status = 'active'";
