@@ -21,7 +21,7 @@
                 </div>
             </form>
         <?php endforeach; ?>
-        <a href="/votre_lieu_de_livraision">Passer la commande</a>
+        <a href="/votre_lieu_de_livraision" class="link-address">Passer la commande</a>
     <?php
     } else { ?>
         <div>
