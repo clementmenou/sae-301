@@ -41,6 +41,11 @@ class ControllerProfile
 
         if (Form::validate('username', ['required' => true])) {
             $usernameUsed = $this->user->isUserByUsername(Form::getValue('username'));
+
+            $user_username = $this->user->getUsernameById(Session::getValue('user_id'));
+            if ($user_username == Form::getValue('username')) {
+                $usernameUsed = false;
+            }
             Session::setValue('profile', 'username_exists', $usernameUsed);
         }
 
@@ -59,6 +64,11 @@ class ControllerProfile
 
         if (Form::validate('email', ['required' => true])) {
             $emailUsed = $this->user->isUserByEmail(Form::getValue('email'));
+
+            $user_email = $this->user->getEmailById(Session::getValue('user_id'));
+            if ($user_email == Form::getValue('email')) {
+                $emailUsed = false;
+            }
             Session::setValue('profile', 'email_exists', $emailUsed);
         }
 

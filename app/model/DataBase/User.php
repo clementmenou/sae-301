@@ -44,6 +44,17 @@ class User extends DataBase
         return $stmt->fetchColumn();
     }
 
+    public function getEmailById($id)
+    {
+        $sql = "SELECT email FROM $this->dbName.users WHERE user_id = :id";
+        $stmt = $this->getConnection()->prepare($sql);
+        $params = [
+            'id' => $id
+        ];
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
     public function getUserById($id)
     {
         $sql = "SELECT * FROM $this->dbName.users WHERE user_id = :id";

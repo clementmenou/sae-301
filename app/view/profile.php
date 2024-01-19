@@ -54,8 +54,12 @@
             </div>
             <input type="submit" value="Valider" class="button-small button-padding">
         </form>
+        <form action="/deconnexion" method="post">
+            <input type="submit" value="Deconnection" class="button-generic button-suppr">
+        </form>
     </div>
-    <form action="/deconnexion" method="post">
-        <input type="submit" value="Deconnection" class="button-generic button-suppr">
-    </form>
+
+    <div class="form-container">
+
+    </div>
 </div>
