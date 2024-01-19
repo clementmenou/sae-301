@@ -166,8 +166,8 @@ class ControllerOrderItems
                 $order_id = $order_exist;
             }
             Session::setValue('order_id', null, $order_id);
-            Session::unsetValue('pending_order');
         }
+        Session::unsetValue('pending_order');
 
         // 
         if ($add_order && $order_id && (isset($product_id) || Session::getValue('order_items'))) {
