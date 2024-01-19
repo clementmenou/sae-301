@@ -31,8 +31,21 @@ class ControllerProduct
     public function productList()
     {
         $data = [];
-
         $fragrance = Session::getValue('fragrance');
+
+        $data['sort']['prix'] = true;
+        $data['sort']['quantity'] = true;
+        $data['sort']['promo'] = true;
+
+        if (Session::getValue('sorting') == 'price asc') {
+            $data['sort']['prix'] = false;
+        }
+        if (Session::getValue('sorting') == 'quantity asc') {
+            $data['sort']['quantity'] = false;
+        }
+        if (Session::getValue('sorting', 'promo') == 'promo asc') {
+            $data['sort']['promo'] = false;
+        }
 
         if (Form::validate('price_asc', ['required' => true])) {
             Session::setValue('sorting', null, 'price asc');

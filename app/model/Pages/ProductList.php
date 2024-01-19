@@ -12,7 +12,7 @@ class ProductList extends Page
             'Products',
             'product_list.php',
             ['header.css', 'product_list.css', 'footer.css'],
-            [],
+            ['product_list.css'],
             true,
             true
         );
