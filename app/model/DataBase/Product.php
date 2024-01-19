@@ -73,7 +73,7 @@ class Product extends DataBase
 
     public function getAllProduct($order)
     {
-        $sql = "SELECT DISTINCT p.*, pr.*
+        $sql = "SELECT DISTINCT pr.*, p.*
         FROM $this->dbName.products AS p
         INNER JOIN $this->dbName.productcategories AS pc ON p.product_id = pc.product_id
         LEFT JOIN $this->dbName.promotions AS pr ON p.product_id = pr.product_id
