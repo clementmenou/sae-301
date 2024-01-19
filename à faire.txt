@@ -20,6 +20,8 @@ réparer commentaires ✓
 
 parfums_liste :
 Revoir la requête sql quand aucun thème selectionné ✓
+Faire le tri en fonction du prix et des promotions ✓
+Afficher les promotions ✓
 
 
 Manage :
@@ -43,7 +45,3 @@ mettre petite notif à coté du panier
 Profile :
 Modifier les infos utilisateur
 Afficher commandes finis
-
-parfums_liste :
-Faire le tri en fonction du prix et des promotions
-Afficher les promotions
