@@ -88,7 +88,7 @@ class ControllerOrderItems
 
     public function supprFromOrder()
     {
-        $quantity_null = Form::getValue('quantity') < 0;
+        $quantity_null = Form::getValue('quantity') <= 0;
         $suppr = Form::validate('submit', ['in_array' => ['Supprimer']]);
         $id_valid = Form::validate('product_id', ['required' => true, 'is_number' => true, 'max_length' => 10]);
 
