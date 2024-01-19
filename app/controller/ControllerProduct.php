@@ -91,8 +91,7 @@ class ControllerProduct
 
     public function addProduct()
     {
-        $user_admin = $this->controllerUser->isUserAdmin();
-        if (!Session::getValue('user_id') || !$user_admin) {
+        if (!Session::getValue('user_id') || !Session::getValue('is_admin')) {
             Redirect::redirectTo(Redirect::HOME_URL);
         }
 

@@ -68,9 +68,8 @@ class ControllerReview
             $user_review = $this->review->getUserById(Form::getValue('review_id'));
 
             $user_match = (Session::getValue('user_id') == $user_review);
-            $user_admin = $this->controllerUser->isUserAdmin();
 
-            if ($user_match || $user_admin) {
+            if ($user_match || Session::getValue('is_admin')) {
                 $review_id = Form::getValue('review_id');
                 Session::setValue('review_modify', null, $review_id);
             }
@@ -80,9 +79,8 @@ class ControllerReview
             $user_review = $this->review->getUserById(Form::getValue('review_id'));
 
             $user_match = (Session::getValue('user_id') == $user_review);
-            $user_admin = $this->controllerUser->isUserAdmin();
 
-            if ($user_match || $user_admin) {
+            if ($user_match || Session::getValue('is_admin')) {
                 $review_id = Form::getValue('review_id');
                 $text = Form::getValue('text_modify');
                 $rating = Form::getValue('rating_modify');
@@ -105,9 +103,8 @@ class ControllerReview
             $user_review = $this->review->getUserById(Form::getValue('review_id'));
 
             $user_match = (Session::getValue('user_id') == $user_review);
-            $user_admin = $this->controllerUser->isUserAdmin();
 
-            if ($user_match || $user_admin) {
+            if ($user_match || Session::getValue('is_admin')) {
                 $review_id = Form::getValue('review_id');
                 $this->review->delete($review_id);
             }
@@ -125,11 +122,11 @@ class ControllerReview
             $review['user'] = $this->user->getUsernameById($review['user_id']);
 
             $user_match = Session::getValue('user_id') == $review['user_id'];
-            $user_admin = $this->controllerUser->isUserAdmin();
+
             $review_modify = Session::getValue('review_modify') == $review['review_id'];
 
             $review['display_modify'] = $review_modify;
-            $review['display_controls'] = $user_match || $user_admin;
+            $review['display_controls'] = $user_match || Session::getValue('is_admin');
 
             $reviews[] = $review;
         }

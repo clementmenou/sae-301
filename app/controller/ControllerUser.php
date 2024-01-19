@@ -23,11 +23,11 @@ class ControllerUser
         $this->controllerOrderItems = new ControllerOrderItems();
     }
 
-    public function isUserAdmin()
+    public function setIsUserAdmin()
     {
         $user_id = Session::getValue('user_id');
         $user_status = $this->user->getStatusById($user_id);
-        return $user_status == 'admin';
+        Session::setValue('is_admin', null, $user_status == 'admin');
     }
 
     public function displayUser()
@@ -69,9 +69,11 @@ class ControllerUser
                 Session::setValue('login', 'wrong_email', false);
 
                 if (password_verify(Form::getValue('password'), $user_datas['password'])) { // All right
-                    // Set user id, adress and order
+                    // Set user id, order and is_admin
                     Session::setValue('user_id', null, $user_datas['user_id']);
                     $this->controllerOrderItems->setSessionOrder();
+                    $this->setIsUserAdmin();
+
                     // Unset login because not necessary anymore
                     Session::unsetValue('login');
                     // Redirect to home or specific URL if set
