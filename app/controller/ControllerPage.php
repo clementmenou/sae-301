@@ -99,6 +99,7 @@ class ControllerPage
         $profile = new Profile();
         $profile->datas = $this->users->displayUser();
         $profile->datas['update'] = $this->profile->updateProfile();
+        $profile->datas['all_ordered'] = $this->profile->affOrdered();
         $profile->render();
     }
 

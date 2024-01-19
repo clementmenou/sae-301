@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 // Model
-use App\Model\DataBase\User;
+use App\Model\DataBase\{
+    User,
+    Order
+};
 
 // Helpers
 use App\Helpers\{
@@ -15,10 +18,12 @@ use App\Helpers\{
 class ControllerProfile
 {
     private $user;
+    private $order;
 
     public function __construct()
     {
         $this->user = new User();
+        $this->order = new Order();
     }
 
     public function updateProfile()
@@ -89,5 +94,11 @@ class ControllerProfile
         $data['email_exists'] = Session::getValue('profile', 'email_exists', false);
 
         return $data;
+    }
+
+    public function affOrdered()
+    {
+        $datas = $this->order->getOrderedByPlayerId(Session::getValue('user_id'));
+        return $datas;
     }
 }
