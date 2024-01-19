@@ -24,8 +24,11 @@
         <a href="/votre_lieu_de_livraision" class="link-address">Passer la commande</a>
     <?php
     } else { ?>
-        <div>
+        <div class="text-info">
             Panier vide
+        </div>
+        <div class="link-product-list">
+            <a href="/regardez_nos_produits" class="link-address">Continuez vos achats</a>
         </div>
     <?php } ?>
 </div>
