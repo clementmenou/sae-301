@@ -18,7 +18,7 @@
 }
 
 .home-button-hesperides{
-    background: url(../Images/hesperides.jpg);
+    background: url(../Images/home-hesperides.jpg);
     background-size: 500px;
     background-position: 0 -60px;
     color: white;
@@ -26,7 +26,7 @@
 }
 
 .home-button-fleuris{
-    background: url(../Images/fleuris.jpg);
+    background: url(../Images/home-fleuris.jpg);
     background-size: 500px;
     background-position: 0 -210px;
     color: white;
@@ -34,7 +34,7 @@
 }
 
 .home-button-boises{
-    background: url(../Images/boises.jpg);
+    background: url(../Images/home-boises.jpg);
     background-size: 500px;
     background-position: 0 -280px;
     color: white;
@@ -42,7 +42,7 @@
 }
 
 .home-button-fougeres{
-    background: url(../Images/fougeres.jpg);
+    background: url(../Images/home-fougeres.jpg);
     background-size: 500px;
     background-position: 0 -330px;
     color: white;
@@ -50,7 +50,7 @@
 }
 
 .home-button-chypres{
-    background: url(../Images/chypres.jpg);
+    background: url(../Images/home-chypres.jpg);
     background-size: 500px;
     background-position: 0 -310px;
     color: white;
@@ -58,7 +58,7 @@
 }
 
 .home-button-orientaux{
-    background: url(../Images/orientales.jpg);
+    background: url(../Images/home-orientales.jpg);
     background-size: 500px;
     background-position: 0 -290px;
     color: white;
@@ -66,7 +66,7 @@
 }
 
 .home-button-aromatiques {
-    background: url(../Images/aromatics.jpg);
+    background: url(../Images/home-aromatics.jpg);
     background-size: 500px;
     background-position: 0 -380px;
     color: white;

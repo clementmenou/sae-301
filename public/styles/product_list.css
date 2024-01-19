@@ -1,3 +1,7 @@
+body {
+    background-color: var(--main-color-background);
+}
+
 /* Product-sort */
 .product-sort-container {
     padding: 10px 0;
