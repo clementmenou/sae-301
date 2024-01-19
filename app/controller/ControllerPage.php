@@ -35,6 +35,7 @@ class ControllerPage
     private $review;
     private $address;
     private $promotion;
+    private $profile;
 
     public function __construct()
     {
@@ -45,6 +46,7 @@ class ControllerPage
         $this->review = new ControllerReview();
         $this->address = new ControllerAddress();
         $this->promotion = new ControllerPromotion();
+        $this->profile = new ControllerProfile();
     }
 
     public function home()
@@ -96,6 +98,7 @@ class ControllerPage
     {
         $profile = new Profile();
         $profile->datas = $this->users->displayUser();
+        $profile->datas['update'] = $this->profile->updateProfile();
         $profile->render();
     }
 

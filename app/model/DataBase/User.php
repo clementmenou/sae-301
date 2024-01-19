@@ -6,6 +6,22 @@ use App\Model\DataBase\DataBase;
 
 class User extends DataBase
 {
+    public function updateData($dataName, $dataValue, $user_id)
+    {
+        $sql = "UPDATE $this->dbName.users
+            SET 
+                $dataName = :$dataName
+            WHERE
+                user_id = :id";
+        $stmt = $this->getConnection()->prepare($sql);
+        $params = [
+            $dataName => $dataValue,
+            'id' => $user_id
+        ];
+        $stmt->execute($params);
+        return $stmt->fetchColumn();
+    }
+
     public function getStatusById($id)
     {
         $sql = "SELECT status FROM $this->dbName.users WHERE user_id = :id";

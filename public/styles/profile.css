@@ -1,0 +1,22 @@
+body {
+    background-color: var(--main-color-background);
+}
+
+.page-content {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-padding {
+    margin-bottom: 35px;
+}
