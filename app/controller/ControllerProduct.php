@@ -34,13 +34,32 @@ class ControllerProduct
 
         $fragrance = Session::getValue('fragrance');
 
-        Session::unsetValue('sorting');
-        if (Form::validate('price_asc', ['required' => true])) Session::setValue('sorting', null, 'price asc');
-        if (Form::validate('price_desc', ['required' => true])) Session::setValue('sorting', null, 'price desc');
-        if (Form::validate('quantity_asc', ['required' => true])) Session::setValue('sorting', null, 'quantity asc');
-        if (Form::validate('quantity_desc', ['required' => true])) Session::setValue('sorting', null, 'quantity desc');
-        if (Form::validate('promo_asc', ['required' => true])) Session::setValue('sorting', 'promo', 'promo asc');
-        if (Form::validate('promo_desc', ['required' => true])) Session::setValue('sorting', 'promo', 'promo desc');
+        if (Form::validate('price_asc', ['required' => true])) {
+            Session::setValue('sorting', null, 'price asc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
+        if (Form::validate('price_desc', ['required' => true])) {
+            Session::setValue('sorting', null, 'price desc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
+        if (Form::validate('quantity_asc', ['required' => true])) {
+            Session::setValue('sorting', null, 'quantity asc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
+        if (Form::validate('quantity_desc', ['required' => true])) {
+            Session::setValue('sorting', null, 'quantity desc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
+        if (Form::validate('promo_asc', ['required' => true])) {
+            Session::unsetValue('sorting');
+            Session::setValue('sorting', 'promo', 'promo asc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
+        if (Form::validate('promo_desc', ['required' => true])) {
+            Session::unsetValue('sorting');
+            Session::setValue('sorting', 'promo', 'promo desc');
+            Redirect::redirectTo(Redirect::PRODUCT_LIST_URL);
+        }
 
         if ($fragrance == 'base') {
             if (Session::getValue('sorting', 'promo')) {
