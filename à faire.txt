@@ -23,7 +23,6 @@ Revoir la requête sql quand aucun thème selectionné ✓
 Faire le tri en fonction du prix et des promotions ✓
 Afficher les promotions ✓
 
-
 Manage :
 redirect si pas admin ✓
 système image ajout parfum ✓
@@ -33,13 +32,16 @@ Montrer quantité produit selectionné dans modif quantité produit ✓
 Afficher l'image lors de l'ajout d'un produit ✓
 Ajout de promotions ✓
 
+Navbar :
+afficher onglet profil si connecté ✓
+afficher onglet connexion si pas connecté ✓
+afficher onglet manage si admin ✓
 
+Profile :
+Se deconnecter depuis le profile ✓
 
 ================== A FAIRE AVANT 21H ====================
 Navbar :
-afficher onglet profil si connecté
-afficher onglet connexion si pas connecté
-afficher onglet manage si admin
 mettre petite notif à coté du panier
 
 Profile :
