@@ -11,8 +11,8 @@ class Order extends Page
         parent::__construct(
             'Panier',
             'order.php',
-            ['header.css', 'order.css', 'footer.css'],
-            [],
+            ['header.css', 'form.css', 'order.css', 'footer.css'],
+            ['order.js'],
             true,
             true
         );
