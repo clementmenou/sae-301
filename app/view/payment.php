@@ -34,7 +34,7 @@
         </form>
     </div>
 <?php else : ?>
-    <div>
-        <a href="/votre_profil">Retrouvez la commande sur votre profile</a>
+    <div class="page-content-center">
+        <a href="/votre_profil" class="link-address">Retrouvez la commande sur votre profile</a>
     </div>
 <?php endif; ?>

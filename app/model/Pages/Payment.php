@@ -11,7 +11,7 @@ class Payment extends Page
         parent::__construct(
             'Payment',
             'payment.php',
-            ['header.css', 'form.css', 'footer.css'],
+            ['header.css', 'form.css', 'payment.css', 'footer.css'],
             ['payment.js'],
             true,
             true
