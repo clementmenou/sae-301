@@ -3,14 +3,15 @@
     padding: 5px 100px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-family: var(--text-font);
     background-color: var(--main-color-less);
 }
 
 .header-logo {
-    width: 66px;
-    height: 66px;
-    background: url('../Images/logo.png');
+    width: 82px;
+    height: 82px;
+    background: url('../Images/logo.svg');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,7 +22,18 @@
 }
 
 .header-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     padding: 25px;
     color: #151515;
     text-decoration: none;
+}
+
+.header-link-image-account {
+    width: 27px;
+}
+
+.header-link-image-cart {
+    width: 35px;
 }
