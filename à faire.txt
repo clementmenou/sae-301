@@ -39,11 +39,9 @@ afficher onglet manage si admin ✓
 
 Profile :
 Se deconnecter depuis le profile ✓
+Modifier les infos utilisateur ✓
+Afficher commandes finis ✓
 
 ================== A FAIRE AVANT 21H ====================
 Navbar :
 mettre petite notif à coté du panier
-
-Profile :
-Modifier les infos utilisateur
-Afficher commandes finis

@@ -20,3 +20,14 @@ body {
 .button-padding {
     margin-bottom: 35px;
 }
+
+.order-container {
+    width: 435px;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-head {
+    display: flex;
+    font-family: var(--text-font);
+}

@@ -60,6 +60,12 @@
     </div>
 
     <div class="form-container">
-
+        <?php foreach ($datas['all_ordered'] as $order) : ?>
+            <div class="order-container">
+                <div><?= $order['order_date'] ?></div>
+                <div><?= $order['first_name'] ?></div>
+                <div></div>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
