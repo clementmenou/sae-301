@@ -5,3 +5,6 @@
     <div>Email : <?= $datas['user_info']['email'] ?></div>
     <div>Mot de passe : <?= $datas['user_info']['password'] ?></div>
 </div>
+<form action="/deconnexion" method="post">
+    <input type="submit" value="Deconnection">
+</form>
