@@ -21,7 +21,10 @@ const starsInsert = document.querySelectorAll('.comment-star-insert');
 const starsUpdate = document.querySelectorAll('.comment-star-update');
 
 animateStars(inputRatingInsert, starsInsert);
-animateStars(inputRatingUpdate, starsUpdate);
+
+if(inputRatingUpdate.length == 5){
+    animateStars(inputRatingUpdate, starsUpdate);
+}
 
 inputRatingInsert.forEach( elem => {
     elem.addEventListener('change', () => {
