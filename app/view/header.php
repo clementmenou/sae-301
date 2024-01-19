@@ -1,5 +1,8 @@
 <header class="header">
-    <a href="/" class="header-logo"></a>
+    <a href="/" class="header-logo">
+        <img src="Public/Images/logo.svg" alt="logo délicor" class="header-logo-image">
+        <div class="header-logo-text">Délicor</div>
+    </a>
     <div class="header-link-zone">
         <a class="header-link" href="/regardez_nos_produits">Boutique</a>
         <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) : ?>
