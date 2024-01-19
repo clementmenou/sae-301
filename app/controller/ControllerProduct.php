@@ -33,8 +33,21 @@ class ControllerProduct
         $data = [];
 
         $fragrance = Session::getValue('fragrance');
+
+        Session::unsetValue('sorting');
+        if (Form::validate('price_asc', ['required' => true])) Session::setValue('sorting', null, 'price asc');
+        if (Form::validate('price_desc', ['required' => true])) Session::setValue('sorting', null, 'price desc');
+        if (Form::validate('quantity_asc', ['required' => true])) Session::setValue('sorting', null, 'quantity asc');
+        if (Form::validate('quantity_desc', ['required' => true])) Session::setValue('sorting', null, 'quantity desc');
+        if (Form::validate('promo_asc', ['required' => true])) Session::setValue('sorting', 'promo', 'promo asc');
+        if (Form::validate('promo_desc', ['required' => true])) Session::setValue('sorting', 'promo', 'promo desc');
+
         if ($fragrance == 'base') {
-            $data['all_products'] = $this->product->getAllProduct();
+            if (Session::getValue('sorting', 'promo')) {
+                $data['all_products'] = $this->product->getAllProductPromoBy(Session::getValue('sorting', 'promo'));
+            } else {
+                $data['all_products'] = $this->product->getAllProduct(Session::getValue('sorting', null, 'price desc'));
+            }
         } else {
             $data['all_products'] = $this->product->getProductsByCategory(Session::getValue('fragrance'));
         }
@@ -132,7 +145,7 @@ class ControllerProduct
 
     public function modifProduct()
     {
-        $datas = $this->product->getAllProduct();
+        $datas = $this->product->getAllProduct('price asc');
 
         if (Form::validates([
             'update_name' => ['required' => true, 'max_length' => 50, 'is_number' => true],

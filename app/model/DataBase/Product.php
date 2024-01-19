@@ -56,7 +56,7 @@ class Product extends DataBase
 
     public function getProductsByCategory($category)
     {
-        $sql = "SELECT *
+        $sql = "SELECT p.*
         FROM $this->dbName.products AS p
         INNER JOIN $this->dbName.productcategories AS pc
         ON p.product_id = pc.product_id
@@ -71,33 +71,34 @@ class Product extends DataBase
         return $stmt->fetchAll();
     }
 
-    public function getQuantityById($id)
+    public function getAllProduct($order)
     {
-        $sql = "SELECT stock_quantity FROM $this->dbName.products WHERE product_id = :id";
-        $params = [
-            'id' => $id
-        ];
-        $stmt = $this->getConnection()->prepare($sql);
-        $stmt->execute($params);
-        return $stmt->fetchColumn();
-    }
-
-    public function getAllProduct()
-    {
-        $sql = "SELECT DISTINCT p.*
+        $sql = "SELECT DISTINCT p.*, pr.*
         FROM $this->dbName.products AS p
-        INNER JOIN $this->dbName.productcategories AS pc
-        ON p.product_id = pc.product_id
-        INNER JOIN $this->dbName.categories AS c
-        ON pc.category_id = c.category_id
+        INNER JOIN $this->dbName.productcategories AS pc ON p.product_id = pc.product_id
+        LEFT JOIN $this->dbName.promotions AS pr ON p.product_id = pr.product_id
         WHERE p.status = 'active' AND pc.status = 'active'";
+
+        if ($order == 'price asc') $sql .= "ORDER BY p.price ASC";
+        elseif ($order == 'price desc') $sql .= "ORDER BY p.price DESC";
+        elseif ($order == 'quantity asc') $sql .= "ORDER BY p.stock_quantity ASC";
+        elseif ($order == 'quantity desc') $sql .= "ORDER BY p.stock_quantity DESC";
+
         $stmt = $this->getConnection()->query($sql);
         return $stmt->fetchAll();
     }
 
-    public function getAllNames()
+    public function getAllProductPromoBy($order)
     {
-        $sql = "SELECT name FROM $this->dbName.products WHERE status = 'active'";
+        $sql = "SELECT DISTINCT p.*, pr.*
+        FROM $this->dbName.products AS p
+        INNER JOIN $this->dbName.productcategories AS pc ON p.product_id = pc.product_id
+        INNER JOIN $this->dbName.promotions AS pr ON p.product_id = pr.product_id
+        WHERE p.status = 'active' AND pc.status = 'active' AND pr.status = 'active'";
+
+        if ($order == 'promo asc') $sql .= "ORDER BY pr.discount_percent ASC";
+        elseif ($order == 'promo desc') $sql .= "ORDER BY pr.discount_percent DESC";
+
         $stmt = $this->getConnection()->query($sql);
         return $stmt->fetchAll();
     }
