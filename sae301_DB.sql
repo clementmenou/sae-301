@@ -1,12 +1,12 @@
 START TRANSACTION;
 
 -- Création de la BDD, définition du jeu de caractère et règles de comparaisons pour le tri
-CREATE DATABASE IF NOT EXISTS sae301
+CREATE DATABASE IF NOT EXISTS u968260774_delicor
     CHARACTER SET utf8mb4
     COLLATE utf8mb4_unicode_ci;
 
 -- Définition bdd sur laquelle on va travailler
-USE sae301;
+USE u968260774_delicor;
 
 -- Table des Utilisateurs
 CREATE TABLE Users (
@@ -116,25 +116,25 @@ CREATE TABLE Promotions (
 
 -- Insertions de base
 -- Utilisateurs
-INSERT INTO 
-    `users` (`first_name`, `last_name`, `username`, `email`, `password`, `status`) 
-VALUES 
+INSERT INTO
+    Users (`first_name`, `last_name`, `username`, `email`, `password`, `status`)
+VALUES
     ('admin', 'admin', 'admin', 'admin@gmail.com', '$2y$10$m81LrzAtqQwp9dT60krAzuU61C/zbHShtmXxYx6/w9DKmso0EgQXW', 'admin');
 
 -- Catégories
-INSERT INTO `categories` (`name`) VALUES ('hesperides');
-INSERT INTO `categories` (`name`) VALUES ('fleuris');
-INSERT INTO `categories` (`name`) VALUES ('boises');
-INSERT INTO `categories` (`name`) VALUES ('fougeres');
-INSERT INTO `categories` (`name`) VALUES ('chypres');
-INSERT INTO `categories` (`name`) VALUES ('orientaux');
-INSERT INTO `categories` (`name`) VALUES ('aromatiques');
+INSERT INTO Categories (`name`) VALUES ('hesperides');
+INSERT INTO Categories (`name`) VALUES ('fleuris');
+INSERT INTO Categories (`name`) VALUES ('boises');
+INSERT INTO Categories (`name`) VALUES ('fougeres');
+INSERT INTO Categories (`name`) VALUES ('chypres');
+INSERT INTO Categories (`name`) VALUES ('orientaux');
+INSERT INTO Categories (`name`) VALUES ('aromatiques');
 
 
 -- Création de l'utilisateur
-CREATE USER 'admin_630126434750398'@'localhost' IDENTIFIED BY 'jgB=H5%s2Kgj@u7';
-GRANT ALL PRIVILEGES ON *.* TO 'admin_630126434750398'@'localhost' WITH GRANT OPTION;
-FLUSH PRIVILEGES;
+-- CREATE USER 'u968260774_delicoradmin'@'localhost' IDENTIFIED BY 'sspxywn@|:A4';
+-- GRANT ALL PRIVILEGES ON *.* TO 'u968260774_delicoradmin'@'localhost' WITH GRANT OPTION;
+-- FLUSH PRIVILEGES;
 
 -- Fermeture
 COMMIT;
