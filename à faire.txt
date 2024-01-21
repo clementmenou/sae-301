@@ -45,3 +45,6 @@ Afficher commandes finis ✓
 ================== A FAIRE AVANT 21H ====================
 Navbar :
 mettre petite notif à coté du panier
+
+parfums_liste :
+Ajouter les tailles
