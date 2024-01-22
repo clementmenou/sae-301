@@ -140,7 +140,7 @@ VALUES
     "45",
     "100",
     "hesperides1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -151,7 +151,7 @@ VALUES
     "55",
     "54",
     "hesperides2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -162,7 +162,7 @@ VALUES
     "40",
     "64",
     "hesperides3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -173,7 +173,7 @@ VALUES
     "50",
     "35",
     "hesperides4.png"
-)
+);
 
 
 
@@ -186,7 +186,7 @@ VALUES
     "56",
     "36",
     "fleuris1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -197,7 +197,7 @@ VALUES
     "35",
     "46",
     "fleuris2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -208,7 +208,7 @@ VALUES
     "75",
     "53",
     "fleuris3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -219,7 +219,7 @@ VALUES
     "70",
     "65",
     "fleuris4.png"
-)
+);
 
 
 
@@ -232,7 +232,7 @@ VALUES
     "80",
     "87",
     "boises1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -243,7 +243,7 @@ VALUES
     "90",
     "78",
     "boises2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -254,7 +254,7 @@ VALUES
     "75",
     "67",
     "boises3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -265,7 +265,7 @@ VALUES
     "45",
     "76",
     "boises4.png"
-)
+);
 
 
 
@@ -278,7 +278,7 @@ VALUES
     "65",
     "56",
     "fougeres1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -289,7 +289,7 @@ VALUES
     "50",
     "26",
     "fougeres2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -300,7 +300,7 @@ VALUES
     "80",
     "87",
     "fougeres3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -311,7 +311,7 @@ VALUES
     "70",
     "56",
     "fougeres4.png"
-)
+);
 
 
 
@@ -324,7 +324,7 @@ VALUES
     "60",
     "90",
     "chypres1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -335,7 +335,7 @@ VALUES
     "90",
     "89",
     "chypres2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -346,7 +346,7 @@ VALUES
     "85",
     "67",
     "chypres3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -357,7 +357,7 @@ VALUES
     "80",
     "47",
     "chypres4.png"
-)
+);
 
 
 
@@ -370,7 +370,7 @@ VALUES
     "70",
     "82",
     "oriental1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -381,7 +381,7 @@ VALUES
     "75",
     "78",
     "oriental2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -392,7 +392,7 @@ VALUES
     "60",
     "23",
     "oriental3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -403,7 +403,7 @@ VALUES
     "90",
     "43",
     "oriental4.png"
-)
+);
 
 
 
@@ -416,7 +416,7 @@ VALUES
     "100",
     "78",
     "aromatique1.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -427,7 +427,7 @@ VALUES
     "50",
     "37",
     "aromatique2.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -438,7 +438,7 @@ VALUES
     "70",
     "32",
     "aromatique3.png"
-)
+);
 
 INSERT INTO 
     products (`name`, `description`, `price`, `stock_quantity`, `image`) 
@@ -449,8 +449,43 @@ VALUES
     "95",
     "79",
     "aromatique4.png"
-)
+);
 
+-- Produits Catégories
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('1', '1');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('1', '2');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('1', '3');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('1', '4');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('2', '5');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('2', '6');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('2', '7');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('2', '8');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('3', '9');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('3', '10');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('3', '11');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('3', '12');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('4', '13');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('4', '14');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('4', '15');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('4', '16');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('5', '17');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('5', '18');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('5', '19');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('5', '20');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('6', '21');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('6', '22');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('6', '23');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('6', '24');
+
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('7', '25');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('7', '26');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('7', '27');
+INSERT INTO productcategories (`category_id`, `product_id`) VALUES ('7', '28');
 
 -- Création de l'utilisateur
 -- CREATE USER 'u968260774_delicoradmin'@'localhost' IDENTIFIED BY 'sspxywn@|:A4';
