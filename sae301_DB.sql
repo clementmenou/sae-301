@@ -9,7 +9,7 @@ CREATE DATABASE IF NOT EXISTS u968260774_delicor
 USE u968260774_delicor;
 
 -- Table des Utilisateurs
-CREATE TABLE Users (
+CREATE TABLE users (
     user_id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
@@ -21,7 +21,7 @@ CREATE TABLE Users (
 ) ENGINE=InnoDB;
 
 -- Table des Adresses de Livraison
-CREATE TABLE Addresses (
+CREATE TABLE addresses (
     address_id INT AUTO_INCREMENT PRIMARY KEY,
     street VARCHAR(255),
     city VARCHAR(255),
@@ -31,7 +31,7 @@ CREATE TABLE Addresses (
 ) ENGINE=InnoDB;
 
 -- Table de Jonction Utilisateurs-Adresses
-CREATE TABLE UserAddresses (
+CREATE TABLE useraddresses (
     user_id INT,
     address_id INT,
     PRIMARY KEY (user_id, address_id),
@@ -41,13 +41,13 @@ CREATE TABLE UserAddresses (
 ) ENGINE=InnoDB;
 
 -- Table des Catégories
-CREATE TABLE Categories (
+CREATE TABLE categories (
     category_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255)
 ) ENGINE=InnoDB;
 
 -- Table des Produits
-CREATE TABLE Products (
+CREATE TABLE products (
     product_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255),
     description TEXT,
@@ -58,7 +58,7 @@ CREATE TABLE Products (
 ) ENGINE=InnoDB;
 
 -- Table de Jonction Produits-Catégories
-CREATE TABLE ProductCategories (
+CREATE TABLE productCategories (
     category_id INT,
     product_id INT,
     PRIMARY KEY (category_id, product_id),
@@ -68,7 +68,7 @@ CREATE TABLE ProductCategories (
 ) ENGINE=InnoDB;
 
 -- Table des Commandes
-CREATE TABLE Orders (
+CREATE TABLE orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     address_id INT,
@@ -79,7 +79,7 @@ CREATE TABLE Orders (
 ) ENGINE=InnoDB;
 
 -- Table des Éléments de Commande
-CREATE TABLE OrderItems (
+CREATE TABLE orderitems (
     order_item_id INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,
     product_id INT,
@@ -91,7 +91,7 @@ CREATE TABLE OrderItems (
 ) ENGINE=InnoDB;
 
 -- Table des Avis
-CREATE TABLE Reviews (
+CREATE TABLE reviews (
     review_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
     product_id INT,
@@ -104,7 +104,7 @@ CREATE TABLE Reviews (
 ) ENGINE=InnoDB;
 
 -- Table des Promotions
-CREATE TABLE Promotions (
+CREATE TABLE promotions (
     promotion_id INT AUTO_INCREMENT PRIMARY KEY,
     product_id INT,
     discount_percent DECIMAL(5, 2),
@@ -117,18 +117,18 @@ CREATE TABLE Promotions (
 -- Insertions de base
 -- Utilisateurs
 INSERT INTO
-    Users (`first_name`, `last_name`, `username`, `email`, `password`, `status`)
+    users (`first_name`, `last_name`, `username`, `email`, `password`, `status`)
 VALUES
     ('admin', 'admin', 'admin', 'admin@gmail.com', '$2y$10$m81LrzAtqQwp9dT60krAzuU61C/zbHShtmXxYx6/w9DKmso0EgQXW', 'admin');
 
 -- Catégories
-INSERT INTO Categories (`name`) VALUES ('hesperides');
-INSERT INTO Categories (`name`) VALUES ('fleuris');
-INSERT INTO Categories (`name`) VALUES ('boises');
-INSERT INTO Categories (`name`) VALUES ('fougeres');
-INSERT INTO Categories (`name`) VALUES ('chypres');
-INSERT INTO Categories (`name`) VALUES ('orientaux');
-INSERT INTO Categories (`name`) VALUES ('aromatiques');
+INSERT INTO categories (`name`) VALUES ('hesperides');
+INSERT INTO categories (`name`) VALUES ('fleuris');
+INSERT INTO categories (`name`) VALUES ('boises');
+INSERT INTO categories (`name`) VALUES ('fougeres');
+INSERT INTO categories (`name`) VALUES ('chypres');
+INSERT INTO categories (`name`) VALUES ('orientaux');
+INSERT INTO categories (`name`) VALUES ('aromatiques');
 
 
 -- Création de l'utilisateur
