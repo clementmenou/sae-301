@@ -31,5 +31,6 @@
             <?php endif; ?>
         </div>
         <input type="submit" value="Connexion" class="button-generic">
+        <p class="sub-text">Vous n'avez pas de compte? <a href="/inscrivez_vous">Inscrivez-vous!</a></p>
     </form>
 </div>

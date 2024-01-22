@@ -1,74 +1,119 @@
-.home-button-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
+main {
+  height: calc(100vh - 95px);
+  background-color: var(--main-color-background);
 }
 
-.home-button{
-    width: 500px;
-    height: 100px;
-    border: none;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
-    font-family: var(--title-font);
-    font-size: 50px;
-    font-weight: 600;
+section {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.home-button-hesperides{
-    background: url(../Images/home-hesperides.jpg);
-    background-size: 500px;
-    background-position: 0 -60px;
-    color: white;
-    text-shadow: 0 0 5px black;
+h1 {
+  font-family: var(--title-font);
+  font-size: 75px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 1.2;
+  color: var(--main-color-text);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.home-button-fleuris{
-    background: url(../Images/home-fleuris.jpg);
-    background-size: 500px;
-    background-position: 0 -210px;
-    color: white;
-    text-shadow: 0 0 5px black;
+.home-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-.home-button-boises{
-    background: url(../Images/home-boises.jpg);
-    background-size: 500px;
-    background-position: 0 -280px;
-    color: white;
-    text-shadow: 0 0 5px black;
+.home-button {
+  width: 500px;
+  height: 100px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 3px 8px;
+  font-family: var(--title-font);
+  font-size: 50px;
+  font-weight: 600;
 }
 
-.home-button-fougeres{
-    background: url(../Images/home-fougeres.jpg);
-    background-size: 500px;
-    background-position: 0 -330px;
-    color: white;
-    text-shadow: 0 0 5px black;
+.home-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }
 
-.home-button-chypres{
-    background: url(../Images/home-chypres.jpg);
-    background-size: 500px;
-    background-position: 0 -310px;
-    color: white;
-    text-shadow: 0 0 5px black;
+.home-button-hesperides {
+  background: url(../Images/home-hesperides.jpg);
+  background-size: 500px;
+  background-position: 0 -60px;
+  color: white;
+  text-shadow: 0 0 5px black;
 }
 
-.home-button-orientaux{
-    background: url(../Images/home-orientales.jpg);
-    background-size: 500px;
-    background-position: 0 -290px;
-    color: white;
-    text-shadow: 0 0 5px black;
+.home-button-fleuris {
+  background: url(../Images/home-fleuris.jpg);
+  background-size: 500px;
+  background-position: 0 -210px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.home-button-boises {
+  background: url(../Images/home-boises.jpg);
+  background-size: 500px;
+  background-position: 0 -280px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.home-button-fougeres {
+  background: url(../Images/home-fougeres.jpg);
+  background-size: 500px;
+  background-position: 0 -330px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.home-button-chypres {
+  background: url(../Images/home-chypres.jpg);
+  background-size: 500px;
+  background-position: 0 -310px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.home-button-orientaux {
+  background: url(../Images/home-orientales.jpg);
+  background-size: 500px;
+  background-position: 0 -290px;
+  color: white;
+  text-shadow: 0 0 5px black;
 }
 
 .home-button-aromatiques {
-    background: url(../Images/home-aromatics.jpg);
-    background-size: 500px;
-    background-position: 0 -380px;
-    color: white;
-    text-shadow: 0 0 5px black;
+  background: url(../Images/home-aromatics.jpg);
+  background-size: 500px;
+  background-position: 0 -380px;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+@media screen and (max-width: 800px) {
+  h1 {
+    font-size: 50px;
+  }
+  .home-button {
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 40px;
+  }
+  .home-button {
+    font-size: 30px;
+  }
 }

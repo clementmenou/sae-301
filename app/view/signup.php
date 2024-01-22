@@ -11,6 +11,7 @@
             <label for="input-last-name" class="label-generic">Nom</label>
         </div>
         <input type="submit" value="Continuer" class="button-generic">
+        <p class="sub-text">Vous souhaitez vous connecter? <a href="/connectez_vous">Cliquez ici!</a></p>
     </form>
 
     <form action="/inscrivez_vous" method="POST" class="form-container" id="identifier-zone">

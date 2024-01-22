@@ -4,7 +4,9 @@
         <div class="header-logo-text">Délicor</div>
     </a>
     <div class="header-link-zone">
-        <a class="header-link" href="/regardez_nos_produits">Boutique</a>
+        <a class="header-link" href="/regardez_nos_produits">
+            <div>Boutique</div>
+        </a>
         <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']) : ?>
             <a class="header-link" href="/gerez_le_site">Manage</a>
         <?php endif; ?>
@@ -17,4 +19,5 @@
             <div>Panier</div>
         </a>
     </div>
+    <div class="burger-menu">&#9776;</div>
 </header>

@@ -41,10 +41,82 @@
     text-decoration: none;
 }
 
+.header-link div{
+    height : 35px;
+    display: flex;
+    align-items : center;
+}
+
+.burger-menu{
+    display:none;
+    font-size:33px;
+    cursor: pointer;
+}
+
 .header-link-image-account {
     width: 27px;
 }
 
 .header-link-image-cart {
     width: 35px;
+}
+
+@media screen and (max-width: 1030px) {
+.header{
+    padding: 5px 50px;
+
+}
+.header-logo-text {
+
+    font-size: 25px;
+
+}
+.header-link {
+    padding: 25px 20px;
+}
+}
+
+@media screen and (max-width: 800px) {
+.header{
+    padding: 5px 25px;
+
+}
+.header-logo-text {
+
+    font-size: 22px;
+
+}
+.header-link {
+    padding: 25px 12px;
+}
+}
+
+
+@media screen and (max-width: 600px) {
+    .burger-menu{
+    display:block;
+}
+.header-link-zone{
+    display:none;
+    flex-direction: column;
+    position: absolute;
+    top: 92px;
+    left: 0;
+    width: 100%;
+}
+
+.header-link-zone.active {
+    display: flex;
+  }
+  .header-link {
+    background-color:var(--main-color-less);
+    border: 1px solid black;
+  }
+  .header-link-zone a:first-child {
+    border-top: 2px solid black; /* Remplacez #000 par la couleur de votre choix */
+}
+
+.header-link-zone a:last-child {
+    border-bottom: 2px solid black; /* Remplacez #000 par la couleur de votre choix */
+}
 }
