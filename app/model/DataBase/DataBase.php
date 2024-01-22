@@ -7,9 +7,9 @@ class DataBase
     // Data base properties
     private $host = 'localhost';
     private $port = '3306';
-    protected $dbName = 'sae301';
-    private $username = 'admin_630126434750398';
-    private $password = 'jgB=H5%s2Kgj@u7';
+    protected $dbName = 'u968260774_delicor';
+    private $username = 'u968260774_delicoradmin';
+    private $password = 'sspxywn@|:A4';
     private $connection;
 
     protected function getConnection()
