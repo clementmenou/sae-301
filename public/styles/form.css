@@ -266,3 +266,33 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+.sub-text{
+    font-family: var(--text-font);
+    padding:5px;
+}
+
+@media screen and (max-width: 600px) {
+  .input-label-area-medium {
+    position: relative;
+    min-height: 80px;
+    width: 110px;
+  }
+.button-small {
+    width: 90px;
+}
+.form-title {
+    font-size:20px;
+    
+}
+.form-container {
+    padding: 20px 20px 40px;
+    gap:0;
+}
+.input-label-area{
+    width:290px;
+}
+.sub-text{
+    font-size: 12px;
+}
+}

@@ -27,3 +27,11 @@
     font-weight: 600;
     color: #888;
 }
+
+.address-add:hover {
+    cursor:pointer;
+}
+
+.address-order-choice div:first-of-type {
+  padding:0 10px;
+}

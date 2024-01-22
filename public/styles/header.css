@@ -107,6 +107,7 @@
 
 .header-link-zone.active {
     display: flex;
+    z-index: 10000;
   }
   .header-link {
     background-color:var(--main-color-less);
