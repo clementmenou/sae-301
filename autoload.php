@@ -6,5 +6,5 @@ spl_autoload_register(function ($className) {
     $className = str_replace("\\", "/", $className);
 
     // Inclure le fichier de classe
-    include "$className.php";
+    include __DIR__ . "/$className.php";
 });

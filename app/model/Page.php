@@ -40,32 +40,32 @@ class Page
     {
         $title = $this->title;
         $styles = $this->styles;
-        include_once './app/view/head.php';
+        include_once './App/View/head.php';
     }
 
     private function renderHeader()
     {
         if ($this->header) {
-            include_once './app/view/header.php';
+            include_once './App/View/header.php';
         }
     }
 
     private function renderBody()
     {
         $datas = $this->datas;
-        include_once './app/view/' . $this->body;
+        include_once './App/View/' . $this->body;
     }
 
     private function renderFooter()
     {
         if ($this->footer) {
-            include_once './app/view/footer.php';
+            include_once './App/View/footer.php';
         }
     }
 
     private function renderFoot()
     {
         $scripts = $this->scripts;
-        include_once './app/view/foot.php';
+        include_once './App/View/foot.php';
     }
 }

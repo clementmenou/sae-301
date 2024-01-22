@@ -7,12 +7,12 @@
 
     <title><?= $title ?></title>
 
-    <link rel="stylesheet" href="./public/styles/setup.css">
-    <link rel="stylesheet" href="./public/styles/variables/<?= $_SESSION['fragrance'] ?>.css">
+    <link rel="stylesheet" href="./Public/Styles/setup.css">
+    <link rel="stylesheet" href="./Public/Styles/variables/<?= $_SESSION['fragrance'] ?>.css">
     <?php foreach ($styles as $style) : ?>
-        <link rel="stylesheet" href="./public/styles/<?= $style ?>">
+        <link rel="stylesheet" href="./Public/Styles/<?= $style ?>">
     <?php endforeach; ?>
-    <link rel="icon" href="./public/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./Public/Images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
