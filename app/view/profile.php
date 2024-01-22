@@ -65,7 +65,7 @@
                 <div class="order-container">
                     <div><?= $order['order_date'] ?></div>
                     <div><?= $order['first_name'] ?></div>
-                    <div></div>
+                    <div><?= $order['last_name'] ?></div>
                 </div>
             <?php endforeach; ?>
         </div>
