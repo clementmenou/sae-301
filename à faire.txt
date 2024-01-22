@@ -46,11 +46,12 @@ Afficher commandes finis ✓
 Finir CDCF ✓
 
 CSS SITE :
- - ajouter lien inscription
- - front home
- - front manage (changer nom en "Gestion")
- - front compte + ne pas afficher la partie commande si vide
+ - ajouter lien inscription ✓
+ - front home ✓
+ - front manage (changer nom en "Gestion") ✓
+ - front profil + ne pas afficher la partie commande si vide
  - panier fin, trouver un design
+ - responsive de tout : home, product_list
 
 Remplir bdd ✓
 

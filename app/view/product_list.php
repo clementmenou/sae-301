@@ -51,7 +51,7 @@
         <form action="/regardez_nos_produits" method="POST">
             <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
             <button name="redirect_product_info" type="submit" class="product-container">
-                <img src="Public/Images/Products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
+                <img class="product-image" src="Public/Images/Products/<?= $product['image'] ?>" alt="<?= $product['name'] ?>">
                 <div class="product-info">
                     <div class="product-name"><?= $product['name'] ?></div>
                     <div class="product-price"><?= $product['price'] ?> €</div>

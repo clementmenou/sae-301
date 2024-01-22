@@ -36,8 +36,8 @@ CREATE TABLE useraddresses (
     address_id INT,
     PRIMARY KEY (user_id, address_id),
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (address_id) REFERENCES addresses(address_id)
 ) ENGINE=InnoDB;
 
 -- Table des Catégories
@@ -58,13 +58,13 @@ CREATE TABLE products (
 ) ENGINE=InnoDB;
 
 -- Table de Jonction Produits-Catégories
-CREATE TABLE productCategories (
+CREATE TABLE productcategories (
     category_id INT,
     product_id INT,
     PRIMARY KEY (category_id, product_id),
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (category_id) REFERENCES Categories(category_id),
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 ) ENGINE=InnoDB;
 
 -- Table des Commandes
@@ -74,8 +74,8 @@ CREATE TABLE orders (
     address_id INT,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (address_id) REFERENCES Addresses(address_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (address_id) REFERENCES addresses(address_id)
 ) ENGINE=InnoDB;
 
 -- Table des Éléments de Commande
@@ -86,8 +86,8 @@ CREATE TABLE orderitems (
     quantity INT,
     price DECIMAL(10, 2),
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 ) ENGINE=InnoDB;
 
 -- Table des Avis
@@ -99,8 +99,8 @@ CREATE TABLE reviews (
     text TEXT,
     date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (user_id) REFERENCES Users(user_id),
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 ) ENGINE=InnoDB;
 
 -- Table des Promotions
@@ -111,7 +111,7 @@ CREATE TABLE promotions (
     start_date DATE,
     end_date DATE,
     status VARCHAR(50) DEFAULT 'active',
-    FOREIGN KEY (product_id) REFERENCES Products(product_id)
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
 ) ENGINE=InnoDB;
 
 -- Insertions de base
